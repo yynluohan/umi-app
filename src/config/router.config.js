@@ -14,12 +14,12 @@ module.exports = [
         icon: 'tags',
       },
       {
-        path: '/product_tag',
+        path: '/product/tag',
         name: '产品标签',
         icon: 'tags',
       },
       {
-        path: '/trial',
+        path: '/product/trial',
         name: '试用装管理',
         icon: 'tags',
       },

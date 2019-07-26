@@ -6,11 +6,11 @@ export default {
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
-      dva: false,
-      dynamicImport: false,
-      title: 'zero-crud-admin',
+      dva: true,
+      dynamicImport: true,
+      title: 'product management',
       dll: false,
-      
+
       routes: {
         exclude: [
           /components\//,
