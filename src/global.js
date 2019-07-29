@@ -27,3 +27,9 @@ LASet({
 AITSet({
   path,
 });
+
+
+window.MC = {
+  HASH: '',
+  HOST:'http://192.168.3.16:8080'
+}

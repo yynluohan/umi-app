@@ -24,7 +24,6 @@ export default {
       component: 'BaseList',
       config: {
         share:'categroy',
-        // scroll:{x:2750},
         API: {
           listAPI: '/api/crud/product/productCategoryies',
           deleteAPI:'/api/crud/product/productCategoryies/(id)'
