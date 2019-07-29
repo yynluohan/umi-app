@@ -32,19 +32,21 @@ export default {
           {
             title: '添加',type:'path',
             options:{
-              path: '/subsysManage-add'
+              path: '/product/categroyAdd'
             }
           }
         ],
         fields: [
           { field: 'name',label: '名称'},
+          { field: 'cover',label: '封面',valueType:'image'},
+          { field: 'sortOrder',label: '排序号'},
           { field:'operation'}
         ],
         operation: [
           {
             title:'查看',action:'path',
             options:{
-              path:'/subsysManage-view',
+              path:'/product/categroyView',
               // permission:'apply.view',
               // location:true
               queryData:(records) => {
@@ -58,7 +60,7 @@ export default {
           {
             title: '编辑',action:'path',
             options:{
-              path:'/subsysManage-edit',
+              path:'/product/categroyEdit',
               queryData:(records) => {
                 const data = {
                   id:records.id,

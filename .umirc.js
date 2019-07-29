@@ -1,7 +1,11 @@
 
 // ref: https://umijs.org/config/
 export default {
+  history: 'hash',
   treeShaking: true,
+  disableCSSModules: false,
+  publicPath: "./",
+  outputPath: "./dist",
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
@@ -10,7 +14,6 @@ export default {
       dynamicImport: true,
       title: 'product management',
       dll: false,
-
       routes: {
         exclude: [
           /components\//,

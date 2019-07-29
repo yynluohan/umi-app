@@ -1,0 +1,23 @@
+.rowStyle{
+    background-color: #f7f7f7;
+}
+
+.outStyle {
+  border: 1px solid #606f84;
+}
+
+.continer {
+  height: 3em;
+  font-size: 1.3em;
+  background-color: #606f84;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color:#fff;
+  padding:0 1em;
+}
+
+.noContent {
+  text-align: center;
+  padding:1em;
+}

@@ -27,7 +27,7 @@ export default function LeftNav({ path }) {
           {items.map(item => {
             const { name, path, icon } = item;
             return <Menu.Item key={path}>
-              <Link to={path}>
+              <Link to={window.MC.HASH + path}>
                 <div>
                   <Icon type={icon} />
                   <span>{name}</span>
@@ -39,7 +39,7 @@ export default function LeftNav({ path }) {
       }
       if (path) {
         return <Menu.Item key={path}>
-          <Link to={path}>
+          <Link to={window.MC.HASH + path}>
             <div>
               <Icon type={icon} />
               <span>{name}</span>
