@@ -31,7 +31,7 @@ export default function PrimaryLayout({ location, children }) {
   return <Layout>
     {
       token ?
-      <Header className="header" style={{ color: '#fff',padding: '0 20px'}}>
+      <Header className="header" style={{ color: '#fff',padding: '0 20px',position: 'fixed',width:'100%',zIndex:900}}>
         <div style={{ display: 'flex',justifyContent: 'space-between'}}>
           <div>product management</div>
           <Popover content={toDoContent} placement='left'>
@@ -42,7 +42,7 @@ export default function PrimaryLayout({ location, children }) {
       : ''
     }
 
-    <Layout className="ant-layout-has-sider" style={token ? { marginTop: '20px'} : {}}>
+    <Layout className="ant-layout-has-sider" style={token ? { marginTop: '84px'} : {}}>
       {
         token ?
         <Sider width={200} style={{ background: '#fff',minHeight:'calc(100vh - 108px)' }}>

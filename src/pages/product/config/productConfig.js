@@ -43,8 +43,8 @@ export default {
         share:'product',
         // scroll:{x:2750},
         API: {
-          listAPI: '/api/crud/subsys/subsyses',
-          deleteAPI:'/api/crud/subsys/subsyses/(id)'
+          listAPI: '/api/crud/product/products',
+          deleteAPI:'/api/crud/product/products/(id)'
         },
         actions:[
           {
@@ -55,22 +55,29 @@ export default {
           }
         ],
         fields: [
-          { field: 'code',label: '编号'},
-          { field: 'cover',label: '封面'},
+          { field: 'skuCode',label: '编号'},
+          { field: 'cover',label: '封面',valueType: 'image'},
           { field: 'sign',label: '品牌'},
           { field: 'name',label: '名称'},
-          { field: 'type',label: '类别'},
-          { field: 'status',label: '状态'},
+          { field: 'categoryId',label: '类别'},
+          { field: 'status',label: '状态',valueType: 'status',
+            options:{
+              statusMap: {
+                'ONSELL':'上架',
+                'OFFSELL':'下架'
+              }
+            }
+          },
           { field: 'price',label: '价格'},
-          { field: 'template',label: '运费模板'},
-          { field: 'sort',label: '排序号'},
+          { field: 'fareId',label: '运费模板'},
+          { field: 'sortOrder',label: '排序号'},
           { field:'operation'}
         ],
         operation: [
           {
             title:'查看',action:'path',
             options:{
-              path:'/subsysManage-view',
+              path:'/product/productView',
               // permission:'apply.view',
               // location:true
               queryData:(records) => {
@@ -84,13 +91,31 @@ export default {
           {
             title: '编辑',action:'path',
             options:{
-              path:'/subsysManage-edit',
+              path:'/product/productEdit',
               queryData:(records) => {
                 const data = {
                   id:records.id,
                 }
                 return data
               }
+            }
+          },
+          {
+            title: '上架',action:'request',
+            options:{
+              expectedField:[['status']],
+              expectedValue:[['OFFSELL']],
+              API:'/api/crud/product/products/(id)/(status)',
+              method:'post'
+            }
+          },
+          {
+            title: '下架',action:'request',
+            options:{
+              expectedField:[['status']],
+              expectedValue:[['ONSELL']],
+              API:'/api/crud/product/products/(id)/(status)',
+              method:'post'
             }
           },
           {

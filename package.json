@@ -9,12 +9,13 @@
   },
   "dependencies": {
     "antd": "^3.19.5",
+    "braft-editor": "^2.3.7",
+    "html-to-draftjs": "^1.4.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "zero-element": "^1.0.0-beta.11",
     "zero-element-antd": "github:kequandian/zero-element-antd",
-    "zero-element-global": "github:kequandian/zero-element-global",
-    "braft-editor": "^2.3.7"
+    "zero-element-global": "github:kequandian/zero-element-global"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",

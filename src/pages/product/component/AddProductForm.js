@@ -4,6 +4,7 @@ import { query } from '../../../framework/utils/services';
 import UploadFile from '../../../common/UploadFile';
 import BraftEditor from 'braft-editor';
 import 'braft-editor/dist/index.css';
+import htmlToDraft from 'html-to-draftjs';
 
 const FormItem = Form.Item;
 const { TextArea } = Input
@@ -25,7 +26,18 @@ class AddProductForm extends React.Component {
     this.state = {
       item:props.item || {},
       visible: false,
+      typeList: [],  //产品类别
     }
+  }
+
+  componentDidMount() {
+    query('/api/crud/product/productCategoryies',{pageSize: 1000000}).then(({ code,data }) => {
+      if (code && code === 200) {
+        this.setState({
+          typeList: data.records
+        })
+      }
+    })
   }
 
 
@@ -38,16 +50,27 @@ class AddProductForm extends React.Component {
     }
   }
 
-  onSubmit = () => {
-    const { validateFields,getFieldsValue } = this.props.form;
+  onSubmit = (e) => {
+    const { validateFields,getFieldsValue,item } = this.props.form;
     validateFields((errors) => {
       if (errors) {
         return;
       }
       let data = {
+        ...item,
         ...getFieldsValue(),
       };
-      data.description = data.description ? data.description.toHTML() : ''
+      if (e) {
+        data.status = e
+      }
+      const productDescription = item && item.productDescription ? item.productDescription : {}
+      if (data.description) {
+        data.productDescription = {
+          ...productDescription,
+          description: data.description.toHTML()
+        }
+      }
+      delete data.description
       this.props.onSave(data)
     });
   }
@@ -56,9 +79,9 @@ class AddProductForm extends React.Component {
  render() {
 
    const { getFieldDecorator } = this.props.form;
-   const { item,visible } = this.state;
+   const { item,visible,typeList } = this.state;
 
-   console.log('mmmmm',item);
+   console.log('mmmmm===',item);
 
    const uploadProps = {
 
@@ -216,14 +239,14 @@ class AddProductForm extends React.Component {
                 initialValue: item.categoryId,
                 rules: [
                   {
-                    required: false,
+                    required: true,
                   },
                 ],
               })(
                 <Select>
                   {
-                    [1].map((item,index) => (
-                      <Select.Option key={index} value={item}>{item}</Select.Option>
+                    typeList.length > 0 && typeList.map((item,index) => (
+                      <Select.Option key={index} value={item.id}>{item.name}</Select.Option>
                     ))
                   }
                 </Select>
@@ -352,7 +375,7 @@ class AddProductForm extends React.Component {
           <Col span={24}>
             <FormItem label='描述' hasFeedback {...formItemLayout(3,20)}>
               {getFieldDecorator('description', {
-                initialValue: item.description,
+                initialValue: item.productDescription && htmlToDraft(item.productDescription.description),
                 rules: [
                   {
                     required: false,
@@ -366,6 +389,7 @@ class AddProductForm extends React.Component {
 
        <div style={{textAlign: 'right',marginTop:'2em'}}>
         <Button type='primary' style={{ marginRight: '1em'}} onClick={()=> this.onSubmit()}>保存</Button>
+        <Button type='primary' style={{ marginRight: '1em'}} onClick={()=> this.onSubmit('ONSELL')}>直接发布</Button>
         <Button onClick={this.props.onBack}>返回</Button>
        </div>
      </div>

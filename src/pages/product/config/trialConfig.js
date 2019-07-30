@@ -14,7 +14,19 @@ export default {
       config: {
         share:'product',
         fields: [
-          { field: 'name',label: '名称',type:'input'}
+          { field: 'enabled',label: '是否启用',type:'select',
+            options: [
+              { label: '是',value: '1'},
+              { label: '否',value: '0'},
+            ]
+          },
+          { field: 'name',label: '名称',type:'input'},
+          { field: 'barCode',label: '条形码',type:'input'},
+          { field: 'categoryId',label: '类别',type:'select-fetch',
+            options: {
+                API:'', label:'', value:'' 
+            }
+          },
         ]
       }
     },

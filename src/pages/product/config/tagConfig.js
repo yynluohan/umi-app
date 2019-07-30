@@ -1,80 +1,90 @@
-export default {
+
+module.exports = {
   layout: 'Content',
-  title: '产品标签',
+  title: '标签管理',
   items: [
     {
-      span: 24,
-      layout:'Empty',
-      layoutConfig:{
-        title: 'search',
-        rightIcon:false,
-        typeList:['General']
-      },
+      layout: 'Empty',
       component: 'BaseSearch',
       config: {
-        share:'product',
+        share:'user',
         fields: [
-          { field: 'name',label: '名称',type:'input'}
-        ]
-      }
+          { field: 'name', label: '标签名', type: 'input' }
+        ],
+      },
     },
     {
-      span: 24,
-      layout:'Empty',
+      layout: 'Empty',
       component: 'BaseList',
       config: {
-        share:'product',
-        // scroll:{x:2750},
+        share:'user',
         API: {
-          listAPI: '/api/crud/subsys/subsyses',
-          deleteAPI:'/api/crud/subsys/subsyses/(id)'
+          listAPI: '/api/crud/product/productTags',
+          deleteAPI:'/api/crud/product/productTags/(id)'
         },
         actions:[
           {
-            title: '添加',type:'path',
+            title: '添加',type:'modal',
             options:{
-              path: '/subsysManage-add'
+              modalTitle:'添加标签',
+              modalWidth:900,
+              items:[
+                {
+                  layout: 'BaseFormLayout',
+                  component: 'BaseForm',
+                  config: {
+                    API:{
+                      createAPI:'/api/crud/product/productTags'
+                    },
+                    fields: [
+                      { field: 'identifier', label: '标记',type:'input' },
+                      { field: 'name', label: '名称',type:'input' },
+                      { field: 'sortOrder',label: '排序号',type:'input'},
+                    ]
+                  }
+                }
+              ]
             }
           }
         ],
         fields: [
-          { field: 'sign',label: '标记'},
-          { field: 'name',label: '名称'},
-          { field: 'sort',label: '排序号'},
+          { field: 'identifier', label: '标记'},
+          { field: 'name', label: '名称' },
+          { field: 'sortOrder',label: '排序号'},
           { field:'operation'}
         ],
         operation: [
           {
-            title:'查看',action:'path',
+            title: '编辑', action: 'modal',
             options:{
-              path:'/subsysManage-view',
-              // permission:'apply.view',
-              // location:true
-              queryData:(records) => {
-                const data = {
-                  id:records.id,
+              modalTitle:'编辑用户',
+              modalWidth:800,
+
+              layout: 'Empty',
+              items:[
+                {
+                  layout: 'BaseFormLayout',
+                  component: 'BaseForm',
+                  config: {
+                    API: {
+                      getAPI:'/api/crud/product/productTags/(id)',
+                      updateAPI: '/api/crud/product/productTags/(id)',
+                    },
+                    fields: [
+                      { field: 'identifier', label: '标记',type:'input' },
+                      { field: 'name', label: '名称',type:'input' },
+                      { field: 'sortOrder',label: '排序号',type:'input'},
+                    ]
+                  }
                 }
-                return data
-              }
+              ]
             }
           },
           {
-            title: '编辑',action:'path',
-            options:{
-              path:'/subsysManage-edit',
-              queryData:(records) => {
-                const data = {
-                  id:records.id,
-                }
-                return data
-              }
-            }
-          },
-          {
-            title: '删除',action: 'delete'
+            title:'删除',action:'delete'
           }
-        ],
+        ]
       },
     },
-  ]
-}
+  ],
+};
