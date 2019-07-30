@@ -14,7 +14,24 @@ export default {
       config: {
         share:'product',
         fields: [
-          { field: 'name',label: '名称',type:'input'}
+          { field: 'name',label: '名称',type:'input'},
+          { field: 'barCode',label: '条形码',type: 'input'},
+          { field: 'status',label: '名称',type:'select',
+            options: [
+              { label: '草稿',value: 'DRAFT' },
+              { label: '待审核',value: 'PENDING_APPROVAL' },
+              { label: '已审核',value: 'APPROVED' },
+              { label: '上架',value: 'ONSELL' },
+              { label: '下架',value: 'OFFSELL'}
+            ]
+          },
+          { field: 'categoryId',label: '类别',type: 'input'},
+          { field: 'promoted',label: '推荐',type: 'select',
+            options: [
+              { label: '否',value: '0' },
+              { label: '是',value: '1'},
+            ]
+          }
         ]
       }
     },
@@ -33,7 +50,7 @@ export default {
           {
             title: '添加',type:'path',
             options:{
-              path: '/subsysManage-add'
+              path: '/product/productAdd'
             }
           }
         ],

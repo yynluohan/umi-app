@@ -50,16 +50,24 @@ class FormIemView extends React.Component {
 
     const createColmns = (data) => {
       data.map((item,index) => {
-        data[index] = {
-          ...item,
-          dataIndex: item.value,
-          key: item.value,
+        if (item.valueMap) {
+          data[index] = {
+            ...item,
+            key: item.value,
+            render: (record) => (
+              <span>{item.valueMap[record[item.value]]}</span>
+            )
+          }
+        } else {
+          data[index] = {
+            ...item,
+            dataIndex: item.value,
+            key: item.value,
+          }
         }
       })
       return data
     }
-
-    console.log('hhhhhhhhhh',newList);
 
     return (
       <div style={{ background: '#fff',padding: '20px'}}>

@@ -17,6 +17,12 @@ class categroyEdit extends React.Component {
       title: '修改产品类别',
       onBack() {
         _this.props.dispatch(routerRedux.goBack())
+      },
+      onSave(data) {
+        _this.props.dispatch({
+          type: 'product/updateCategroy',
+          payload: data
+        })
       }
     }
 
