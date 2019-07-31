@@ -1,6 +1,6 @@
 export default {
   layout: 'Content',
-  title: '运费模板',
+  title: '试用装申请',
   items: [
     {
       span: 24,
@@ -14,7 +14,17 @@ export default {
       config: {
         share:'product',
         fields: [
-          { field: 'name',label: '模板名称',type:'input'},
+          { field: 'status',label: '状态',type:'select',
+            options: [
+              { label: '申请中',value: 'APPLYING'},
+              { label: '审核中',value: 'AUDITING'},
+              { label: '发货中',value: 'DELIVERING'},
+              { label: '发货完毕',value: 'DELIVERED'},
+              { label: '未获得申请资格',value: 'REJECTED'},
+            ]
+          },
+          { field: 'startTime',label: '开始时间',type:'date'},
+          { field: 'endTime',label: '结束时间',type:'date'},
         ]
       }
     },
@@ -26,20 +36,21 @@ export default {
         share:'product',
         // scroll:{x:2750},
         API: {
-          listAPI: '/api/crud/product/fareTemplates',
-          deleteAPI:'/api/crud/product/fareTemplates/(id)'
+          listAPI: '/api/crud/subsys/subsyses',
+          deleteAPI:'/api/crud/subsys/subsyses/(id)'
         },
-        actions:[
-          {
-            title: '新增运费模板',type:'path',
-            options:{
-              path: '/product/freightAdd'
-            }
-          }
-        ],
         fields: [
-          { field: 'name',label: '模板名称'},
-          { field: 'lastModifiedDate',label: '最后编辑时间'},
+          { field: 'name',label: '试用名称'},
+          { field: 'orderCode',label: '订单号'},
+          { field: 'status',label: '状态',valueType:'status',
+            options: {
+              statusMap: {
+
+              }
+            }
+          },
+          { field: 'applyTime',label: '申请时间'},
+          { field: 'message',label: '用户信息'},
           { field:'operation'}
         ],
         operation: [

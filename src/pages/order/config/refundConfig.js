@@ -1,6 +1,6 @@
 export default {
   layout: 'Content',
-  title: '运费模板',
+  title: '退货处理',
   items: [
     {
       span: 24,
@@ -14,7 +14,11 @@ export default {
       config: {
         share:'product',
         fields: [
-          { field: 'name',label: '模板名称',type:'input'},
+          { field: 'orderNumber',label: '订单号',type:'input'},
+          { field: 'pName',label: '产品名称',type:'input'},
+          { field: 'barCode',label: '条形码',type:'input'},
+          { field: 'contactUser',label: '收货人',type:'input'},
+          { field: 'phone',label: '联系电话',type:'input'},
         ]
       }
     },
@@ -26,20 +30,43 @@ export default {
         share:'product',
         // scroll:{x:2750},
         API: {
-          listAPI: '/api/crud/product/fareTemplates',
-          deleteAPI:'/api/crud/product/fareTemplates/(id)'
+          listAPI: '/api/crud/subsys/subsyses',
+          deleteAPI:'/api/crud/subsys/subsyses/(id)'
         },
-        actions:[
-          {
-            title: '新增运费模板',type:'path',
-            options:{
-              path: '/product/freightAdd'
-            }
-          }
-        ],
         fields: [
-          { field: 'name',label: '模板名称'},
-          { field: 'lastModifiedDate',label: '最后编辑时间'},
+          { field: 'cover',label: '封面'},
+          { field: 'orderCode',label: '订单号'},
+          { field: 'price',label: '总价'},
+          { field: 'returnPrice',label: '退款金额'},
+          { field: 'status',label: '状态',valueType:'status',
+            options: {
+              statusMap: {
+
+              }
+            }
+          },
+          { field: 'orderTime',label: '下单时间'},
+          { field: 'payType',label: '支付类型',valueType:'status',
+            options: {
+              statusMap: {
+
+              }
+            }
+          },
+          { field: 'disType',label: '配送方式',valueType:'status',
+            options: {
+              statusMap: {
+
+              }
+            }
+          },
+          { field: 'org',label: '来源',valueType:'status',
+            options: {
+              statusMap: {
+
+              }
+            }
+          },
           { field:'operation'}
         ],
         operation: [

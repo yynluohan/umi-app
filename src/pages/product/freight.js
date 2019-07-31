@@ -9,7 +9,7 @@ class Freight extends React.Component {
 
     return (
       <div>
-        <ZEle namespace='product' config={freightConfig} />
+        <ZEle namespace='product1' config={freightConfig} />
       </div>
     )
   }

@@ -40,27 +40,27 @@ module.exports = [
     icon: 'tag',
     items:[
       {
-        path: '/order',
+        path: '/order/online',
         name: '线上订单',
         icon: 'tag',
       },
       {
-        path: '/store_order',
+        path: '/order/offline',
         name: '线下订单',
         icon: 'tag',
       },
       {
-        path: '/return_refund_order',
+        path: '/order/refund',
         name: '退货处理',
         icon: 'tag',
       },
       {
-        path: '/trial_application',
+        path: '/order/trialApplication',
         name: '试用装申请',
         icon: 'tag',
       },
       {
-        path: '/express',
+        path: '/order/setExpress',
         name: '快递设置',
         icon: 'tag',
       }
