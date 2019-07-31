@@ -1,6 +1,6 @@
 export default {
   layout: 'Content',
-  title: '试用装管理',
+  title: '评价管理',
   items: [
     {
       span: 24,
@@ -14,19 +14,7 @@ export default {
       config: {
         share:'product',
         fields: [
-          { field: 'enabled',label: '是否启用',type:'select',
-            options: [
-              { label: '是',value: '1'},
-              { label: '否',value: '0'},
-            ]
-          },
-          { field: 'name',label: '名称',type:'input'},
-          { field: 'barCode',label: '条形码',type:'input'},
-          { field: 'categoryId',label: '类别',type:'select-fetch',
-            options: {
-                API:'', label:'', value:''
-            }
-          },
+          { field: 'name',label: '商品名称',type:'input'},
         ]
       }
     },
@@ -41,20 +29,16 @@ export default {
           listAPI: '/api/crud/subsys/subsyses',
           deleteAPI:'/api/crud/subsys/subsyses/(id)'
         },
-        actions:[
-          {
-            title: '添加',type:'path',
-            options:{
-              path: '/product/trialAdd'
-            }
-          }
-        ],
         fields: [
-          { field: 'code',label: '编号'},
-          { field: 'cover',label: '封面'},
-          { field: 'name',label: '名称'},
-          { field: 'isUes',label: '是否启用'},
-          { field: 'sort',label: '排序号'},
+          { field: 'code',label: '订单编号'},
+          { field: 'oderTime',label: '下单时间'},
+          { field: 'name',label: '商品名称'},
+          { field: 'rank',label: '评价等级'},
+          { field: 'content',label: '评价内容'},
+          { field: 'time',label: '评价时间'},
+          { field: 'reply',label: '回复时间'},
+          { field: 'top',label: '置顶'},
+          { field: '1',label: '屏蔽'},
           { field:'operation'}
         ],
         operation: [

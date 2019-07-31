@@ -24,13 +24,13 @@ module.exports = [
         icon: 'tags',
       },
       {
-        path: '/productsStock',
+        path: '/product/evaluate',
         name: '评价管理',
         icon: 'tags',
       },
       {
-        path: '/fare_template',
-        name: '运费管理',
+        path: '/product/freight',
+        name: '运费模板',
         icon: 'tags',
       },
     ]

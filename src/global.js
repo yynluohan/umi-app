@@ -37,6 +37,8 @@ window.localStorage.token = '111'
 
 window.MC = {
   HASH: '',
-  HOST:'http://192.168.3.16:8080'
-  // HOST:'http://192.168.236.129:8080'
+  HOST:'http://192.168.3.16:8080',
+  // HOST:'http://192.168.236.129:8080',
+  DATETIMEFORMAT:'YYYY/MM/DD HH:mm:ss',
+  DATAFORMAT:'YYYY/MM/DD',
 }

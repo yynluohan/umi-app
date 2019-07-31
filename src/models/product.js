@@ -102,6 +102,18 @@ export default {
       }
     },
 
+    //添加试用装
+    *addTrial({ payload },{ call,put }) {
+      console.log('KKK1',payload);
+      // const result = yield call(create,'/api/crud/product/products',payload);
+      // if (result.code == 200) {
+      //   notification.success({ message: '添加成功'})
+      //   yield put(routerRedux.goBack())
+      // } else {
+      //   notification.error({ message: result.message })
+      // }
+    },
+
   },
 
   reducers: {
