@@ -3,17 +3,19 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import AddFreightForm from './component/AddFreightForm'
 
-const FreightAdd = ({ dispatch,product  }) => {
+const FreightEdit = ({ dispatch,product  }) => {
 
+  const { item } = product;
 
   const addFreightFormProps = {
-    title: '添加运费模板',
+    item,
+    title: '编辑运费模板',
     onBack(){
       dispatch(routerRedux.goBack())
     },
     onSave(data) {
       dispatch({
-        type: 'product/addFreight',
+        type: 'product/updateFreight',
         payload: data
       })
     }
@@ -32,4 +34,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(FreightAdd);
+export default connect(mapStateToProps)(FreightEdit);

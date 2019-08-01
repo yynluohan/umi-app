@@ -57,37 +57,53 @@ export default {
         share:'product',
         // scroll:{x:2750},
         API: {
-          listAPI: '/api/crud/subsys/subsyses',
-          deleteAPI:'/api/crud/subsys/subsyses/(id)'
+          listAPI: '/api/crud/order/orders?type=STORE_ORDER',
+          deleteAPI:'/api/crud/order/orders/(id)'
         },
         fields: [
-          { field: 'cover',label: '封面'},
-          { field: 'orderCode',label: '订单号'},
-          { field: 'price',label: '价格'},
+          { field: 'cover',label: '封面',valueType:'image'},
+          { field: 'orderNumber',label: '订单号'},
+          { field: 'totalPrice',label: '价格'},
           { field: 'status',label: '状态',valueType:'status',
             options: {
               statusMap: {
-
+                'CREATED_PAY_PENDING':'待支付',
+                'CLOSED_PAY_TIMEOUT':'支付超时关闭',
+                'CLOSED_CANCELED':'已取消',
+                'PAID_CONFIRM_PENDING':'已支付',
+                'CONFIRMED_DELIVER_PENDING':'待发货',
+                'DELIVERING':'发货中',
+                'DELIVERED_CONFIRM_PENDING':'已发货',
+                'CANCELED_RETURN_PENDING':'待退货',
+                'CLOSED_CONFIRMED':'已确认收货',
+                'CANCELED_REFUND_PENDING':'待退款',
+                'CLOSED_REFUNDED':'已退款',
+                'CONFIRMED_PICK_PENDING':'待取货'
               }
             }
           },
-          { field: 'orderTime',label: '下单时间'},
-          { field: 'payType',label: '支付类型',valueType:'status',
+          { field: 'payDate',label: '下单时间'},
+          { field: 'paymentType',label: '支付类型',valueType:'status',
             options: {
               statusMap: {
-
+                'WECHAT':'微信支付',
+                'ALIPAY':'支付宝',
+                'POINT':'积分支付',
+                'STORE':'线下支付',
+                'WALLET':'零钱钱包',
+                'CASH': '现金',
+                'CARD': '银行卡'
               }
             }
           },
-
-          { field: 'org',label: '结算店铺/收银员'},
+          { field: 'storeGuideUserName',label: '结算店铺/收银员'},
           { field:'operation'}
         ],
         operation: [
           {
             title:'查看',action:'path',
             options:{
-              path:'/subsysManage-view',
+              path:'/order/orderView',
               // permission:'apply.view',
               // location:true
               queryData:(records) => {

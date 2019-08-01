@@ -22,36 +22,68 @@ class AddFreightForm extends React.Component {
 
   constructor(props){
     super(props);
+    let fastList = [];
+    let emsList = [];
+    let mailList = [];
+    if (props.item != undefined) {
+      if (props.item.carryModeList && props.item.carryModeList.length > 0) {
+        props.item.carryModeList.map((k,i) => {
+          if (k.carryWay == 0) {
+            fastList.push(k)
+          }else if (k.carryWay == 1) {
+            emsList.push(k)
+          } else {
+            mailList.push(k)
+          }
+        })
+      }
+    }
+
     this.state = {
       item:props.item || {},
       fastType: '', //快递
-      fastList:[],
+      fastList,
       emsType: '',  //EMS
-      emsList: [],
+      emsList,
       mailType: '', //平邮
-      mailList: []
+      mailList
     }
   }
 
   componentWillReceiveProps(nextProps) {
     console.log('RRR ',nextProps);
-    if (nextProps.item != undefined) {
-      this.setState({
-        item: nextProps.item,
-      })
-    }
+    let { fastList,emsList,mailList } = this.state;
+    // if (nextProps.item != undefined) {
+    //   if (nextProps.item.carryModeList && nextProps.item.carryModeList.length > 0) {
+    //     nextProps.item.carryModeList.map((k,i) => {
+    //       if (k.carryWay == 0) {
+    //         fastList.push(k)
+    //       }else if (k.carryWay == 1) {
+    //         emsList.push(k)
+    //       } else {
+    //         mailList.push(k)
+    //       }
+    //     })
+    //   }
+    //   console.log('OOOO',fastList,emsList)
+    //   this.setState({
+    //     item: nextProps.item,
+    //     fastList,emsList,mailList
+    //   })
+    // }
+
   }
 
   updateItem = (e,field,record,index) => {
     console.log('hhhh',e,field,record,index);
     let { fastList,emsList,mailList } = this.state;
-    if (record.type == 0) {
+    if (record.carryWay == 0) {
       fastList[index][field] = e
     }
-    if (record.type == 1) {
+    if (record.carryWay == 1) {
       emsList[index][field] = e
     }
-    if (record.type == 2) {
+    if (record.carryWay == 2) {
       mailList[index][field] = e
     }
     this.setState({
@@ -61,27 +93,31 @@ class AddFreightForm extends React.Component {
 
   onSubmit = () => {
     const { validateFields,getFieldsValue,item } = this.props.form;
+    const { fastList,emsList,mailList } = this.state;
+
     validateFields((errors) => {
       if (errors) {
         return;
       }
       let data = {
         ...item,
+        carryModeList: fastList.concat(emsList,mailList),
         ...getFieldsValue(),
       };
+      console.log('mmmmm',data)
       this.props.onSave(data)
     });
   }
 
   onMove = (data,index) => {
     let { fastList,emsList,mailList } = this.state;
-    if (data.type == 0) {
+    if (data.carryWay == 0) {
       fastList.splice(index,1)
     }
-    if (data.type == 1) {
+    if (data.carryWay == 1) {
       emsList.splice(index,1)
     }
-    if (data.type == 2) {
+    if (data.carryWay == 2) {
       mailList.splice(index,1)
     }
     this.setState({
@@ -98,7 +134,7 @@ class AddFreightForm extends React.Component {
         firstAmount: '',
         secondPiece: '',
         secondAmount: '',
-        type: type == 'fast' ? 0 : type == 'ems' ? 1 : 2
+        carryWay: type == 'fast' ? 0 : type == 'ems' ? 1 : 2
       }
     ]
     if (type == 'fast') {
@@ -125,7 +161,7 @@ class AddFreightForm extends React.Component {
         firstAmount: 0,
         secondPiece: 1,
         secondAmount: 0,
-        type: type == 'fast' ? 0 : type == 'ems' ? 1 : 2
+        carryWay: type == 'fast' ? 0 : type == 'ems' ? 1 : 2
       }
     } else {
       data = {}
@@ -179,7 +215,7 @@ class AddFreightForm extends React.Component {
           {
             index !== 0 ?
             <Input value={record.region != undefined ? record.region : ''}
-              onChange={(e) => this.updateItem(e,'region',record,index)}
+              onChange={(e) => this.updateItem(e.target.value,'region',record,index)}
             />
             :
             <span>默认运费</span>
@@ -337,7 +373,7 @@ class AddFreightForm extends React.Component {
                   },
                 ],
               })(
-                <Input type='number'/>
+                <Input />
               )}
             </FormItem>
           </Col>
@@ -357,8 +393,8 @@ class AddFreightForm extends React.Component {
           </Col>
           <Col span={12}>
             <FormItem label='是否包邮' hasFeedback {...formItemLayout()}>
-              {getFieldDecorator('isIncPostage', {
-                initialValue: item.isIncPostage,
+              {getFieldDecorator('isInclPostage', {
+                initialValue: item.isInclPostage,
                 rules: [
                   {
                     required: false,
@@ -392,6 +428,23 @@ class AddFreightForm extends React.Component {
           </Col>
           <Col span={12}>
             <FormItem label='是否指定条件包邮' hasFeedback {...formItemLayout()}>
+              {getFieldDecorator('IsInclPostageByIf', {
+                initialValue: item.IsInclPostageByIf,
+                rules: [
+                  {
+                    required: false,
+                  },
+                ],
+              })(
+                <Radio.Group>
+                  <Radio value={0}>否</Radio>
+                  <Radio value={1}>是</Radio>
+                </Radio.Group>
+              )}
+            </FormItem>
+          </Col>
+          <Col span={12}>
+            <FormItem label='是否指定条件包邮' hasFeedback {...formItemLayout()}>
               {getFieldDecorator('isInclPostageByIf', {
                 initialValue: item.isInclPostageByIf,
                 rules: [
@@ -409,9 +462,11 @@ class AddFreightForm extends React.Component {
           </Col>
           <Col span={24}>
             <FormItem label='运送方式' hasFeedback {...formItemLayout(3,20)}>
-              <Checkbox onChange={(e) => this.onChange(e,'fast')}>快递</Checkbox>
+              <Checkbox onChange={(e) => this.onChange(e,'fast')}
+                checked={fastList.length > 0 ? true : false }
+              >快递</Checkbox>
               {
-                fastType ?
+                fastList.length > 0 ?
                 <div>
                   <Button onClick={() => this.onAdd('fast')}>为指定城市设置运费</Button>
                   <TableInSpin {...fastProps}/>
@@ -419,9 +474,11 @@ class AddFreightForm extends React.Component {
                 : ''
               }
               <br/>
-              <Checkbox onChange={(e) => this.onChange(e,'ems')}>EMS</Checkbox>
+              <Checkbox onChange={(e) => this.onChange(e,'ems')}
+                checked={emsList.length > 0 ? true : false }
+              >EMS</Checkbox>
               {
-                emsType ?
+                emsList.length > 0 ?
                 <div>
                   <Button onClick={() => this.onAdd('ems')}>为指定城市设置运费</Button>
                   <TableInSpin {...emsProps}/>
@@ -429,9 +486,11 @@ class AddFreightForm extends React.Component {
                 : ''
               }
               <br/>
-              <Checkbox onChange={(e) => this.onChange(e,'mail')}>平邮</Checkbox>
+              <Checkbox onChange={(e) => this.onChange(e,'mail')}
+                checked={mailList.length > 0 ? true : false }
+              >平邮</Checkbox>
               {
-                mailType ?
+                mailList.length > 0 ?
                 <div>
                   <Button onClick={() => this.onAdd('mail')}>为指定城市设置运费</Button>
                   <TableInSpin {...mailProps}/>

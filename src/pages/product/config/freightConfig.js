@@ -46,7 +46,7 @@ export default {
           {
             title:'查看',action:'path',
             options:{
-              path:'/subsysManage-view',
+              path:'/product/freightView',
               // permission:'apply.view',
               // location:true
               queryData:(records) => {
@@ -60,7 +60,7 @@ export default {
           {
             title: '编辑',action:'path',
             options:{
-              path:'/subsysManage-edit',
+              path:'/product/freightEdit',
               queryData:(records) => {
                 const data = {
                   id:records.id,

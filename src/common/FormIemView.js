@@ -58,6 +58,14 @@ class FormIemView extends React.Component {
               <span>{item.valueMap[record[item.value]]}</span>
             )
           }
+        } else if (item.type && item.type == 'image') {
+          data[index] = {
+            ...item,
+            key: item.value,
+            render: (record) => (
+              <img style={{width: '50px'}} src={record[item.value]} alt=''/>
+            )
+          }
         } else {
           data[index] = {
             ...item,
@@ -80,7 +88,7 @@ class FormIemView extends React.Component {
                     item.list.length > 0 && item.list.map((k,i) => {
                       if (k.columns) {
                         return (
-                          <Col span={24} key={i}>
+                          <Col span={24} key={i} style ={{ marginBottom: '2em'}}>
                             <CardLayout title={k.label}>
                               <Table columns={createColmns(k.columns)} dataSource={k.data} pagination={false}/>
                             </CardLayout>

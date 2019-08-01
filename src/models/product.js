@@ -18,12 +18,14 @@ export default {
         const query = getArgment(location.search);
         if (location.pathname === '/product/categroyView' || location.pathname === '/product/categroyEdit'
             || location.pathname === '/product/productView' || location.pathname === '/product/productEdit'
-         ) {
+            || location.pathname === '/product/freightView' || location.pathname === '/product/freightEdit') {
           const obj = {
             '/product/categroyView':`/api/crud/product/productCategoryies/${query.id}`,
             '/product/categroyEdit':`/api/crud/product/productCategoryies/${query.id}`,
             '/product/productView':`/api/crud/product/products/${query.id}`,
             '/product/productEdit': `/api/crud/product/products/${query.id}`,
+            '/product/freightView':`/api/crud/product/fareTemplates/${query.id}`,
+            '/product/freightEdit': `/api/crud/product/fareTemplates/${query.id}`,
           }
           dispatch({
             type: 'save',
@@ -114,6 +116,28 @@ export default {
       // }
     },
 
+    //添加运费模板
+    *addFreight({ payload },{ call,put }) {
+      const result = yield call(create,'/api/crud/product/fareTemplates',payload);
+      if (result.code === 200) {
+        notification.success({ message: '添加成功'});
+        yield put(routerRedux.goBack())
+      } else {
+        notification.error({ message: result.message })
+      }
+    },
+
+    //更新运费模板
+    *updateFreight({ payload },{ call,put,select }) {
+      const { id } = yield select(({ product }) => product);
+      const result = yield call(update,`/api/crud/product/fareTemplates/${id}`,payload);
+      if (result.code === 200) {
+        notification.success({ message: '修改成功' })
+        yield put(routerRedux.goBack())
+      } else {
+        notification.error({ message: result.message })
+      }
+    },
   },
 
   reducers: {
