@@ -23,7 +23,7 @@ class AddCategroyForm extends React.Component {
     this.state = {
       item:props.item || {},
       visible: false,
-      productCategoryPropertyList: props.item.productCategoryPropertyList || [],   // 属性列表
+      productCategoryPropertyList: props.item && props.item.productCategoryPropertyList ? props.item.productCategoryPropertyList : [],   // 属性列表
       modalItem: {},
       selectIndex: undefined,
       typeList: [], //父类别

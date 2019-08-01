@@ -26,8 +26,8 @@ export default {
         share:'product',
         // scroll:{x:2750},
         API: {
-          listAPI: '/api/crud/subsys/subsyses',
-          deleteAPI:'/api/crud/subsys/subsyses/(id)'
+          listAPI: '/api/crud/order/expresses',
+          deleteAPI:'/api/crud/order/expresses/(id)'
         },
         actions:[
           {
@@ -41,12 +41,12 @@ export default {
                   component: 'BaseForm',
                   config: {
                     API:{
-                      createAPI:'/api/crud/product/productTags'
+                      createAPI:'/api/crud/order/expresses'
                     },
                     fields: [
                       { field: 'name',label: '名称',type:'input'},
                       { field: 'code',label: '代码',type:'input'},
-                      { field: 'moren',label: '是否默认',type:'radio',
+                      { field: 'isDefault',label: '是否默认',type:'radio',
                         options:[
                           { label: '是',value: '1'},
                           { label: '否',value: '0'},
@@ -62,31 +62,32 @@ export default {
         fields: [
           { field: 'code',label: '编号'},
           { field: 'name',label: '名称'},
-          { field: 'coding',label: '代码'},
-          { field: 'status',label: '是否默认',valueType:'status',
+          { field: 'code',label: '代码'},
+          { field: 'isDefault',label: '是否默认',valueType:'status',
             options: {
               statusMap: {
-
+                1:'是',
+                0:'否'
               }
             }
           },
           { field:'operation'}
         ],
         operation: [
-          {
-            title:'查看',action:'path',
-            options:{
-              path:'/subsysManage-view',
-              // permission:'apply.view',
-              // location:true
-              queryData:(records) => {
-                const data = {
-                  id:records.id,
-                }
-                return data
-              }
-            }
-          },
+          // {
+          //   title:'查看',action:'path',
+          //   options:{
+          //     path:'/subsysManage-view',
+          //     // permission:'apply.view',
+          //     // location:true
+          //     queryData:(records) => {
+          //       const data = {
+          //         id:records.id,
+          //       }
+          //       return data
+          //     }
+          //   }
+          // },
           {
             title: '编辑', action: 'modal',
             options:{
@@ -100,8 +101,8 @@ export default {
                   component: 'BaseForm',
                   config: {
                     API: {
-                      getAPI:'/api/crud/product/productTags/(id)',
-                      updateAPI: '/api/crud/product/productTags/(id)',
+                      getAPI:'/api/crud/order/expresses/(id)',
+                      updateAPI: '/api/crud/order/expresses/(id)',
                     },
                     fields: [
                       { field: 'name',label: '名称',type:'input'},

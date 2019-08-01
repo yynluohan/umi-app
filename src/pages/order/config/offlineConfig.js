@@ -115,18 +115,6 @@ export default {
             }
           },
           {
-            title: '编辑',action:'path',
-            options:{
-              path:'/subsysManage-edit',
-              queryData:(records) => {
-                const data = {
-                  id:records.id,
-                }
-                return data
-              }
-            }
-          },
-          {
             title: '删除',action: 'delete'
           }
         ],

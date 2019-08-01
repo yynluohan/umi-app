@@ -139,6 +139,15 @@ export default {
             }
           },
           {
+            title: '取消订单',action:'request',
+            options:{
+              expectedField:[['status']],
+              expectedValue:[['CREATED_PAY_PENDING']],
+              API:'/api/crud/order/orders/(id)/(status)',
+              method:'post'
+            }
+          },
+          {
             title: '删除',action: 'delete'
           }
         ],

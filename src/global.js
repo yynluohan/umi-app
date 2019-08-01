@@ -1,6 +1,5 @@
 // 入口文件
 
-// import setLayoutExtends from 'zero-element';
 import BaseFormLayout from './components/layout/BaseFormLayout'
 import ZEleA from 'zero-element-antd';
 
@@ -32,6 +31,7 @@ AITSet({
 LayoutSet({
   'BaseFormLayout': BaseFormLayout
 })
+
 
 window.localStorage.token = '111'
 
