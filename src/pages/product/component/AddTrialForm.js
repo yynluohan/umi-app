@@ -7,6 +7,7 @@ import 'braft-editor/dist/index.css';
 import htmlToDraft from 'html-to-draftjs';
 import TableInSpin from '../../../common/TableInSpin';
 import Selection from '../../../common/Selection';
+import moment from 'moment';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -45,22 +46,21 @@ class AddTrialForm extends React.Component {
 
   onSubmit = () => {
     const { validateFields,getFieldsValue,item } = this.props.form;
+    const { productList } = this.state;
     validateFields((errors) => {
       if (errors) {
         return;
       }
+      if (productList.length === 0) {
+        message.error('请关联一个产品');
+        return;
+      }
       let data = {
         ...item,
+        productId: productList[0].id,
         ...getFieldsValue(),
       };
-      const productDescription = item && item.productDescription ? item.productDescription : {}
-      if (data.description) {
-        data.productDescription = {
-          ...productDescription,
-          description: data.description.toHTML()
-        }
-      }
-      delete data.description
+      data.note = data.note.toHTML()
       this.props.onSave(data)
     });
   }
@@ -176,7 +176,7 @@ class AddTrialForm extends React.Component {
           <Col span={12}>
             <FormItem label='开始时间' hasFeedback {...formItemLayout()}>
               {getFieldDecorator('startTime', {
-                initialValue: item.startTime,
+                initialValue: item.startTime ? moment(item.startTime,formatDate) : '',
                 rules: [
                   {
                     required: false,
@@ -191,7 +191,7 @@ class AddTrialForm extends React.Component {
           <Col span={12}>
             <FormItem label='结束时间' hasFeedback {...formItemLayout()}>
               {getFieldDecorator('endTime', {
-                initialValue: item.endTime,
+                initialValue: item.endTime ? moment(item.endTime,formatDate) : '',
                 rules: [
                   {
                     required: false,
@@ -253,8 +253,8 @@ class AddTrialForm extends React.Component {
           </Col>
           <Col span={24}>
             <FormItem label='描述' hasFeedback {...formItemLayout(3,20)}>
-              {getFieldDecorator('description', {
-                initialValue: item.productDescription && htmlToDraft(item.productDescription.description),
+              {getFieldDecorator('note', {
+                initialValue: item.note,
                 rules: [
                   {
                     required: false,

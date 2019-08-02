@@ -64,11 +64,11 @@ export default {
           deleteAPI:'/api/crud/order/orders/(id)'
         },
         fields: [
-          { field: 'cover',label: '封面',valueType:'image'},
+          { field: 'cover',label: '封面',valueType:'showImage'},
           { field: 'orderNumber',label: '订单号'},
           { field: 'totalPrice',label: '价格'},
           { field: 'couponPrice',label: '优惠券价格'},
-          { field: 'status',label: '状态',valueType:'status',
+          { field: 'status',label: '状态',valueType:'showStatus',
             options: {
               statusMap: {
                 'CREATED_PAY_PENDING':'待支付',
@@ -83,6 +83,20 @@ export default {
                 'CANCELED_REFUND_PENDING':'待退款',
                 'CLOSED_REFUNDED':'已退款',
                 'CONFIRMED_PICK_PENDING':'待取货'
+              },
+              colorMap: {
+                'CREATED_PAY_PENDING':'#5bc0de',
+                'CLOSED_PAY_TIMEOUT':'#777',
+                'CLOSED_CANCELED':'#777',
+                'PAID_CONFIRM_PENDING':'#777',
+                'CONFIRMED_DELIVER_PENDING':'#5cb85c',
+                'DELIVERING':'#777',
+                'DELIVERED_CONFIRM_PENDING':'#428bca',
+                'CANCELED_RETURN_PENDING':'#777',
+                'CLOSED_CONFIRMED':'#f0ad4e',
+                'CANCELED_REFUND_PENDING':'#777',
+                'CLOSED_REFUNDED':'#777',
+                'CONFIRMED_PICK_PENDING':'#777'
               }
             }
           },

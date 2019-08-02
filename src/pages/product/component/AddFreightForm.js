@@ -498,7 +498,6 @@ class AddFreightForm extends React.Component {
                 : ''
               }
               <br/>
-
             </FormItem>
           </Col>
          </Row>

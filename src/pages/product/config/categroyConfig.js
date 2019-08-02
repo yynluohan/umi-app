@@ -21,8 +21,10 @@ export default {
     {
       span: 24,
       layout:'Empty',
-      component: 'BaseList',
+      // component: 'ChildrenList',
+      component:'BaseList',
       config: {
+        // itemsField: 'subCategoryList',
         share:'categroy',
         API: {
           listAPI: '/api/crud/product/productCategoryies',
@@ -38,7 +40,7 @@ export default {
         ],
         fields: [
           { field: 'name',label: '名称'},
-          { field: 'cover',label: '封面',valueType:'image'},
+          { field: 'cover',label: '封面',valueType:'showImage'},
           { field: 'sortOrder',label: '排序号'},
           { field:'operation'}
         ],

@@ -63,11 +63,15 @@ export default {
           { field: 'code',label: '编号'},
           { field: 'name',label: '名称'},
           { field: 'code',label: '代码'},
-          { field: 'isDefault',label: '是否默认',valueType:'status',
+          { field: 'isDefault',label: '是否默认',valueType:'showStatus',
             options: {
               statusMap: {
                 1:'是',
                 0:'否'
+              },
+              colorMap: {
+                1: '#428bca',
+                0: '#777'
               }
             }
           },

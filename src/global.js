@@ -9,6 +9,7 @@ import { set as setEndpoint } from 'zero-element/lib/utils/request/endpoint';
 import { set as LASet } from 'zero-element-global/lib/listAction';
 import { set as AITSet } from 'zero-element-global/lib/actionItemType';
 import { set as LayoutSet } from 'zero-element-global/lib/layout';
+import { set as VTSet } from 'zero-element-global/lib/valueType';
 
 import onPath from './listAction/onPath';
 import path from './listAction/path';
@@ -32,6 +33,43 @@ LayoutSet({
   'BaseFormLayout': BaseFormLayout
 })
 
+// const showStatus = (record) => {
+//   let style =  {};
+//   if (record.data.record.status) {
+//     style = {
+//       color: '#fff',padding:'0.3em',borderRadius:'3px',
+//       backgroundColor: record.data.record.status != 'OFFSELL' ? '#428bca' : '#777',
+//     }
+//   }
+//   return <span style={style}>
+//     { record.data.record.status ? record.options.statusMap[record.data.record.status] : '' }
+//   </span>
+// }
+
+const showImage = (record) => {
+  return (
+    <a href={record.data.record[record.field]} target="_blank">
+      <img src={record.data.record[[record.field]]} alt='' style={{width: '50px'}}/>
+    </a>
+  )
+}
+
+const showStatus = (record) => {
+  let style =  {
+    color: '#fff',padding:'0.3em',borderRadius:'3px',
+    backgroundColor: record.options.colorMap[record.data.record[record.field]],
+  };
+
+  return <span style={style}>
+    {record.options.statusMap[record.data.record[record.field]]}
+  </span>
+}
+
+
+VTSet({
+  'showImage': (record) => record.data.record[record.field] != undefined ? showImage(record) : '',
+  'showStatus': (record) => record.data.record[record.field] != undefined ? showStatus(record) : ''
+})
 
 window.localStorage.token = '111'
 

@@ -38,8 +38,8 @@ export default {
         share:'product',
         // scroll:{x:2750},
         API: {
-          listAPI: '/api/crud/subsys/subsyses',
-          deleteAPI:'/api/crud/subsys/subsyses/(id)'
+          listAPI: '/api/crud/product/trials',
+          deleteAPI:'/api/crud/product/trials/(id)'
         },
         actions:[
           {
@@ -50,11 +50,16 @@ export default {
           }
         ],
         fields: [
-          { field: 'code',label: '编号'},
-          { field: 'cover',label: '封面'},
+          { field: 'id',label: '编号'},
+          { field: 'cover',label: '封面',valueType:'showImage'},
           { field: 'name',label: '名称'},
-          { field: 'isUes',label: '是否启用'},
-          { field: 'sort',label: '排序号'},
+          { field: 'enabled',label: '是否启用',valueType:'status',
+            statusMap: {
+              0: '禁用',
+              1: '启用'
+            }
+          },
+          { field: 'index',label: '排序号'},
           { field:'operation'}
         ],
         operation: [
@@ -75,7 +80,7 @@ export default {
           {
             title: '编辑',action:'path',
             options:{
-              path:'/subsysManage-edit',
+              path:'/product/trialEdit',
               queryData:(records) => {
                 const data = {
                   id:records.id,

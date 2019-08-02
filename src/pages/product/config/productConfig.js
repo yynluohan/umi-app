@@ -56,15 +56,19 @@ export default {
         ],
         fields: [
           { field: 'skuCode',label: '编号'},
-          { field: 'cover',label: '封面',valueType: 'image'},
+          { field: 'cover',label: '封面',valueType: 'showImage'},
           { field: 'sign',label: '品牌'},
           { field: 'name',label: '名称'},
           { field: 'categoryId',label: '类别'},
-          { field: 'status',label: '状态',valueType: 'status',
+          { field: 'status',label: '状态',valueType: 'showStatus',
             options:{
               statusMap: {
                 'ONSELL':'上架',
                 'OFFSELL':'下架'
+              },
+              colorMap: {
+                'ONSELL': '#428bca',
+                'OFFSELL': '#777'
               }
             }
           },
