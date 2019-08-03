@@ -4,13 +4,15 @@ import CardLayout from './layout/CardLayout';
 
 const FormItem = Form.Item;
 
-const formItemLayout = {
-  labelCol: {
-    span: 6,
-  },
-  wrapperCol: {
-    span: 18,
-  },
+const formItemLayout = (a,b) => {
+  return {
+    labelCol: {
+      span: a || 6,
+    },
+    wrapperCol: {
+      span: b || 18,
+    },
+  }
 };
 
 class FormIemView extends React.Component {
@@ -95,9 +97,15 @@ class FormIemView extends React.Component {
                           </Col>
                         )
                       } else {
+                        let a = 6,
+                            b= 18;
+                        if (k.span && k.span == 24) {
+                          a = 3;
+                          b = 21
+                        }
                         return (
                           <Col key={i} span={k.span || 24/spanNumber}>
-                            <FormItem label={k.label} hasFeedback {...formItemLayout}>
+                            <FormItem label={k.label} hasFeedback {...formItemLayout(a,b)}>
                               {k.data || ''}
                             </FormItem>
                           </Col>

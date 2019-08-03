@@ -29,7 +29,8 @@ class AddTrialForm extends React.Component {
     super(props);
     this.state = {
       item:props.item || {},
-      productList: [],  // 关联的产品
+      productList: props.item && props.item.product && Object.keys(props.item.product).length > 0 ? [props.item.product] : [], // 关联的产品
+
     }
   }
 
@@ -38,8 +39,18 @@ class AddTrialForm extends React.Component {
   componentWillReceiveProps(nextProps) {
     console.log('RRR ',nextProps);
     if (nextProps.item != undefined) {
+      if (nextProps.item.items.length > 0) {
+        nextProps.item.items.map((item,index) => {
+          nextProps.item.items[index] = {
+            ...item,
+            status: 'done',
+            uid: index
+          }
+        })
+      }
       this.setState({
         item: nextProps.item,
+        productList: nextProps.item.product && Object.keys(nextProps.item.product).length > 0 ? [nextProps.item.product] : [],
       })
     }
   }
@@ -71,11 +82,7 @@ class AddTrialForm extends React.Component {
    const { getFieldDecorator } = this.props.form;
    const { item,productList } = this.state;
 
-   console.log('mmmmm===',item);
-
-   const uploadProps = {
-
-   }
+   console.log('mmmmm===',item,productList);
 
    const selectionProps = {
      isButton:true,
@@ -140,6 +147,8 @@ class AddTrialForm extends React.Component {
        }
      ]
    }
+
+   console.log('777',item)
 
    return (
      <div style={{ backgroundColor: '#fff',padding: '20px'}}>
@@ -235,14 +244,14 @@ class AddTrialForm extends React.Component {
           </Col>
           <Col span={24}>
             <FormItem label='封面' hasFeedback {...formItemLayout(3,20)}>
-              {getFieldDecorator('cover', {
-                initialValue: item.cover,
+              {getFieldDecorator('items', {
+                initialValue: item.items,
                 rules: [
                   {
                     required: false,
                   },
                 ],
-              })(<UploadFile {...uploadProps} />)}
+              })(<UploadFile max={6} />)}
             </FormItem>
           </Col>
           <Col span={24}>
@@ -254,7 +263,7 @@ class AddTrialForm extends React.Component {
           <Col span={24}>
             <FormItem label='描述' hasFeedback {...formItemLayout(3,20)}>
               {getFieldDecorator('note', {
-                initialValue: item.note,
+                initialValue:item.note ? BraftEditor.createEditorState(item.note) : '',
                 rules: [
                   {
                     required: false,

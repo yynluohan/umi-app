@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form,Col,Row,Input,Button,message,Divider,Select,Radio } from 'antd';
+import { Form,Col,Row,Input,Button,message,Divider,Select,Radio,Checkbox  } from 'antd';
 import { query } from '../../../framework/utils/services';
 import UploadFile from '../../../common/UploadFile';
 import BraftEditor from 'braft-editor';
@@ -34,7 +34,7 @@ class AddProductForm extends React.Component {
     query('/api/crud/product/productCategoryies',{pageSize: 1000000}).then(({ code,data }) => {
       if (code && code === 200) {
         this.setState({
-          typeList: data.records
+          typeList: data || []
         })
       }
     })
@@ -44,6 +44,15 @@ class AddProductForm extends React.Component {
   componentWillReceiveProps(nextProps) {
     console.log('RRR ',nextProps);
     if (nextProps.item != undefined) {
+      if (nextProps.item.productImageList.length > 0) {
+        nextProps.item.productImageList.map((item,index) => {
+          nextProps.item.productImageList[index] = {
+            ...item,
+            status: 'done',
+            uid:index,
+          }
+        })
+      }
       this.setState({
         item: nextProps.item,
       })
@@ -60,6 +69,13 @@ class AddProductForm extends React.Component {
         ...item,
         ...getFieldsValue(),
       };
+      // if (data.productTagList.length > 0) {
+      //   data.productTagList.map((item,index) => {
+      //     data.productTagList[index] = {
+      //       id: item
+      //     }
+      //   })
+      // }
       if (e) {
         data.status = e
       }
@@ -80,12 +96,6 @@ class AddProductForm extends React.Component {
 
    const { getFieldDecorator } = this.props.form;
    const { item,visible,typeList } = this.state;
-
-   console.log('mmmmm===',item);
-
-   const uploadProps = {
-
-   }
 
    const vedioProps = {
 
@@ -137,39 +147,23 @@ class AddProductForm extends React.Component {
               )}
             </FormItem>
           </Col>
-
           <Col span={12}>
-            <FormItem label='推荐' hasFeedback {...formItemLayout()}>
-              {getFieldDecorator('promoted', {
-                initialValue: item.promoted,
+            <FormItem label='类别' hasFeedback {...formItemLayout()}>
+              {getFieldDecorator('categoryId', {
+                initialValue: item.categoryId,
                 rules: [
                   {
-                    required: false,
+                    required: true,
                   },
                 ],
               })(
-                <Radio.Group>
-                  <Radio value={1}>是</Radio>
-                  <Radio value={0}>否</Radio>
-                </Radio.Group>
-              )}
-            </FormItem>
-          </Col>
-          <Col span={12}>
-            <FormItem label='分区' hasFeedback {...formItemLayout()}>
-              {getFieldDecorator('partnerLevelZone', {
-                initialValue: item.partnerLevelZone,
-                rules: [
+                <Select>
                   {
-                    required: false,
-                  },
-                ],
-              })(
-                <Radio.Group>
-                  <Radio value={1}>零元区</Radio>
-                  <Radio value={2}>精品区</Radio>
-                  <Radio value={3}>特价区</Radio>
-                </Radio.Group>
+                    typeList.length > 0 && typeList.map((item,index) => (
+                      <Select.Option key={index} value={item.id}>{item.name}</Select.Option>
+                    ))
+                  }
+                </Select>
               )}
             </FormItem>
           </Col>
@@ -183,6 +177,19 @@ class AddProductForm extends React.Component {
                   },
                 ],
               })(<Input type='number' />)}
+            </FormItem>
+          </Col>
+
+          <Col span={12}>
+            <FormItem label='产品单位' hasFeedback {...formItemLayout()}>
+              {getFieldDecorator('unit', {
+                initialValue: item.unit,
+                rules: [
+                  {
+                    required: true,
+                  },
+                ],
+              })(<Input  />)}
             </FormItem>
           </Col>
           <Col span={12}>
@@ -234,38 +241,6 @@ class AddProductForm extends React.Component {
             </FormItem>
           </Col>
           <Col span={12}>
-            <FormItem label='类别' hasFeedback {...formItemLayout()}>
-              {getFieldDecorator('categoryId', {
-                initialValue: item.categoryId,
-                rules: [
-                  {
-                    required: true,
-                  },
-                ],
-              })(
-                <Select>
-                  {
-                    typeList.length > 0 && typeList.map((item,index) => (
-                      <Select.Option key={index} value={item.id}>{item.name}</Select.Option>
-                    ))
-                  }
-                </Select>
-              )}
-            </FormItem>
-          </Col>
-          <Col span={12}>
-            <FormItem label='产品单位' hasFeedback {...formItemLayout()}>
-              {getFieldDecorator('unit', {
-                initialValue: item.unit,
-                rules: [
-                  {
-                    required: true,
-                  },
-                ],
-              })(<Input  />)}
-            </FormItem>
-          </Col>
-          <Col span={12}>
             <FormItem label='运费模版' hasFeedback {...formItemLayout()}>
               {getFieldDecorator('fareId', {
                 initialValue: item.fareId,
@@ -284,6 +259,54 @@ class AddProductForm extends React.Component {
             </FormItem>
           </Col>
           <Col span={12}>
+            <FormItem label='优惠活动-积分' hasFeedback {...formItemLayout()}>
+              {getFieldDecorator('credit', {
+                initialValue: item.credit,
+                rules: [
+                  {
+                    required: true,
+                  },
+                ],
+              })(<Input type='number' />)}
+            </FormItem>
+          </Col>
+          <Col span={12}>
+            <FormItem label='分区' hasFeedback {...formItemLayout()}>
+              {getFieldDecorator('partnerLevelZone', {
+                initialValue: item.partnerLevelZone,
+                rules: [
+                  {
+                    required: false,
+                  },
+                ],
+              })(
+                <Radio.Group>
+                  <Radio value={1}>零元区</Radio>
+                  <Radio value={2}>精品区</Radio>
+                  <Radio value={3}>特价区</Radio>
+                </Radio.Group>
+              )}
+            </FormItem>
+          </Col>
+          <Col span={12}>
+            <FormItem label='推荐' hasFeedback {...formItemLayout()}>
+              {getFieldDecorator('promoted', {
+                initialValue: item.promoted,
+                rules: [
+                  {
+                    required: false,
+                  },
+                ],
+              })(
+                <Radio.Group>
+                  <Radio value={1}>是</Radio>
+                  <Radio value={0}>否</Radio>
+                </Radio.Group>
+              )}
+            </FormItem>
+          </Col>
+
+          <Col span={12}>
             <FormItem label='需要检测才可购买' hasFeedback {...formItemLayout()}>
               {getFieldDecorator('requiredParticipateExam', {
                 initialValue: item.requiredParticipateExam,
@@ -300,18 +323,7 @@ class AddProductForm extends React.Component {
               )}
             </FormItem>
           </Col>
-          <Col span={12}>
-            <FormItem label='优惠活动-积分' hasFeedback {...formItemLayout()}>
-              {getFieldDecorator('credit', {
-                initialValue: item.credit,
-                rules: [
-                  {
-                    required: true,
-                  },
-                ],
-              })(<Input type='number' />)}
-            </FormItem>
-          </Col>
+
           <Col span={12}>
             <FormItem label='优惠活动-优惠券' hasFeedback {...formItemLayout()}>
               {getFieldDecorator('allowCoupon', {
@@ -331,33 +343,38 @@ class AddProductForm extends React.Component {
           </Col>
           <Col span={24}>
             <FormItem label='标签' hasFeedback {...formItemLayout(3,20)}>
-              {getFieldDecorator('tags', {
-                initialValue: item.tags,
+              {getFieldDecorator('tagIds', {
+                initialValue: item.tagIds,
                 rules: [
                   {
                     required: false,
                   },
                 ],
               })(
-                <Radio.Group>
-                  <Radio value={1}> A1 - 美白</Radio>
-                  <Radio value={5}> B1 - 基础护理</Radio>
-                  <Radio value={6}> C1 - 重点区域</Radio>
-                  <Radio value={7}> D1 - 定制精华</Radio>
-                </Radio.Group>
+                <Checkbox.Group
+                  options = {
+                    [
+                      { label: 'A1 - 美白', value: 1 },
+                      { label: 'B1 - 基础护理', value: 5 },
+                      { label: 'C1 - 重点区域', value: 6 },
+                      { label: 'D1 - 定制精华', value: 7 },
+                    ]
+                  }
+                >
+                </Checkbox.Group>
               )}
             </FormItem>
           </Col>
           <Col span={24}>
             <FormItem label='封面' hasFeedback {...formItemLayout(3,20)}>
-              {getFieldDecorator('cover', {
-                initialValue: item.cover,
+              {getFieldDecorator('productImageList', {
+                initialValue: item.productImageList,
                 rules: [
                   {
                     required: false,
                   },
                 ],
-              })(<UploadFile {...uploadProps} />)}
+              })(<UploadFile value={item.productImageList} max={6}/>)}
             </FormItem>
           </Col>
           <Col span={24}>
@@ -375,7 +392,7 @@ class AddProductForm extends React.Component {
           <Col span={24}>
             <FormItem label='描述' hasFeedback {...formItemLayout(3,20)}>
               {getFieldDecorator('description', {
-                initialValue: item.productDescription && htmlToDraft(item.productDescription.description),
+                initialValue: item.productDescription && BraftEditor.createEditorState(item.productDescription.description),
                 rules: [
                   {
                     required: false,

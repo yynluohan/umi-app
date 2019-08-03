@@ -71,11 +71,12 @@ VTSet({
   'showStatus': (record) => record.data.record[record.field] != undefined ? showStatus(record) : ''
 })
 
-window.localStorage.token = '111'
+window.localStorage.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEwMDEiLCJ1c2VySWQiOiI4NzY3MDgwODI0MzcxOTc4MjciLCJhY2NvdW50IjoiYWRtaW4iLCJpYXQiOjE1NjQ4MDMyNTcsImp0aSI6Ijg3NjcwODA4MjQzNzE5NzgyNyIsInN1YiI6ImFkbWluIiwiZXhwIjoxNTY1MDYyNDU3fQ.OhIlwKuW9R8dLkoEZnjTWuAaPczzkFdx1LkGzRzr6sG7sm9rbQJjF6hdGB7Yv_T8OIClSZrb_PD2dHIZCqUO9Q'
 
 window.MC = {
   HASH: '',
   HOST:'http://192.168.3.16:8080',
+  UPLOADHOST:'http://192.168.3.28:8088',
   // HOST:'http://192.168.236.129:8080',
   DATETIMEFORMAT:'YYYY/MM/DD HH:mm:ss',
   DATAFORMAT:'YYYY/MM/DD',

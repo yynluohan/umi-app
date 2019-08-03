@@ -49,6 +49,15 @@ const ProductView = ({ dispatch,product }) => {
     undefined: ''
   }
 
+  const showStatus = {
+    'DRAFT':'草稿',
+    'PENDING_APPROVAL': '待审核',
+    'APPROVED': '已审核',
+    'ONSELL':'上架',
+    'OFFSELL': '下架',
+    undefined: ''
+  }
+
   const formItemProps = {
     isHiddenBackBut: true,
     title: '产品详情',
@@ -64,7 +73,7 @@ const ProductView = ({ dispatch,product }) => {
       {label:'建议售价',data:item.suggestedPrice},
       {label:'重量(克)',data:item.weight},
       {label:'体积(立方厘米)',data:item.bulk},
-      {label:'状态',data:item.status},
+      {label:'状态',data:showStatus[item.status],},
       {label:'类别',data:item.categoryId},
       {label:'产品单位',data:item.unit},
       {label:'运费模板',data:item.fareId},

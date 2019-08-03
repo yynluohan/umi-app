@@ -19,7 +19,7 @@ export default {
         if (location.pathname === '/product/categroyView' || location.pathname === '/product/categroyEdit'
             || location.pathname === '/product/productView' || location.pathname === '/product/productEdit'
             || location.pathname === '/product/freightView' || location.pathname === '/product/freightEdit'
-            || location.pathname === '/product/trialEdit'
+            || location.pathname === '/product/trialEdit' || location.pathname === '/product/trialView'
           ) {
           const obj = {
             '/product/categroyView':`/api/crud/product/productCategoryies/${query.id}`,
@@ -28,7 +28,8 @@ export default {
             '/product/productEdit': `/api/crud/product/products/${query.id}`,
             '/product/freightView':`/api/crud/product/fareTemplates/${query.id}`,
             '/product/freightEdit': `/api/crud/product/fareTemplates/${query.id}`,
-            '/product/trialEdit':`/api/crud/product/trials/${query.id}`
+            '/product/trialEdit':`/api/crud/product/trials/${query.id}`,
+            '/product/trialView': `/api/crud/product/trials/${query.id}`,
           }
           dispatch({
             type: 'save',

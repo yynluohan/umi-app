@@ -36,12 +36,12 @@ export default {
         share:'product',
         // scroll:{x:2750},
         API: {
-          listAPI: '/api/crud/subsys/subsyses',
-          deleteAPI:'/api/crud/subsys/subsyses/(id)'
+          listAPI: '/api/crud/order/trialApplications',
+          deleteAPI:'/api/crud/order/trialApplications/(id)'
         },
         fields: [
           { field: 'name',label: '试用名称'},
-          { field: 'orderCode',label: '订单号'},
+          { field: 'orderNumber',label: '订单号'},
           { field: 'status',label: '状态',valueType:'status',
             options: {
               statusMap: {
@@ -49,7 +49,7 @@ export default {
               }
             }
           },
-          { field: 'applyTime',label: '申请时间'},
+          { field: 'createdTime',label: '申请时间'},
           { field: 'message',label: '用户信息'},
           { field:'operation'}
         ],

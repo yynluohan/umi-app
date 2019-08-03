@@ -3,7 +3,8 @@ import { Form,Col,Row,Input,Button,message,Divider,Select,Radio } from 'antd';
 import { query } from '../../../framework/utils/services';
 import PropertyModal from './PropertyModal';
 import TableInSpin from '../../../common/TableInSpin';
-import UploadFile from '../../../common/UploadFile'
+import UploadFile from '../../../common/UploadFile';
+import SelectTree from '../../../common/SelectTree';
 
 const FormItem = Form.Item;
 const { TextArea } = Input
@@ -34,7 +35,7 @@ class AddCategroyForm extends React.Component {
     query('/api/crud/product/productCategoryies',{pageSize: 1000000}).then(({ code,data }) => {
       if(code && code === 200) {
         this.setState({
-          typeList: data.records || []
+          typeList: data || []
         })
       }
     })
@@ -61,6 +62,7 @@ class AddCategroyForm extends React.Component {
         ...getFieldsValue(),
         productCategoryPropertyList
       };
+      // console.log('555',data)
       this.props.onSave(data)
     });
   }
@@ -93,9 +95,11 @@ class AddCategroyForm extends React.Component {
  render() {
 
    const { getFieldDecorator } = this.props.form;
-   const {item,visible,productCategoryPropertyList,modalItem,typeList } = this.state;
-
+   const { item,visible,productCategoryPropertyList,modalItem,typeList } = this.state;
    console.log('mmmmm',item);
+
+   const getId = item.id;
+   console.log('id=====',getId)
 
    const modalProps = {
      item: modalItem,
@@ -120,8 +124,6 @@ class AddCategroyForm extends React.Component {
      'RADIO':'单选框',
      'SELECT':'下拉框'
    }
-
-
 
    const tableProps = {
      list: productCategoryPropertyList,
@@ -182,6 +184,19 @@ class AddCategroyForm extends React.Component {
 
    }
 
+   console.log('6666',item.id)
+
+   const treeProps = {
+     apiUrl: '/api/crud/product/productCategoryies',
+     method: query,
+     getway: {
+       'children':'subCategoryList',
+       'label': 'name',
+     },
+     // getId: item.parentId,
+     getId: item.id
+   }
+
    return (
      <div style={{ backgroundColor: '#fff',padding: '20px'}}>
        <h2>{this.props.title}</h2>
@@ -210,14 +225,15 @@ class AddCategroyForm extends React.Component {
                   },
                 ],
               })(
-                <Select>
-                  {
-                    typeList.length > 0 && typeList.map((item,index) => (
-                      <Select.Option key={index} value={item.id}>{item.name}</Select.Option>
-                    ))
-                  }
-                </Select>
+                <SelectTree {...treeProps} value={item.id}/>
               )}
+              {/*<Select>
+                {
+                  typeList.length > 0 && typeList.map((item,index) => (
+                    <Select.Option key={index} value={item.id}>{item.name}</Select.Option>
+                  ))
+                }
+              </Select>*/}
             </FormItem>
           </Col>
           <Col span={12}>
@@ -243,7 +259,7 @@ class AddCategroyForm extends React.Component {
                 initialValue: item.wholesale,
                 rules: [
                   {
-                    required: false,
+                    required: true,
                   },
                 ],
               })(

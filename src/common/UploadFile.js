@@ -57,7 +57,7 @@ export default class UploadFile extends PureComponent {
 
     const uploadProps = {
       name: 'file',
-      action: `${window.MC.HOST}` + this.state.url,
+      action: `${window.MC.UPLOADHOST}` + this.state.url,
       fileList: fileList,
       showUploadList: true,
       headers: {

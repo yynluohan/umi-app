@@ -53,10 +53,16 @@ export default {
           { field: 'id',label: '编号'},
           { field: 'cover',label: '封面',valueType:'showImage'},
           { field: 'name',label: '名称'},
-          { field: 'enabled',label: '是否启用',valueType:'status',
-            statusMap: {
-              0: '禁用',
-              1: '启用'
+          { field: 'enabled',label: '是否启用',valueType:'showStatus',
+            options: {
+              statusMap: {
+                0: '禁用',
+                1: '启用'
+              },
+              colorMap: {
+                0: '#777',
+                1: '#428bca'
+              }
             }
           },
           { field: 'index',label: '排序号'},
@@ -66,7 +72,7 @@ export default {
           {
             title:'查看',action:'path',
             options:{
-              path:'/subsysManage-view',
+              path:'/product/trialView',
               // permission:'apply.view',
               // location:true
               queryData:(records) => {
@@ -87,6 +93,24 @@ export default {
                 }
                 return data
               }
+            }
+          },
+          {
+            title: '启用',action:'request',
+            options:{
+              expectedField:[['enabled']],
+              expectedValue:[[0]],
+              API:'/api/crud/product/trials/(id)/(status)',
+              method:'post'
+            }
+          },
+          {
+            title: '禁用',action:'request',
+            options:{
+              expectedField:[['enabled']],
+              expectedValue:[[1]],
+              API:'/api/crud/product/trials/(id)/(status)',
+              method:'post'
             }
           },
           {
