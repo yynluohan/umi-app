@@ -27,22 +27,10 @@ class AddCategroyForm extends React.Component {
       productCategoryPropertyList: props.item && props.item.productCategoryPropertyList ? props.item.productCategoryPropertyList : [],   // 属性列表
       modalItem: {},
       selectIndex: undefined,
-      typeList: [], //父类别
     }
   }
 
-  componentDidMount() {
-    query('/api/crud/product/productCategoryies',{pageSize: 1000000}).then(({ code,data }) => {
-      if(code && code === 200) {
-        this.setState({
-          typeList: data || []
-        })
-      }
-    })
-  }
-
   componentWillReceiveProps(nextProps) {
-    console.log('RRR ',nextProps);
     if (nextProps.item != undefined) {
       this.setState({
         item: nextProps.item,
@@ -62,7 +50,6 @@ class AddCategroyForm extends React.Component {
         ...getFieldsValue(),
         productCategoryPropertyList
       };
-      // console.log('555',data)
       this.props.onSave(data)
     });
   }
@@ -95,11 +82,7 @@ class AddCategroyForm extends React.Component {
  render() {
 
    const { getFieldDecorator } = this.props.form;
-   const { item,visible,productCategoryPropertyList,modalItem,typeList } = this.state;
-   console.log('mmmmm',item);
-
-   const getId = item.id;
-   console.log('id=====',getId)
+   const { item,visible,productCategoryPropertyList,modalItem } = this.state;
 
    const modalProps = {
      item: modalItem,
@@ -184,17 +167,14 @@ class AddCategroyForm extends React.Component {
 
    }
 
-   console.log('6666',item.id)
-
    const treeProps = {
      apiUrl: '/api/crud/product/productCategoryies',
      method: query,
      getway: {
        'children':'subCategoryList',
-       'label': 'name',
+       'title': 'name',
      },
-     // getId: item.parentId,
-     getId: item.id
+     getId: item.parentId,
    }
 
    return (
@@ -225,15 +205,8 @@ class AddCategroyForm extends React.Component {
                   },
                 ],
               })(
-                <SelectTree {...treeProps} value={item.id}/>
+                <SelectTree {...treeProps}/>
               )}
-              {/*<Select>
-                {
-                  typeList.length > 0 && typeList.map((item,index) => (
-                    <Select.Option key={index} value={item.id}>{item.name}</Select.Option>
-                  ))
-                }
-              </Select>*/}
             </FormItem>
           </Col>
           <Col span={12}>

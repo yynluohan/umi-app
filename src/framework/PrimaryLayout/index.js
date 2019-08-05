@@ -31,7 +31,7 @@ export default function PrimaryLayout({ location, children }) {
   return <Layout>
     {
       token ?
-      <Header className="header" style={{ color: '#fff',padding: '0 20px',position: 'fixed',width:'100%',zIndex:900}}>
+      <Header className="header" style={{ color: '#fff',padding: '0 20px',position: 'fixed',width:'100%',zIndex:1100}}>
         <div style={{ display: 'flex',justifyContent: 'space-between'}}>
           <div>product management</div>
           <Popover content={toDoContent} placement='left'>

@@ -5,6 +5,7 @@ import UploadFile from '../../../common/UploadFile';
 import BraftEditor from 'braft-editor';
 import 'braft-editor/dist/index.css';
 import htmlToDraft from 'html-to-draftjs';
+import SelectTree from '../../../common/SelectTree';
 
 const FormItem = Form.Item;
 const { TextArea } = Input
@@ -26,20 +27,8 @@ class AddProductForm extends React.Component {
     this.state = {
       item:props.item || {},
       visible: false,
-      typeList: [],  //产品类别
     }
   }
-
-  componentDidMount() {
-    query('/api/crud/product/productCategoryies',{pageSize: 1000000}).then(({ code,data }) => {
-      if (code && code === 200) {
-        this.setState({
-          typeList: data || []
-        })
-      }
-    })
-  }
-
 
   componentWillReceiveProps(nextProps) {
     console.log('RRR ',nextProps);
@@ -95,10 +84,20 @@ class AddProductForm extends React.Component {
  render() {
 
    const { getFieldDecorator } = this.props.form;
-   const { item,visible,typeList } = this.state;
+   const { item,visible } = this.state;
 
    const vedioProps = {
 
+   }
+
+   const treeProps = {
+     apiUrl: '/api/crud/product/productCategoryies',
+     method: query,
+     getway: {
+       'children':'subCategoryList',
+       'title': 'name',
+     },
+     getId: item.categoryId,
    }
 
    return (
@@ -157,13 +156,7 @@ class AddProductForm extends React.Component {
                   },
                 ],
               })(
-                <Select>
-                  {
-                    typeList.length > 0 && typeList.map((item,index) => (
-                      <Select.Option key={index} value={item.id}>{item.name}</Select.Option>
-                    ))
-                  }
-                </Select>
+                <SelectTree {...treeProps}/>
               )}
             </FormItem>
           </Col>
@@ -268,6 +261,18 @@ class AddProductForm extends React.Component {
                   },
                 ],
               })(<Input type='number' />)}
+            </FormItem>
+          </Col>
+          <Col span={12}>
+            <FormItem label='条形码' hasFeedback {...formItemLayout()}>
+              {getFieldDecorator('barCode', {
+                initialValue: item.barCode,
+                rules: [
+                  {
+                    required: false,
+                  },
+                ],
+              })(<Input />)}
             </FormItem>
           </Col>
           <Col span={12}>

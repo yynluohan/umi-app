@@ -16,7 +16,7 @@ export default {
         fields: [
           { field: 'name',label: '名称',type:'input'},
           { field: 'barCode',label: '条形码',type: 'input'},
-          { field: 'status',label: '名称',type:'select',
+          { field: 'status',label: '状态',type:'select',
             options: [
               { label: '草稿',value: 'DRAFT' },
               { label: '待审核',value: 'PENDING_APPROVAL' },
@@ -73,7 +73,7 @@ export default {
             }
           },
           { field: 'price',label: '价格'},
-          { field: 'fareId',label: '运费模板'},
+          { field: 'barCode',label: '条形码'},
           { field: 'sortOrder',label: '排序号'},
           { field:'operation'}
         ],

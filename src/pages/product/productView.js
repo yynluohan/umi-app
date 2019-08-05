@@ -76,11 +76,11 @@ const ProductView = ({ dispatch,product }) => {
       {label:'状态',data:showStatus[item.status],},
       {label:'类别',data:item.categoryId},
       {label:'产品单位',data:item.unit},
-      {label:'运费模板',data:item.fareId},
+      {label:'条形码',data:item.barCode},
+      {label:'运费模板',data:(<a onClick={() => window.location.href=`#/product/freightView?id=${item.fareId}`}>{item.fareId}</a>),},
       {label:'参与检查才可购买',data:showRequiredParticipateExam[item.requiredParticipateExam]},
       {label:'优惠活动-积分',data:item.credit},
       {label:'优惠活动-优惠券',data:showAllowCoupon[item.allowCoupon]},
-
     ]
   }
 

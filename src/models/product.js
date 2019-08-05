@@ -2,6 +2,7 @@ import { query,create,update } from '../framework/utils/services'
 import { message,notification } from 'antd';
 import { routerRedux } from 'dva/router';
 import { getArgment } from '../framework/utils/parameter';
+import tips from '../framework/utils/tips';
 
 export default {
 
@@ -64,11 +65,9 @@ export default {
     //添加产品类型
     *addCategroy({ payload },{ call,put }) {
       const result = yield call(create,'/api/crud/product/productCategoryies',payload);
+      tips.lookMes(result.code,result.message)
       if (result.code === 200) {
-        notification.success({ message: '添加成功' })
         yield put(routerRedux.goBack())
-      } else {
-        notification.error({ message: result.message })
       }
     },
 
@@ -76,23 +75,18 @@ export default {
     *updateCategroy({ payload },{ call,put,select }) {
       const { id } = yield select(({ product }) => product);
       const result = yield call(update,`/api/crud/product/productCategoryies/${id}`,payload);
+      tips.lookMes(result.code,result.message)
       if (result.code === 200) {
-        notification.success({ message: '修改成功' })
         yield put(routerRedux.goBack())
-      } else {
-        notification.error({ message: result.message })
       }
     },
 
     // 添加产品
     *addProduct({ payload },{ call,put }) {
-      console.log('KKK',payload);
       const result = yield call(create,'/api/crud/product/products',payload);
+      tips.lookMes(result.code,result.message)
       if (result.code == 200) {
-        notification.success({ message: '添加成功'})
         yield put(routerRedux.goBack())
-      } else {
-        notification.error({ message: result.message })
       }
     },
 
@@ -100,34 +94,27 @@ export default {
     *updateProduct({ payload },{ call,put,select }) {
       const { id } = yield select(({ product }) => product);
       const result = yield call(update,`/api/crud/product/products/${id}`,payload);
+      tips.lookMes(result.code,result.message)
       if (result.code === 200) {
-        notification.success({ message: '修改成功' })
         yield put(routerRedux.goBack())
-      } else {
-        notification.error({ message: result.message })
       }
     },
 
     //添加试用装
     *addTrial({ payload },{ call,put }) {
-      console.log('KKK1',payload);
       const result = yield call(create,'/api/crud/product/trials',payload);
+      tips.lookMes(result.code,result.message)
       if (result.code == 200) {
-        notification.success({ message: '添加成功'})
         yield put(routerRedux.goBack())
-      } else {
-        notification.error({ message: result.message })
       }
     },
 
     //添加运费模板
     *addFreight({ payload },{ call,put }) {
       const result = yield call(create,'/api/crud/product/fareTemplates',payload);
+      tips.lookMes(result.code,result.message)
       if (result.code === 200) {
-        notification.success({ message: '添加成功'});
         yield put(routerRedux.goBack())
-      } else {
-        notification.error({ message: result.message })
       }
     },
 
@@ -135,11 +122,9 @@ export default {
     *updateFreight({ payload },{ call,put,select }) {
       const { id } = yield select(({ product }) => product);
       const result = yield call(update,`/api/crud/product/fareTemplates/${id}`,payload);
+      tips.lookMes(result.code,result.message)
       if (result.code === 200) {
-        notification.success({ message: '修改成功' })
         yield put(routerRedux.goBack())
-      } else {
-        notification.error({ message: result.message })
       }
     },
 
@@ -147,11 +132,9 @@ export default {
     *updateTrial({ payload },{ call,put,select }) {
       const { id } = yield select(({ product }) => product);
       const result = yield call(update,`/api/crud/product/trials/${id}`,payload);
+      tips.lookMes(result.code,result.message)
       if (result.code === 200) {
-        notification.success({ message: '修改成功' })
         yield put(routerRedux.goBack())
-      } else {
-        notification.error({ message: result.message })
       }
     },
   },
