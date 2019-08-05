@@ -1,7 +1,7 @@
 
 module.exports = {
   layout: 'Content',
-  title: '标签管理',
+  title: '品牌管理',
   items: [
     {
       layout: 'Empty',
@@ -9,7 +9,7 @@ module.exports = {
       config: {
         share:'user',
         fields: [
-          { field: 'name', label: '标签名', type: 'input' }
+          { field: 'name', label: '名称', type: 'input' }
         ],
       },
     },
@@ -19,14 +19,14 @@ module.exports = {
       config: {
         share:'user',
         API: {
-          listAPI: '/api/crud/product/productTags',
-          deleteAPI:'/api/crud/product/productTags/(id)'
+          listAPI: '/api/crud/product/productBrands',
+          deleteAPI:'/api/crud/product/productBrands/(id)'
         },
         actions:[
           {
             title: '添加',type:'modal',
             options:{
-              modalTitle:'添加标签',
+              modalTitle:'添加品牌',
               modalWidth:900,
               items:[
                 {
@@ -34,12 +34,17 @@ module.exports = {
                   component: 'BaseForm',
                   config: {
                     API:{
-                      createAPI:'/api/crud/product/productTags'
+                      createAPI:'/api/crud/product/productBrands'
                     },
                     fields: [
-                      { field: 'identifier', label: '标记',type:'input' },
-                      { field: 'name', label: '名称',type:'input' },
-                      { field: 'sortOrder',label: '排序号',type:'input'},
+                      { field: 'name', label: '名称',type:'input',rules: ['required'] },
+                      { field: 'logo', label: 'logo',type:'upload-image',
+                        options: {
+                          API: `${window.MC.UPLOADHOST}/api/uploadfile`,
+                          max: 1
+                        }
+                     },
+                      { field: 'description',label: '描述',type:'input'},
                     ]
                   }
                 }
@@ -48,16 +53,16 @@ module.exports = {
           }
         ],
         fields: [
-          { field: 'identifier', label: '标记'},
           { field: 'name', label: '名称' },
-          { field: 'sortOrder',label: '排序号'},
+          { field: 'logo',label: 'logo',valueType:'showImage'},
+          { field: 'description',label: '描述'},
           { field:'operation'}
         ],
         operation: [
           {
             title: '编辑', action: 'modal',
             options:{
-              modalTitle:'编辑用户',
+              modalTitle:'编辑品牌',
               modalWidth:800,
 
               layout: 'Empty',
@@ -67,13 +72,18 @@ module.exports = {
                   component: 'BaseForm',
                   config: {
                     API: {
-                      getAPI:'/api/crud/product/productTags/(id)',
-                      updateAPI: '/api/crud/product/productTags/(id)',
+                      getAPI:'/api/crud/product/productBrands/(id)',
+                      updateAPI: '/api/crud/product/productBrands/(id)',
                     },
                     fields: [
-                      { field: 'identifier', label: '标记',type:'input' },
-                      { field: 'name', label: '名称',type:'input' },
-                      { field: 'sortOrder',label: '排序号',type:'input'},
+                      { field: 'name', label: '名称',type:'input',rules: ['required'] },
+                      { field: 'logo', label: 'logo',type:'upload-image',
+                        options: {
+                          API: `${window.MC.UPLOADHOST}/api/uploadfile`,
+                          max: 1
+                        }
+                      },
+                      { field: 'description',label: '描述',type:'input'},
                     ]
                   }
                 }

@@ -33,6 +33,11 @@ module.exports = [
         name: '运费模板',
         icon: 'tags',
       },
+      {
+        path: '/product/brand',
+        name: '品牌管理',
+        icon: 'tags',
+      }
     ]
   },
   {

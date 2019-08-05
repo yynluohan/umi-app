@@ -21,11 +21,10 @@ export default {
     {
       span: 24,
       layout:'Empty',
-      // component: 'ChildrenList',
-      component:'BaseList',
+      component: 'TreeList',
       config: {
-        // itemsField: 'subCategoryList',
         share:'categroy',
+        field:'subCategoryList',
         API: {
           listAPI: '/api/crud/product/productCategoryies',
           deleteAPI:'/api/crud/product/productCategoryies/(id)'

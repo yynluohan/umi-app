@@ -64,6 +64,8 @@ const ProductView = ({ dispatch,product }) => {
     list: [
       {label:'产品名称',data: item.name},
       {label:'缩略名称',data:item.shortName},
+      {label:'品牌',data:item.brandName},
+      {label:'品牌logo',data:(<a href={item.logo} target="_blank">{item.logo}</a>)},
       {label:'排序号',data:item.sortOrder},
       {label:'推荐',data:showPromoted[item.promoted]},
       {label:'分区',data:item.partnerLevelZone ? showPartnerLevelZone[item.partnerLevelZone] : ''},
@@ -77,7 +79,7 @@ const ProductView = ({ dispatch,product }) => {
       {label:'类别',data:item.categoryId},
       {label:'产品单位',data:item.unit},
       {label:'条形码',data:item.barCode},
-      {label:'运费模板',data:(<a onClick={() => window.location.href=`#/product/freightView?id=${item.fareId}`}>{item.fareId}</a>),},
+      {label:'运费模板',data:(<a onClick={() => window.location.href=`#/product/freightView?id=${item.fareId}`}>{item.fareName}</a>),},
       {label:'参与检查才可购买',data:showRequiredParticipateExam[item.requiredParticipateExam]},
       {label:'优惠活动-积分',data:item.credit},
       {label:'优惠活动-优惠券',data:showAllowCoupon[item.allowCoupon]},

@@ -6,6 +6,7 @@ import BraftEditor from 'braft-editor';
 import 'braft-editor/dist/index.css';
 import htmlToDraft from 'html-to-draftjs';
 import SelectTree from '../../../common/SelectTree';
+import FieldOptionInput from '../../../common/FieldOptionInput';
 
 const FormItem = Form.Item;
 const { TextArea } = Input
@@ -90,6 +91,11 @@ class AddProductForm extends React.Component {
 
    }
 
+   const fieldOptionInputProps = {
+      method: query,
+      apiUrl: '/api/crud/product/productBrands'
+   }
+
    const treeProps = {
      apiUrl: '/api/crud/product/productCategoryies',
      method: query,
@@ -129,6 +135,20 @@ class AddProductForm extends React.Component {
                 ],
               })(
                 <Input />
+              )}
+            </FormItem>
+          </Col>
+          <Col span={12}>
+            <FormItem label='品牌' hasFeedback {...formItemLayout()}>
+              {getFieldDecorator('brandId', {
+                initialValue: item.brandId,
+                rules: [
+                  {
+                    required: true,
+                  },
+                ],
+              })(
+                <FieldOptionInput {...fieldOptionInputProps}/>
               )}
             </FormItem>
           </Col>

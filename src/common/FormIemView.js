@@ -85,7 +85,7 @@ class FormIemView extends React.Component {
         <Form>
             {
               newList.length > 0 && newList.map((item,index) => (
-                <Row key={index}>
+                <Row key={index} style={{display:'flex',flexWrap:'wrap'}}>
                   {
                     item.list.length > 0 && item.list.map((k,i) => {
                       if (k.columns) {
