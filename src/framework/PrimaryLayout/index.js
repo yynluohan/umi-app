@@ -3,10 +3,32 @@ import { Layout,Icon,Popover } from 'antd';
 import LeftNav from './LeftNav';
 import Breadcrumb from './Breadcrumb';
 import dynamic from 'umi/dynamic';
+import router from '@/config/path.js';
+import Default404 from '../../pages/404';
+import { getPath } from '../utils/parameter';
 
 const { Header, Content, Sider } = Layout;
 
 export default function PrimaryLayout({ location, children }) {
+
+  function checkPath(data) {
+    let isTrue = false;
+    function mapPath(data) {
+      data.map((item,index) =>{
+        if (item.path) {
+          if (item.path === getPath(window.location.hash)) {
+            isTrue = true
+          }
+        }
+        if (item.items && item.items.length > 0) {
+          mapPath(item.items)
+        }
+      })
+      return isTrue
+    }
+    return mapPath(data)
+  }
+
 
   const delay = (timeout) => new Promise(resolve => setTimeout(resolve, timeout));
   const App = dynamic({
@@ -60,7 +82,12 @@ export default function PrimaryLayout({ location, children }) {
             minHeight: 280,
           }}
         >
-          <App />
+          {
+            checkPath(router) ?
+            <App />
+            :
+            <Default404 />
+          }
         </Content>
       </Layout>
     </Layout>

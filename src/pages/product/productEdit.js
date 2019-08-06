@@ -9,8 +9,6 @@ const ProductEdit = ({ dispatch,product }) => {
 
   const { item } = product;
 
-  console.log('.....',item)
-
   const formProps = {
     item,
     title: '修改产品类别',

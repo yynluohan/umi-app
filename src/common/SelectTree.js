@@ -7,7 +7,6 @@ export default class SelectTree extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log('===',props)
     this.state = {
       value: props.getId != undefined ? props.getId : undefined,
       list: []

@@ -5,8 +5,6 @@ const TableInSpin = ({ loading, current = 1, total, pageSize = 10,
   columns = [], list = [], intlPrefix = '', onPageChange,
   rowSelection, width = 150, scrollX = false, onSorter, sortAll = false,rowKey='id' }) => {
 
-    console.log('列表',list);
-
   const onNewSort = (name) => {
     return function (o, p) {
       let a, b;

@@ -22,13 +22,11 @@ import styles from './Common.css';
   }
 
   handleMenuClick = (data) => {
-    console.log('*** data = ',data,this.props);
     if(this.props.selectedRows.length < 1){
       notification.error({ message: '请选择需要操作的选项!' });
       return;
     }
     if(this.props.context){
-      console.log('999999 this.props.context = ',this.props.context);
       this.props.context.dispatch({
         type:`${this.props.context.namespace}/save`,
         payload:{
@@ -50,15 +48,6 @@ import styles from './Common.css';
     if(data == '删除' && this.props.onBulkDelete){
       this.props.onBulkDelete()
     }
-
-    // if(this.props.onShowModal){
-    //   console.log('kkkkkk ++++');
-    //   this.props.pageContext.onModal(this.props.config)
-    // }
-    // if(this.props.pageContext){
-    //   console.log('}}}');
-    //   this.props.pageContext.onModalFooter(<div>11111111</div>)
-    // }
   }
 
   render(){

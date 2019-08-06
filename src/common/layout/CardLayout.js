@@ -1,8 +1,6 @@
 
 export default (props) => {
 
-  console.log('2222',props);
-
   const titleStyle = {
     backgroundColor: 'rgb(96, 111, 132)',
     padding: '1em',

@@ -11,3 +11,12 @@ export function getArgment(x) {
   })
   return obj
 }
+
+export function getPath(x) {
+  let path = ''
+  if (!x) {
+    return '';
+  }
+  path = x.replace('#','').split('?')[0]
+  return path
+}

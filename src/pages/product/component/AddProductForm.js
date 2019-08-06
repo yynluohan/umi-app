@@ -32,7 +32,6 @@ class AddProductForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('RRR ',nextProps);
     if (nextProps.item != undefined) {
       if (nextProps.item.productImageList.length > 0) {
         nextProps.item.productImageList.map((item,index) => {

@@ -50,32 +50,8 @@ class AddFreightForm extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('RRR ',nextProps);
-    let { fastList,emsList,mailList } = this.state;
-    // if (nextProps.item != undefined) {
-    //   if (nextProps.item.carryModeList && nextProps.item.carryModeList.length > 0) {
-    //     nextProps.item.carryModeList.map((k,i) => {
-    //       if (k.carryWay == 0) {
-    //         fastList.push(k)
-    //       }else if (k.carryWay == 1) {
-    //         emsList.push(k)
-    //       } else {
-    //         mailList.push(k)
-    //       }
-    //     })
-    //   }
-    //   console.log('OOOO',fastList,emsList)
-    //   this.setState({
-    //     item: nextProps.item,
-    //     fastList,emsList,mailList
-    //   })
-    // }
-
-  }
 
   updateItem = (e,field,record,index) => {
-    console.log('hhhh',e,field,record,index);
     let { fastList,emsList,mailList } = this.state;
     if (record.carryWay == 0) {
       fastList[index][field] = e
@@ -104,7 +80,6 @@ class AddFreightForm extends React.Component {
         carryModeList: fastList.concat(emsList,mailList),
         ...getFieldsValue(),
       };
-      console.log('mmmmm',data)
       this.props.onSave(data)
     });
   }
@@ -204,7 +179,6 @@ class AddFreightForm extends React.Component {
 
    const { getFieldDecorator } = this.props.form;
    const { item,fastType,fastList,emsType,emsList,mailType,mailList } = this.state;
-   console.log('kkklll',fastType,fastList,emsType,emsList)
 
    const columnsObj = [
      {

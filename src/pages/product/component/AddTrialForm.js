@@ -37,7 +37,6 @@ class AddTrialForm extends React.Component {
 
 
   componentWillReceiveProps(nextProps) {
-    console.log('RRR ',nextProps);
     if (nextProps.item != undefined) {
       if (nextProps.item.items.length > 0) {
         nextProps.item.items.map((item,index) => {
@@ -81,8 +80,6 @@ class AddTrialForm extends React.Component {
 
    const { getFieldDecorator } = this.props.form;
    const { item,productList } = this.state;
-
-   console.log('mmmmm===',item,productList);
 
    const selectionProps = {
      isButton:true,
@@ -147,8 +144,6 @@ class AddTrialForm extends React.Component {
        }
      ]
    }
-
-   console.log('777',item)
 
    return (
      <div style={{ backgroundColor: '#fff',padding: '20px'}}>

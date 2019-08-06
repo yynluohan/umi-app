@@ -1,7 +1,6 @@
 module.exports = [
   {
     name: '首页',
-    icon: 'tag',
     path: '/'
   },
   {
@@ -11,74 +10,109 @@ module.exports = [
       {
         path: '/product/categroy',
         name: '产品类别',
-        icon: 'tags',
+        items: [
+          {
+            path: '/product/categroyAdd'
+          },
+          {
+            path: '/product/categroyEdit'
+          },
+          {
+            path: '/product/categroyView'
+          }
+        ]
       },
       {
         path: '/product',
         name: '产品',
-        icon: 'tags',
+        items: [
+          {
+            path: '/product/productAdd'
+          },
+          {
+            path: '/product/productEdit'
+          },
+          {
+            path: '/product/productView'
+          }
+        ]
       },
       {
         path: '/product/tag',
         name: '产品标签',
-        icon: 'tags',
       },
       {
         path: '/product/trial',
         name: '试用装管理',
-        icon: 'tags',
+        items: [
+          {
+            path: '/product/trialAdd'
+          },
+          {
+            path: '/product/trialEdit'
+          },
+          {
+            path: '/product/trialView'
+          }
+        ]
       },
       {
         path: '/product/evaluate',
         name: '评价管理',
-        icon: 'tags',
       },
       {
         path: '/product/freight',
         name: '运费模板',
-        icon: 'tags',
+        items: [
+          {
+            path: '/product/freightAdd'
+          },
+          {
+            path: '/product/freightEdit'
+          },
+          {
+            path: '/product/freightView'
+          }
+        ]
       },
       {
         path: '/product/brand',
         name: '品牌管理',
-        icon: 'tags',
       }
     ]
   },
   {
     name: '订单管理',
-    icon: 'tag',
     items:[
       {
         path: '/order/online',
         name: '线上订单',
-        icon: 'tag',
+        items: [
+          {
+            path: '/order/orderView'
+          },
+        ]
       },
       {
         path: '/order/offline',
         name: '线下订单',
-        icon: 'tag',
       },
       {
         path: '/order/refund',
         name: '退货处理',
-        icon: 'tag',
       },
       {
         path: '/order/trialApplication',
         name: '试用装申请',
-        icon: 'tag',
       },
       {
         path: '/order/setExpress',
         name: '快递设置',
-        icon: 'tag',
       }
     ]
   },
   {
-    path: '/store',
+    path:'/stores',
     name: '店铺管理',
-    icon: 'tag',
   }
 ]

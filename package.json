@@ -16,7 +16,10 @@
     "moment": "^2.20.1",
     "zero-element": "^1.0.0-beta.11",
     "zero-element-antd": "github:kequandian/zero-element-antd",
-    "zero-element-global": "github:kequandian/zero-element-global"
+    "zero-element-global": "github:kequandian/zero-element-global",
+    "kqd-common": "git+ssh://github@zele.pro:/home/github/zero/components/common.git",
+    "kqd-general": "git+ssh://github@zele.pro:/home/github/zero/components/general.git",
+    "qrcode.react": "^0.8.0"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",

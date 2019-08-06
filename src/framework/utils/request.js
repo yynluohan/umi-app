@@ -9,7 +9,6 @@ function checkServerError(response) {
   }
   const error = new Error(response.statusText);
   error.response = response;
-  console.log('333333333',response);
   throw error;
 }
 function parseJSON(response) {
@@ -60,7 +59,6 @@ export default function request(url, options) {
     delete opts.headers['Content-Type'];
   }
 
-  //console.log(opts);
   const finalUrl = getEndpoint() + url;
   return fetch(finalUrl, opts)
     .then(checkServerError)
