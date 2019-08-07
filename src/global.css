@@ -19,3 +19,7 @@ body {
 :global(.ant-notification-notice) {
   top: 60px;
 }
+
+:global(.bf-container) {
+  border: 1px solid #d0d0d0;
+}

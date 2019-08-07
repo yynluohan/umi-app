@@ -112,7 +112,12 @@ module.exports = [
     ]
   },
   {
-    path:'/stores',
+    path:'/store',
     name: '店铺管理',
+    items:[
+      {
+        path: '/store/addStore'
+      }
+    ]
   }
 ]

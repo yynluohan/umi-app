@@ -18,11 +18,13 @@ class FieldOptionInput extends React.Component {
       return
     }else{
       this.props.method(this.state.apiUrl).then(({ code, data }) => {   //查询api，获取数据
-        this.setState({
-          list:data.records || data   //更新list
-        })
-        if (this.props.onSave) {
-          this.props.onSave(data.records || data)
+        if (code && code === 200) {
+          this.setState({
+            list:data.records || data   //更新list
+          })
+          if (this.props.onSave) {
+            this.props.onSave(data.records || data)
+          }
         }
       })
     }

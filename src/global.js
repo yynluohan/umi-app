@@ -14,8 +14,8 @@ import { set as VTSet } from 'zero-element-global/lib/valueType';
 import onPath from './listAction/onPath';
 import path from './listAction/path';
 
-setEndpoint('http://192.168.3.16:8080')
-// setEndpoint('https://www.muaskin.com')
+// setEndpoint('http://192.168.3.16:8180')
+setEndpoint('https://www.muaskin.com')
 
 // saveToken({
 //   token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwiYWNjb3VudCI6ImFkbWluIiwiaWF0IjoxNTYxMTcyMzMyLCJqdGkiOiIxIiwic3ViIjoiYWRtaW4iLCJleHAiOjE1NjE0MzE1MzJ9.EwlEBQBhdzbJUTWNCjorE9ECK2WTbCejO4Q86W_ezUHoZu7cmjprRbZnYJhZTHH2_9GFphRNq1sdjBUmcqyaAQ',
@@ -71,13 +71,14 @@ VTSet({
   'showStatus': (record) => record.data.record[record.field] != undefined ? showStatus(record) : ''
 })
 
-window.localStorage.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEwMDEiLCJ1c2VySWQiOiI4NzY3MDgwODI0MzcxOTc4MjciLCJhY2NvdW50IjoiYWRtaW4iLCJpYXQiOjE1NjQ4MDMyNTcsImp0aSI6Ijg3NjcwODA4MjQzNzE5NzgyNyIsInN1YiI6ImFkbWluIiwiZXhwIjoxNTY1MDYyNDU3fQ.OhIlwKuW9R8dLkoEZnjTWuAaPczzkFdx1LkGzRzr6sG7sm9rbQJjF6hdGB7Yv_T8OIClSZrb_PD2dHIZCqUO9Q'
+// window.localStorage.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEwMDEiLCJ1c2VySWQiOiI4NzY3MDgwODI0MzcxOTc4MjciLCJhY2NvdW50IjoiYWRtaW4iLCJpYXQiOjE1NjQ4MDMyNTcsImp0aSI6Ijg3NjcwODA4MjQzNzE5NzgyNyIsInN1YiI6ImFkbWluIiwiZXhwIjoxNTY1MDYyNDU3fQ.OhIlwKuW9R8dLkoEZnjTWuAaPczzkFdx1LkGzRzr6sG7sm9rbQJjF6hdGB7Yv_T8OIClSZrb_PD2dHIZCqUO9Q'
+window.localStorage.token = 'eyJsb2dpbl9uYW1lIjoiYWRtaW4iLCJpZCI6IjEiLCJ0b2tlbiI6ImIzN2Y5ODczY2JmNDkwNWNlZjMzZWE3NzllOWEwNzkwN2M1OGIwZjAifQ=='
 
 window.MC = {
   HASH: '',
-  HOST:'http://192.168.3.16:8080',
+  // HOST:'http://192.168.3.16:8180',
+  HOST:'https://www.muaskin.com',
   UPLOADHOST:'http://192.168.3.28:8088',
-  // HOST:'http://192.168.236.129:8080',
   DATETIMEFORMAT:'YYYY/MM/DD HH:mm:ss',
   DATAFORMAT:'YYYY/MM/DD',
 }
