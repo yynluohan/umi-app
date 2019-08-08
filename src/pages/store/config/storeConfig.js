@@ -71,7 +71,7 @@ export default {
           {
             title:'查看',action:'path',
             options:{
-              path:'/product/categroyView',
+              path:'/store/viewStore',
               // permission:'apply.view',
               // location:true
               queryData:(records) => {

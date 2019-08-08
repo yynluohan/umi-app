@@ -120,6 +120,9 @@ module.exports = [
       },
       {
         path: '/store/editStore'
+      },
+      {
+        path: '/store/viewStore'
       }
     ]
   }

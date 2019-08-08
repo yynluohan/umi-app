@@ -19,7 +19,7 @@ export default {
         if (location.pathname === '/store/editStore' || location.pathname === '/store/viewStore') {
           const obj = {
             '/store/editStore':`/api/store/stores/${query.id}`,
-            '/store/editStore':`/api/store/stores/${query.id}`,
+            '/store/viewStore':`/api/store/stores/${query.id}`,
           }
           dispatch({
             type: 'save',
