@@ -85,7 +85,7 @@ export default {
           {
             title: '编辑',action:'path',
             options:{
-              path:'/product/categroyEdit',
+              path:'/store/editStore',
               queryData:(records) => {
                 const data = {
                   id:records.id,

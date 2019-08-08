@@ -2,16 +2,27 @@ import { connect } from 'dva';
 import AddStoreForm from './component/AddStoreForm';
 import { routerRedux } from 'dva/router';
 
-const AddStore = ({ dispatch,store }) => {
+const EditStore = ({ dispatch,store }) => {
+
+  let { item } = store;
+
+  item.images && item.images.length > 0 && item.images.map((k,i) => {
+    item.images[i] = {
+      ...k,
+      status: 'done',
+      uid: i
+    }
+  })
 
   const addStoreFormProps = {
-    title:'添加门店',
+    item,
+    title:'修改门店',
     onBack(){
       dispatch(routerRedux.goBack())
     },
     onSave(data) {
       dispatch({
-        type: 'store/addStore',
+        type: 'store/updateStore',
         payload:data
       })
     }
@@ -31,4 +42,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(AddStore)
+export default connect(mapStateToProps)(EditStore)

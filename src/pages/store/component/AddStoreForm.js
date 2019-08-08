@@ -9,7 +9,7 @@ import moment from 'moment';
 import FieldOptionInput from '../../../common/FieldOptionInput';
 import CascaderSelect from '../../../common/CascaderSelect';
 import pcd from '../../../config/pcd';
-
+import PicturesWall from '../../../common/PicturesWall';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -34,6 +34,14 @@ class AddStoreForm extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps){
+    if (nextProps.item) {
+      this.setState({
+        item: nextProps.item
+      })
+    }
+  }
+
   onSubmit = () => {
     const { validateFields,getFieldsValue,item } = this.props.form;
     validateFields((errors) => {
@@ -44,7 +52,7 @@ class AddStoreForm extends React.Component {
         ...item,
         ...getFieldsValue(),
       };
-      data.note = data.note.toHTML()
+      data.introduce = data.introduce.toHTML()
       this.props.onSave(data)
     });
   }
@@ -104,9 +112,13 @@ class AddStoreForm extends React.Component {
                   },
                 ],
               })(
-                <FieldOptionInput {...fieldOptionInputProps}/>
+                <Select>
+                  <Select.Option value='AAA'>AAA</Select.Option>
+                  <Select.Option value='BBB'>BBB</Select.Option>
+                </Select>
               )}
             </FormItem>
+            {/*<FieldOptionInput {...fieldOptionInputProps}/>*/}
           </Col>
 
           <Col span={12}>
@@ -119,7 +131,7 @@ class AddStoreForm extends React.Component {
                   },
                 ],
               })(
-                <CascaderSelect list={pcd}/>
+                <CascaderSelect list={pcd} data={item.pcd ? item.pcd.split('-') : []}/>
               )}
             </FormItem>
           </Col>
@@ -192,9 +204,21 @@ class AddStoreForm extends React.Component {
             </FormItem>
           </Col>
           <Col span={24}>
+            <FormItem label='店铺图片(6张内)' hasFeedback {...formItemLayout(3,21)}>
+              {getFieldDecorator('images', {
+                initialValue: item.images,
+                rules: [
+                  {
+                    required: false,
+                  },
+                ],
+              })(<PicturesWall maxNumber={6} fileList={item.images || []}/>)}
+            </FormItem>
+          </Col>
+          <Col span={24}>
             <FormItem label='描述' hasFeedback {...formItemLayout(3,21)}>
-              {getFieldDecorator('note', {
-                initialValue:item.note ? BraftEditor.createEditorState(item.note) : '',
+              {getFieldDecorator('introduce', {
+                initialValue:item.introduce ? BraftEditor.createEditorState(item.introduce) : '',
                 rules: [
                   {
                     required: false,

@@ -117,6 +117,9 @@ module.exports = [
     items:[
       {
         path: '/store/addStore'
+      },
+      {
+        path: '/store/editStore'
       }
     ]
   }
