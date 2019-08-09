@@ -26,12 +26,7 @@ export default {
             ]
           },
           { field: 'categoryId',label: '类别',type: 'input'},
-          { field: 'promoted',label: '推荐',type: 'select',
-            options: [
-              { label: '否',value: '0' },
-              { label: '是',value: '1'},
-            ]
-          }
+          { field: 'brand',label: '品牌',type: 'input'},
         ]
       }
     },

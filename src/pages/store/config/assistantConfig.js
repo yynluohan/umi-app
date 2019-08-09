@@ -9,8 +9,8 @@ export default {
       config: {
         share:'categroy',
         API: {
-          listAPI: '/api/gw/assistants',
-          deleteAPI:'/api/gw/assistants/(id)'
+          listAPI: '/api/store/assistants',
+          deleteAPI:'/api/store/assistants/(id)'
         },
         actions:[
           {

@@ -52,27 +52,27 @@ module.exports = [
       {
         path: '/order/online',
         name: '线上订单',
-        icon: 'tag',
+        icon: 'tags',
       },
       {
         path: '/order/offline',
         name: '线下订单',
-        icon: 'tag',
+        icon: 'tags',
       },
       {
         path: '/order/refund',
         name: '退货处理',
-        icon: 'tag',
+        icon: 'tags',
       },
       {
         path: '/order/trialApplication',
         name: '试用装申请',
-        icon: 'tag',
+        icon: 'tags',
       },
       {
         path: '/order/setExpress',
         name: '快递设置',
-        icon: 'tag',
+        icon: 'tags',
       }
     ]
   },
@@ -80,5 +80,16 @@ module.exports = [
     path: '/store',
     name: '店铺管理',
     icon: 'tag',
+  },
+  {
+    name: '供应链管理',
+    icon: 'tag',
+    items: [
+      {
+        path: '/supply/warehouse',
+        name: '仓库管理',
+        icon: 'tags',
+      }
+    ]
   }
 ]
