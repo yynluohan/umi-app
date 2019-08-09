@@ -74,6 +74,8 @@ VTSet({
 window.localStorage.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEwMDEiLCJ1c2VySWQiOiI4NzY3MDgwODI0MzcxOTc4MjciLCJhY2NvdW50IjoiYWRtaW4iLCJpYXQiOjE1NjUyNDk2MzAsImp0aSI6Ijg3NjcwODA4MjQzNzE5NzgyNyIsInN1YiI6ImFkbWluIiwiZXhwIjoxNTY1NTA4ODMwfQ.Y_emEyd9i6j2QJZKTQCJyV3g_hTD-K4n7cBJ3j1bL2VM4a2kdMApqPG8rYtBPBAMIi3y9Y4eXGZoZrRgFmsdEQ'
 // window.localStorage.token = 'eyJsb2dpbl9uYW1lIjoiYWRtaW4iLCJpZCI6IjEiLCJ0b2tlbiI6ImIzN2Y5ODczY2JmNDkwNWNlZjMzZWE3NzllOWEwNzkwN2M1OGIwZjAifQ=='
 
+// window.localStorage.token = 'eyJsb2dpbl9uYW1lIjoiYWRtaW4iLCJpZCI6IjEiLCJ0b2tlbiI6ImIzN2Y5ODczY2JmNDkwNWNlZjMzZWE3NzllOWEwNzkwN2M1OGIwZjAifQ=='
+
 window.MC = {
   HASH: '',
   HOST:'http://192.168.3.16:8080',

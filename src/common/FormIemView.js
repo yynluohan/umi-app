@@ -100,8 +100,8 @@ class FormIemView extends React.Component {
                         let a = 6,
                             b= 18;
                         if (k.span && k.span == 24) {
-                          a = 3;
-                          b = 21
+                          a = 2;
+                          b = 22
                         }
                         return (
                           <Col key={i} span={k.span || 24/spanNumber}>
