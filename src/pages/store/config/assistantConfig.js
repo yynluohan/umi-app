@@ -14,9 +14,37 @@ export default {
         },
         actions:[
           {
-            title: '添加店员',type:'path',
+            title: '添加',type:'modal',
             options:{
-              path: '/store/addStore'
+              modalTitle:'添加店员',
+              modalWidth:900,
+              items:[
+                {
+                  layout: 'BaseFormLayout',
+                  component: 'BaseForm',
+                  config: {
+                    API:{
+                      createAPI:'/api/store/assistants'
+                    },
+                    fields: [
+                      { field: 'name', label: '选择员工',type:'select-fetch',rules: ['required'],
+                        options: {
+                          API: '/rest/staff',
+                          label: 'name',
+                          value: 'id'
+                        }
+                      },
+                      { field: 'code', label: '店员编号',type:'input' },
+                      { field: 'isDirector',label: '选择职称',type:'select',
+                        options: [
+                          { label: '店长',value: 0},
+                          { label: '店员',value: 1}
+                        ]
+                      },
+                    ]
+                  }
+                }
+              ]
             }
           }
         ],

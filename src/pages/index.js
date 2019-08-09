@@ -8,9 +8,8 @@ export default function () {
       <div>index2</div>
       <bdo dir='rtl'>this is a text</bdo>
       <mark>123</mark>
-      <div draggable="true">
-        AAAAAAAAAAAAAAA
-      </div>
+      <input type='color'/>
+      <p draggable="true" ondragstart="alert('dragstart')">Drag me!Drag me!!</p>
       <form action="www.camnpr.com/" method="post">
         <input list="jslib" name="jslib"/>
         <datalist id="jslib">

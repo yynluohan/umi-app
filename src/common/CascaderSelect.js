@@ -11,7 +11,6 @@ export default class CascaderSelect extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('88888',nextProps)
     if (nextProps.data) {
       this.setState({
         data: nextProps.data && nextProps.data.length > 0 ? nextProps.data : this.state.data
@@ -20,11 +19,9 @@ export default class CascaderSelect extends React.Component {
   }
 
   componentWillMount(a,b) {
-    console.log('8999',a,b)
   }
 
   onChange = (value) => {
-    console.log('666660.',value)
     if (this.props.onChange) {
       let text = '';
       value.length > 0 && value.map((item,index) => {
@@ -45,8 +42,6 @@ export default class CascaderSelect extends React.Component {
 
     const { list } = this.props;
     const { data } = this.state;
-
-    console.log('YYY',data)
 
     const value = data.length > 0 ? {
       value: data

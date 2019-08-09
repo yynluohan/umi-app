@@ -72,11 +72,10 @@ export default {
             title:'查看',action:'path',
             options:{
               path:'/store/viewStore',
-              // permission:'apply.view',
-              // location:true
               queryData:(records) => {
                 const data = {
                   id:records.id,
+                  warehouseId: records.warehouseId,
                 }
                 return data
               }

@@ -64,7 +64,7 @@ class AddStoreForm extends React.Component {
    const { item } = this.state;
 
    const fieldOptionInputProps = {
-     apiUrl: '/api/wms/warehouses',
+     apiUrl: '/api/crud/store/warehouses',
      method: query,
      getway:{
        'name': 'warehouseName',
@@ -104,21 +104,17 @@ class AddStoreForm extends React.Component {
           </Col>
           <Col span={12}>
             <FormItem label='仓库' hasFeedback {...formItemLayout()}>
-              {getFieldDecorator('warehouseName', {
-                initialValue: item.warehouseName,
+              {getFieldDecorator('warehouseId', {
+                initialValue: item.warehouseId,
                 rules: [
                   {
                     required: true,
                   },
                 ],
               })(
-                <Select>
-                  <Select.Option value='AAA'>AAA</Select.Option>
-                  <Select.Option value='BBB'>BBB</Select.Option>
-                </Select>
+                <FieldOptionInput {...fieldOptionInputProps}/>
               )}
             </FormItem>
-            {/*<FieldOptionInput {...fieldOptionInputProps}/>*/}
           </Col>
 
           <Col span={12}>

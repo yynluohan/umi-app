@@ -24,7 +24,9 @@ const formItemLayout = (a,b) => {
 
 const ViewStore = ({ dispatch,store }) => {
 
-  const { item } = store;
+  console.log('7777660',assistantConfig)
+
+  const { item,warehouseId,id } = store;
 
   const imgStyle = {
     wordWrap: 'break-word'
@@ -77,6 +79,8 @@ const ViewStore = ({ dispatch,store }) => {
   function callback(key) {
     console.log(key);
   }
+
+  assistantConfig.items[0].config.API.listAPI += `?storeId=${id}`
 
   return (
     <div>

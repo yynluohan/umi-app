@@ -8,7 +8,8 @@ export default {
   namespace: 'store',
   state: {
     item: {},
-    id: ''
+    id: '',
+    warehouseId: '', //仓库id
   },
 
 
@@ -16,6 +17,7 @@ export default {
     setup({ dispatch, history }) {
       history.listen((location) => {
         const query = getArgment(location.search);
+        console.log('9220',query)
         if (location.pathname === '/store/editStore' || location.pathname === '/store/viewStore') {
           const obj = {
             '/store/editStore':`/api/store/stores/${query.id}`,
@@ -24,7 +26,8 @@ export default {
           dispatch({
             type: 'save',
             payload:{
-              id: query.id
+              id: query.id,
+              warehouseId: query.warehouseId
             }
           })
           dispatch({
