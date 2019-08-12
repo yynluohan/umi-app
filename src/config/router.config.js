@@ -91,5 +91,16 @@ module.exports = [
         icon: 'tags',
       }
     ]
+  },
+  {
+    name: '系统管理',
+    icon: 'tag',
+    items: [
+      {
+        path: '/sys/rule',
+        name: '规则配置',
+        icon: 'tags',
+      }
+    ]
   }
 ]

@@ -53,10 +53,14 @@ export default {
           { field: 'status',label: '状态',valueType:'showStatus',width:150,
             options: {
               statusMap: {
-                'BUSINESS':'正在营业'
+                'BUSINESS':'正在营业',
+                'CLOSED':'已关闭',
+                'REST':'休息中'
               },
               colorMap:{
-                'BUSINESS': 'rgb(82, 196, 26)'
+                'BUSINESS': 'rgb(82, 196, 26)',
+                'CLOSED':'rgb(245, 34, 45)',
+                'REST':'rgb(16, 142, 233)'
               }
             }
           },
@@ -91,6 +95,33 @@ export default {
                 }
                 return data
               }
+            }
+          },
+          {
+            title: '店铺休息',action:'request',
+            options:{
+              expectedField:[['status']],
+              expectedValue:[['BUSINESS']],
+              API:'/api/store/stores/(id)/action/rest',
+              method:'post'
+            }
+          },
+          {
+            title: '关闭店铺',action:'request',
+            options:{
+              expectedField:[['status']],
+              expectedValue:[['BUSINESS']],
+              API:'/api/store/stores/(id)/action/closed',
+              method:'post'
+            }
+          },
+          {
+            title: '正在营业',action:'request',
+            options:{
+              expectedField:[['status']],
+              expectedValue:[['REST','CLOSED']],
+              API:'/api/store/stores/(id)/action/business',
+              method:'post'
             }
           },
           {

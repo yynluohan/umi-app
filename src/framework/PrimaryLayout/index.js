@@ -67,7 +67,7 @@ export default function PrimaryLayout({ location, children }) {
     <Layout className="ant-layout-has-sider" style={token ? { marginTop: '84px'} : {}}>
       {
         token ?
-        <Sider width={200} style={{ background: '#fff',minHeight:'calc(100vh - 108px)' }}>
+        <Sider width={200} style={{ background: '#fff',minHeight:'calc(100vh - 108px)'}}>
           <LeftNav path={location.pathname} />
         </Sider>
         : ''

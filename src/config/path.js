@@ -87,5 +87,11 @@ module.exports = [
       { path: '/supply/warehouseEdit' },
       { path: '/supply/warehouseView' }
     ]
+  },
+  {
+    name: '系统管理',
+    items: [
+      { path: '/sys/rule' }
+    ]
   }
 ]
