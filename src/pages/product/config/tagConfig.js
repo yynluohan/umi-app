@@ -30,7 +30,7 @@ module.exports = {
               modalWidth:900,
               items:[
                 {
-                  layout: 'Empty',
+                  layout: 'BaseFormLayout',
                   component: 'BaseForm',
                   config: {
                     API:{
@@ -63,7 +63,7 @@ module.exports = {
               layout: 'Empty',
               items:[
                 {
-                  layout: 'Empty',
+                  layout: 'BaseFormLayout',
                   component: 'BaseForm',
                   config: {
                     API: {

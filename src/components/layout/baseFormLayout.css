@@ -2,23 +2,20 @@
 
 }
 
-.continer div:first-child div:first-child div:first-child form {
+.continer>div>div>div>form>div{
   display: flex;
   flex-wrap: wrap;
 }
 
-.continer div:first-child div:first-child div:first-child form>div {
-  width: 45%;
+.continer>div>div>div form>div div {
+  width: 48%;
   display: flex;
   align-items: center;
-  margin-bottom: 35px;
+  margin-bottom: 24px;
+  margin-right: 2%;
 }
 
-.continer div:first-child div:first-child div:first-child form div input {
-  width: 80%;
-}
-
-.continer div:first-child div:first-child div:first-child form div label {
-  width: 20%;
+.continer>div>div>div form>div div label {
+  width:30%;
   text-align: right;
 }

@@ -102,5 +102,61 @@ module.exports = [
         icon: 'tags',
       }
     ]
+  },
+  {
+    name: '配置管理',
+    icon: 'tag',
+    items: [
+      {
+        name: '商城配置',
+        path: '/config/mall',
+        icon: 'tags'
+      },
+      {
+        name: '微信配置',
+        path: '/config/wechat',
+        icon: 'tags'
+      },
+      {
+        name: '支付宝配置',
+        path: '/config/alipay',
+        icon: 'tags'
+      },
+      {
+        name: '商品配置',
+        path: '/config/goods',
+        icon: 'tags'
+      },
+      {
+        name: '优惠券配置',
+        path: '/config/coupon',
+        icon: 'tags'
+      },
+      {
+        name: '商城链接配置',
+        path: '/config/mallLink',
+        icon: 'tags'
+      },
+      {
+        name: '商城链接小程序配置',
+        path: '/config/smallProgram',
+        icon: 'tags'
+      },
+      {
+        name: '内部系统访问配置',
+        path: '/config/internalSys',
+        icon: 'tags'
+      },
+      {
+        name: '打印配置',
+        path: '/config/print',
+        icon: 'tags'
+      },
+      {
+        name: '其他配置',
+        path: '/config/other',
+        icon: 'tags'
+      }
+    ]
   }
 ]

@@ -13,7 +13,7 @@ module.exports = [
         items: [
           { path: '/product/categroyAdd' },
           { path: '/product/categroyEdit' },
-          { path: '/product/categroyView' }
+          { path: '/product/categroyView' },
         ]
       },
       {
@@ -22,7 +22,7 @@ module.exports = [
         items: [
           { path: '/product/productAdd' },
           { path: '/product/productEdit' },
-          { path: '/product/productView' }
+          { path: '/product/productView' },
         ]
       },
       {
@@ -35,7 +35,7 @@ module.exports = [
         items: [
           { path: '/product/trialAdd' },
           { path: '/product/trialEdit' },
-          { path: '/product/trialView' }
+          { path: '/product/trialView' },
         ]
       },
       {
@@ -48,7 +48,7 @@ module.exports = [
         items: [
           { path: '/product/freightAdd' },
           { path: '/product/freightEdit' },
-          { path: '/product/freightView' }
+          { path: '/product/freightView' },
         ]
       },
       { path: '/product/brand', name: '品牌管理', }
@@ -64,10 +64,10 @@ module.exports = [
           { path: '/order/orderView' },
         ]
       },
-      { path: '/order/offline', name: '线下订单', },
-      { path: '/order/refund', name: '退货处理', },
-      { path: '/order/trialApplication', name: '试用装申请', },
-      { path: '/order/setExpress', name: '快递设置', }
+      { path: '/order/offline', name: '线下订单'},
+      { path: '/order/refund', name: '退货处理' },
+      { path: '/order/trialApplication', name: '试用装申请' },
+      { path: '/order/setExpress', name: '快递设置' }
     ]
   },
   {
@@ -92,6 +92,21 @@ module.exports = [
     name: '系统管理',
     items: [
       { path: '/sys/rule' }
+    ]
+  },
+  {
+    name: '配置管理',
+    items: [
+      { path: '/config/mall' },
+      { path: '/config/wechat'},
+      { path: '/config/alipay'},
+      { path: '/config/goods'},
+      { path: '/config/coupon'},
+      { path: '/config/mallLink'},
+      { path: '/config/smallProgram'},
+      { path: '/config/internalSys'},
+      { path: '/config/print'},
+      { path: '/config/other'}
     ]
   }
 ]

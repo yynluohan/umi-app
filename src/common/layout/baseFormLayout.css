@@ -2,7 +2,7 @@
 
 }
 
-.continer div:first-child div:first-child div:first-child form {
+/* .continer div:first-child div:first-child div:first-child form {
   display: flex;
   flex-wrap: wrap;
 }
@@ -21,4 +21,4 @@
 .continer div:first-child div:first-child div:first-child form div label {
   width: 20%;
   text-align: right;
-}
+} */
