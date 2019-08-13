@@ -5,14 +5,15 @@ import { getArgment } from '../framework/utils/parameter';
 export default {
   namespace: 'config',
   state: {
-
+    
   },
 
 
   subscriptions: {
     setup({ dispatch, history }) {
       history.listen((location) => {
-        const query = getArgment(location.search)
+        const query = getArgment(location.search);
+
       });
     },
   },
