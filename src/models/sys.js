@@ -52,8 +52,6 @@ export default {
         'BRAND': brandItem,
         'PRIVACY_POLICY': privacyItem
       }
-
-      console.log('5555',type)
       let result = '';
       if (obj[type].id) {
         result = yield call(update,`/api/term/config/${obj[type].id}`,{...payload})
