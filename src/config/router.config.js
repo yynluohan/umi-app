@@ -100,6 +100,16 @@ module.exports = [
         path: '/sys/rule',
         name: '规则配置',
         icon: 'tags',
+      },
+      {
+        path: '/sys/adGroup',
+        name: '广告组',
+        icon: 'tags'
+      },
+      {
+        path: '/sys/advertising',
+        name: '广告',
+        icon: 'tags'
       }
     ]
   },

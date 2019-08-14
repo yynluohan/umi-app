@@ -7,7 +7,7 @@
   flex-wrap: wrap;
 }
 
-.continer>div>div>div form>div div {
+.continer>div>div>div form>div>div {
   width: 48%;
   display: flex;
   align-items: center;
@@ -15,7 +15,7 @@
   margin-right: 2%;
 }
 
-.continer>div>div>div form>div div label {
+.continer>div>div>div form>div div>label {
   width:30%;
   text-align: right;
 }
