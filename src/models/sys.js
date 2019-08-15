@@ -11,6 +11,7 @@ export default {
     brandItem: {},
     privacyItem: {},
     type: 'VIP_RULES',
+    item:{}
   },
 
 
@@ -23,11 +24,41 @@ export default {
             type: 'query',
           })
         }
+        if (location.pathname === '/sys/adGroupView') {
+          const obj = {
+            '/sys/adGroupView':`/api/ad/groups/${query.id}`,
+          }
+          dispatch({
+            type: 'save',
+            payload:{
+              id: query.id
+            }
+          })
+          dispatch({
+            type: 'onView',
+            payload:{
+              url: obj[location.pathname]
+            }
+          })
+        }
       });
     },
   },
 
   effects: {
+
+    *onView({ payload }, { call, put }) {  // eslint-disable-line
+      const result = yield call(query,payload.url);
+      if (result.code === 200) {
+        yield put({
+          type: 'save',
+          payload:{
+            item: result.data || {}
+          }
+        })
+      }
+    },
+
     *query({ payload },{ call,put,select }) {
       const vipResult = yield call(query,'/api/term/config',{type: 'VIP_RULES'})
       const redictResult = yield call(query,'/api/term/config',{type: 'CREDIT_RULES'})

@@ -3,16 +3,14 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import advertisingConfig from './config/advertisingConfig.js';
 
-class Advertising extends React.Component {
+const Advertising = ({ dispatch,sys }) => {
 
-  render() {
+  return (
+    <div>
+      <ZEle namespace='sys'  config={advertisingConfig} />
+    </div>
+  )
 
-    return (
-      <div>
-        <ZEle namespace='sys'  config={advertisingConfig} />
-      </div>
-    )
-  }
 }
 
 function mapStateToProps(state) {

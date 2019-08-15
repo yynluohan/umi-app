@@ -42,7 +42,8 @@ module.exports = {
                         options: {
                           API: '/api/ad/groups',
                           label:'name',
-                          value:'id'
+                          value:'id',
+                          dataField: 'data'
                         }
                       },
                       { field: 'enabled', label: '是否启用',type:'radio',
@@ -124,7 +125,8 @@ module.exports = {
                         options: {
                           API: '/api/ad/groups',
                           label:'name',
-                          value:'id'
+                          value:'id',
+                          dataField: 'data'
                         }
                       },
                       { field: 'enabled', label: '是否启用',type:'radio',

@@ -92,7 +92,11 @@ module.exports = [
     name: '系统管理',
     items: [
       { path: '/sys/rule' },
-      { path: '/sys/adGroup'},
+      { path: '/sys/adGroup',
+        items: [
+          { path: '/sys/adGroupView'}
+        ]
+      },
       { path: '/sys/advertising'}
     ]
   },

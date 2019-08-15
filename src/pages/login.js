@@ -134,7 +134,6 @@ class Login extends React.Component {
      </Form>
     )
   }
-
 }
 
 function mapStateToProps(state) {

@@ -3,6 +3,27 @@ import styles from './index.css';
 
 export default function () {
 
+
+  const obj = {
+    a:undefined,
+    b:'123',
+    c:'456'
+  }
+
+  function filter(data) {
+    let obj = {};
+    if (Object.keys(data).length > 0) {
+      for (let key in data) {
+        if (data[key] != undefined) {
+          obj[key] = data[key]
+        }
+      }
+    }
+    return obj
+  }
+
+  console.log('11111 ',filter(obj))
+
   return (
     <div>
       <div className={styles.style}>

@@ -51,6 +51,18 @@ module.exports = {
         ],
         operation: [
           {
+            title: '查看',action: 'path',
+            options:{
+              path:'/sys/adGroupView',
+              queryData:(records) => {
+                const data = {
+                  id:records.id,
+                }
+                return data
+              }
+            }
+          },
+          {
             title: '编辑', action: 'modal',
             options:{
               modalTitle:'编辑广告组',

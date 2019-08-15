@@ -3,16 +3,12 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import adGroupConfig from './config/adGroupConfig.js';
 
-class AdGroup extends React.Component {
-
-  render() {
-
-    return (
-      <div>
-        <ZEle namespace='sys'  config={adGroupConfig} />
-      </div>
-    )
-  }
+const AdGroup = ({ dispatch,sys }) => {
+  return (
+    <div>
+      <ZEle namespace='sys'  config={adGroupConfig} />
+    </div>
+  )
 }
 
 function mapStateToProps(state) {
