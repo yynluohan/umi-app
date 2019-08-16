@@ -12,10 +12,15 @@
   display: flex;
   align-items: center;
   margin-bottom: 24px;
-  margin-right: 2%;
+  /* margin-right: 2%; */
 }
 
-.continer>div>div>div form>div div>label {
+.continer>div>div>div form>div>div>label{
   width:30%;
   text-align: right;
+}
+
+.continer>div>div>div form>div>div>div,
+.continer>div>div>div form>div>div>input {
+  width:70%;
 }

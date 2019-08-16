@@ -3,26 +3,10 @@ import styles from './index.css';
 
 export default function () {
 
-
-  const obj = {
-    a:undefined,
-    b:'123',
-    c:'456'
-  }
-
-  function filter(data) {
-    let obj = {};
-    if (Object.keys(data).length > 0) {
-      for (let key in data) {
-        if (data[key] != undefined) {
-          obj[key] = data[key]
-        }
-      }
-    }
-    return obj
-  }
-
-  console.log('11111 ',filter(obj))
+  const arr = 'hello';
+  console.log(111,arr[5]);
+  console.log(222,arr.charAt(0));
+  // console.log(333,arr.at(0))
 
   return (
     <div>

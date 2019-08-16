@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import FormIemView from '../../common/FormIemView'
+import FormIemView from '../../common/FormIemView';
 
 const AdGroupView = ({ dispatch,sys }) => {
 
@@ -14,7 +14,10 @@ const AdGroupView = ({ dispatch,sys }) => {
         columns:[
           {title: '广告名',value: 'name'},
           {title: '是否启用',value: 'enabled',valueMap: {0:'禁用',1:'启用'}},
-          {title: '链接',value: 'targetUrl'},
+          {title: '轮播策略',value: 'strategyStr'},
+          {title: '类型',value: 'type'},
+          {title: '图片',value: 'logo'},
+          {title: '目标链接',value: 'targetUrl'},
         ]
       }
     ]
@@ -25,7 +28,6 @@ const AdGroupView = ({ dispatch,sys }) => {
       <FormIemView {...formItemProps}/>
     </div>
   )
-
 }
 
 function mapStateToProps(state) {

@@ -14,7 +14,7 @@ class Index extends React.Component {
           clearInterval(myVar)
           window.location.href = '#/';
         } else {
-          time.innerHTML = time.innerHTML-1;
+          time.innerHTML --;
         }
       }
      }, 1000);

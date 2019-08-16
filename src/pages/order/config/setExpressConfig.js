@@ -60,7 +60,7 @@ export default {
           }
         ],
         fields: [
-          { field: 'code',label: '编号'},
+          { field: 'id',label: '编号'},
           { field: 'name',label: '名称'},
           { field: 'code',label: '代码'},
           { field: 'isDefault',label: '是否默认',valueType:'showStatus',
