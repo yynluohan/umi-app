@@ -41,7 +41,6 @@ export default class PicturesWall extends React.Component {
 
   handleChange = ({ fileList }) => {
     this.setState({ fileList })
-    console.log('9999',fileList)
     if (this.props.onChange) {
       let list = [];
       fileList.length > 0 && fileList.map((item,index) => {
@@ -61,7 +60,6 @@ export default class PicturesWall extends React.Component {
   render() {
     const { previewVisible, previewImage, fileList,maxNumber } = this.state;
 
-    console.log('7777',fileList)
     const uploadButton = (
       <div>
         <Icon type="plus" />

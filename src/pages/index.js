@@ -3,10 +3,18 @@ import styles from './index.css';
 
 export default function () {
 
-  const arr = 'hello';
-  console.log(111,arr[5]);
-  console.log(222,arr.charAt(0));
-  // console.log(333,arr.at(0))
+  var list = ['a','b','c','d','a','c','a'];
+  const obj = list.reduce(function(x,y) {
+    if (y in x) {
+      x[y] += 1
+    } else {
+      x[y] = 0
+    }
+    return x
+  },{})
+
+  console.log('555',obj)
+
 
   return (
     <div>

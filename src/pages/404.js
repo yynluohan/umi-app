@@ -22,11 +22,6 @@ class Index extends React.Component {
 
   render() {
 
-    const time = document.getElementById("time");
-    if (time) {
-      this.getInter()
-    }
-
     const style = {
       display: 'flex',
       justifyContent: 'center',
