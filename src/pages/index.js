@@ -3,18 +3,11 @@ import styles from './index.css';
 
 export default function () {
 
-  var list = ['a','b','c','d','a','c','a'];
-  const obj = list.reduce(function(x,y) {
-    if (y in x) {
-      x[y] += 1
-    } else {
-      x[y] = 0
-    }
-    return x
-  },{})
+  var list = ['a', 1, true];
 
-  console.log('555',obj)
-
+  console.log(list.includes(1,1));
+  console.log(list.includes(1,2));
+  console.log(list.includes(1,-4));
 
   return (
     <div>

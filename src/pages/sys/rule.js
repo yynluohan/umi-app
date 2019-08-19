@@ -50,7 +50,6 @@ const Rule = ({ dispatch,sys }) => {
   )
 }
 
-
 function mapStateToProps(state) {
   return {
     sys: state.sys

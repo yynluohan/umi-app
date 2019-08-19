@@ -27,7 +27,6 @@ const formItemLayout = (a,b) => {
   // componentDidUpdate(a,b) {
   //   const { getFieldsValue } = this.props.form;
   //   const content = getFieldsValue().content;
-  //   console.log('lllll',content)
   //   if (this.props.onGetValue) {
   //     this.props.onGetValue(content.toHTML())
   //   }

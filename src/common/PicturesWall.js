@@ -23,7 +23,7 @@ export default class PicturesWall extends React.Component {
   }
 
   componentWillUnmount(a,b) {
-    console.log('update',a,b)
+    // console.log('update',a,b)
   }
 
   handleCancel = () => this.setState({ previewVisible: false });

@@ -17,7 +17,6 @@ export default {
     setup({ dispatch, history }) {
       history.listen((location) => {
         const query = getArgment(location.search);
-        console.log('9220',query)
         if (location.pathname === '/store/editStore' || location.pathname === '/store/viewStore') {
           const obj = {
             '/store/editStore':`/api/store/stores/${query.id}`,

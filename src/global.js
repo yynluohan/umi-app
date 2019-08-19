@@ -15,7 +15,6 @@ import onPath from './listAction/onPath';
 import path from './listAction/path';
 
 setEndpoint('http://192.168.3.16:8080')
-// setEndpoint('https://www.muaskin.com')
 
 // saveToken({
 //   token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwiYWNjb3VudCI6ImFkbWluIiwiaWF0IjoxNTYxMTcyMzMyLCJqdGkiOiIxIiwic3ViIjoiYWRtaW4iLCJleHAiOjE1NjE0MzE1MzJ9.EwlEBQBhdzbJUTWNCjorE9ECK2WTbCejO4Q86W_ezUHoZu7cmjprRbZnYJhZTHH2_9GFphRNq1sdjBUmcqyaAQ',
@@ -71,7 +70,7 @@ VTSet({
   'showStatus': (record) => record.data.record[record.field] != undefined ? showStatus(record) : ''
 })
 
-window.localStorage.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEwMDEiLCJ1c2VySWQiOiI4NzY3MDgwODI0MzcxOTc4MjciLCJhY2NvdW50IjoiYWRtaW4iLCJpYXQiOjE1NjU4MzU1NTEsImp0aSI6Ijg3NjcwODA4MjQzNzE5NzgyNyIsInN1YiI6ImFkbWluIiwiZXhwIjoxNTY2MDk0NzUxfQ.9cEhsjwi3iQt8UUaTRuvOf7CNFWnNJOx3XEioWDiTN-ec8SVdwHeq-UrTiUM8akP6KKz1MuV9zZuUlhKguUG_g'
+window.localStorage.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEwMDEiLCJ1c2VySWQiOiI4NzY3MDgwODI0MzcxOTc4MjciLCJhY2NvdW50IjoiYWRtaW4iLCJpYXQiOjE1NjYxODAzNDcsImp0aSI6Ijg3NjcwODA4MjQzNzE5NzgyNyIsInN1YiI6ImFkbWluIiwiZXhwIjoxNTY2NDM5NTQ3fQ.rJjlToWRX6Ef1KCfN3OjuPguCUB4v9-P1KYypwglY0jYN6D-XCneFeMPWNQcqZsZYLLHm8fJLmSUkErtMqCvZQ'
 // window.localStorage.token = 'eyJsb2dpbl9uYW1lIjoiYWRtaW4iLCJpZCI6IjEiLCJ0b2tlbiI6ImIzN2Y5ODczY2JmNDkwNWNlZjMzZWE3NzllOWEwNzkwN2M1OGIwZjAifQ=='
 
 // window.localStorage.token = 'eyJsb2dpbl9uYW1lIjoiYWRtaW4iLCJpZCI6IjEiLCJ0b2tlbiI6ImIzN2Y5ODczY2JmNDkwNWNlZjMzZWE3NzllOWEwNzkwN2M1OGIwZjAifQ=='
