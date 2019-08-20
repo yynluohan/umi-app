@@ -4,6 +4,15 @@ module.exports = [
     path: '/'
   },
   {
+    path: '/login'
+  },
+  {
+    path: '/register'
+  },
+  {
+    path: '/resetPassword'
+  },
+  {
     name: '产品管理',
     icon: 'tag',
     items: [

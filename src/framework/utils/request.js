@@ -59,7 +59,14 @@ export default function request(url, options) {
     delete opts.headers['Content-Type'];
   }
 
-  const finalUrl = getEndpoint() + url;
+  let finalUrl = '';
+  if (url.indexOf('https://') > -1 || url.indexOf('http://') > -1) {
+    finalUrl = url
+  } else {
+    finalUrl = getEndpoint() + url;
+  }
+
+  // const finalUrl = getEndpoint() + url;
   return fetch(finalUrl, opts)
     .then(checkServerError)
     .then(parseJSON)

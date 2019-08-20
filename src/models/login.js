@@ -27,28 +27,55 @@ export default {
             })
           }
         }
-      });
+
+        if(location.pathname === '/') {
+          if (!window.localStorage.token) {
+            window.location.href = '#/login'
+          }
+        }
+      })
     },
   },
 
   effects: {
 
     *create({ payload },{ call,put }) {
-      const result = yield call(create,'/api/sys/oauth/login',{...payload});
+      const result = yield call(create,`${window.MC.BASEURL}/api/sys/oauth/login`,{...payload});
       if (result.code == 200) {
         message.success('登录成功！')
         window.localStorage.token = result.data.accessToken;
         window.localStorage.username = payload.account;
-        window.localStorage.perms = result.data.perms;
-        const menuData = yield call(query,'/api/sys/users/menus');
-        if (menuData.code === 200) {
-          window.localStorage.menuList = JSON.stringify(menuData.data)
-        } else {
-          notification.error({ message: menuData.message })
-        }
+        // window.localStorage.perms = result.data.perms;
+        // const menuData = yield call(query,'/api/sys/users/menus');
+        // if (menuData.code === 200) {
+        //   window.localStorage.menuList = JSON.stringify(menuData.data)
+        // } else {
+        //   notification.error({ message: menuData.message })
+        // }
         setTimeout(function() {
            window.location.href = '#' + '/';
-           window.location.reload()
+        },50)
+      } else {
+        message.error(result.message)
+      }
+    },
+
+    *onRegister({ payload },{ call,put,select }) {
+      const { registeredGithubUsername } = yield select(({ login }) => login)
+      let data = {...payload}
+      if (registeredGithubUsername) {
+        data.registeredGithubUsername = registeredGithubUsername
+      }
+      let result = '';
+      if (registeredGithubUsername) {
+        result = yield call(create,`${window.MC.BASEURL}/api/sys/oauth/bind`,data);
+      } else {
+        result = yield call(create,`${window.MC.BASEURL}/api/sys/oauth/register`,data);
+      }
+      if (result.code == 200) {
+        message.success(`${registeredGithubUsername ? '绑定成功！' : '注册成功！'}`)
+        setTimeout(function() {
+          window.location.href = '#/login'
         },50)
       } else {
         message.error(result.message)

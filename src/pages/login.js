@@ -1,7 +1,8 @@
 import React from 'react';
 import { Input,Form } from 'antd';
-import styles from '../css/login.css';
+import styles from './css/login.css';
 import { connect } from 'dva';
+import { routerRedux } from 'dva/router'
 
 const FormItem = Form.Item;
 
@@ -38,6 +39,14 @@ class Login extends React.Component {
     })
   }
 
+  onRegister = () => {
+    this.props.dispatch(routerRedux.push('/register'))
+  }
+
+  onForgot = () => {
+    this.props.dispatch(routerRedux.push('/resetPassword'))
+  }
+
   render() {
 
     const { modalVisible,codeUrl } = this.state;
@@ -49,6 +58,7 @@ class Login extends React.Component {
           <div className={styles.content}>
             <div className={styles.top}>
               <div>登录</div>
+              <div onClick={() => this.onRegister()}>注册</div>
             </div>
             <FormItem style={{width:'70%',marginTop:'0.5em'}}>
               {getFieldDecorator('account', {
@@ -120,7 +130,7 @@ class Login extends React.Component {
             </div>
 
             <div className={styles.footBut}>
-              <a href={`${window.MC.HOST}/api/pub/github/login`}>
+              <a href={`${window.MC.BASEURL}/api/pub/github/login`}>
                 <img src='http://www.333cn.com/graphic/hyzx/h005/h28/img201304181451523.png'
                   alt='github账户登录'
                   onMouseEnter = {() => this.setState({modalVisible: true})}

@@ -41,7 +41,7 @@ export default function PrimaryLayout({ location, children }) {
 
   function onLoginOut() {
     window.localStorage.token = '';
-    window.location.href = window.MC.HASH + '/login'
+    window.location.href = '#' + '/login'
   }
 
   const toDoContent = (
@@ -56,8 +56,8 @@ export default function PrimaryLayout({ location, children }) {
       <Header className="header" style={{ color: '#fff',padding: '0 20px',position: 'fixed',width:'100%',zIndex:1100}}>
         <div style={{ display: 'flex',justifyContent: 'space-between'}}>
           <div>product management</div>
-          <Popover content={toDoContent} placement='left'>
-            <span>admin</span>
+          <Popover content={toDoContent} >
+            <span>{window.localStorage.username || ''}</span>
           </Popover>
         </div>
       </Header>

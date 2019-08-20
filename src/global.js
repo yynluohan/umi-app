@@ -32,18 +32,6 @@ LayoutSet({
   'BaseFormLayout': BaseFormLayout
 })
 
-// const showStatus = (record) => {
-//   let style =  {};
-//   if (record.data.record.status) {
-//     style = {
-//       color: '#fff',padding:'0.3em',borderRadius:'3px',
-//       backgroundColor: record.data.record.status != 'OFFSELL' ? '#428bca' : '#777',
-//     }
-//   }
-//   return <span style={style}>
-//     { record.data.record.status ? record.options.statusMap[record.data.record.status] : '' }
-//   </span>
-// }
 
 const showImage = (record) => {
   return (
@@ -71,15 +59,11 @@ VTSet({
 })
 
 // window.localStorage.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEwMDEiLCJ1c2VySWQiOiI4NzY3MDgwODI0MzcxOTc4MjciLCJhY2NvdW50IjoiYWRtaW4iLCJpYXQiOjE1NjYxODAzNDcsImp0aSI6Ijg3NjcwODA4MjQzNzE5NzgyNyIsInN1YiI6ImFkbWluIiwiZXhwIjoxNTY2NDM5NTQ3fQ.rJjlToWRX6Ef1KCfN3OjuPguCUB4v9-P1KYypwglY0jYN6D-XCneFeMPWNQcqZsZYLLHm8fJLmSUkErtMqCvZQ'
-// window.localStorage.token = 'eyJsb2dpbl9uYW1lIjoiYWRtaW4iLCJpZCI6IjEiLCJ0b2tlbiI6ImIzN2Y5ODczY2JmNDkwNWNlZjMzZWE3NzllOWEwNzkwN2M1OGIwZjAifQ=='
-
-// window.localStorage.token = 'eyJsb2dpbl9uYW1lIjoiYWRtaW4iLCJpZCI6IjEiLCJ0b2tlbiI6ImIzN2Y5ODczY2JmNDkwNWNlZjMzZWE3NzllOWEwNzkwN2M1OGIwZjAifQ=='
 
 window.MC = {
   HASH: '',
   HOST:'http://192.168.3.16:8080',
-  // HOST:'https://www.muaskin.com',
-  UPLOADHOST:'http://192.168.3.28:8088',
   DATETIMEFORMAT:'YYYY/MM/DD HH:mm:ss',
   DATAFORMAT:'YYYY/MM/DD',
+  BASEURL:'http://192.168.3.28:8088'
 }
