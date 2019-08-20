@@ -11,6 +11,24 @@ const { Header, Content, Sider } = Layout;
 
 export default function PrimaryLayout({ location, children }) {
 
+
+  const onQuery = () => {
+    window.scrollTo(0,0);
+    window.onbeforeunload = function() {
+      var n = window.event.screenX - window.screenLeft;
+      var b = n > document.documentElement.scrollWidth - 20;
+      if (b && window.event.clientY < 0 || window.event.altKey) {
+        console.log("这是一个关闭操作");
+      } else {
+        window.scrollTo(0,0);
+      }
+     }
+  }
+
+  if (children) {
+    onQuery()
+  }
+
   function checkPath(data) {
     let isTrue = false;
     function mapPath(data) {
@@ -45,7 +63,9 @@ export default function PrimaryLayout({ location, children }) {
   }
 
   const toDoContent = (
-    <Icon type="logout" style={{cursor:'pointer'}} onClick={onLoginOut}/>
+    <div title='退出登录'>
+      <Icon type="logout" style={{cursor:'pointer'}} onClick={onLoginOut}/>
+    </div>
   )
 
   const token = window.localStorage.token || '';
@@ -56,7 +76,7 @@ export default function PrimaryLayout({ location, children }) {
       <Header className="header" style={{ color: '#fff',padding: '0 20px',position: 'fixed',width:'100%',zIndex:1100}}>
         <div style={{ display: 'flex',justifyContent: 'space-between'}}>
           <div>product management</div>
-          <Popover content={toDoContent} >
+          <Popover content={toDoContent}>
             <span>{window.localStorage.username || ''}</span>
           </Popover>
         </div>

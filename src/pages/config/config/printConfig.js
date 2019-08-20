@@ -12,8 +12,8 @@ module.exports = {
           createAPI: '/api/crud/configmanagement/configs/printConfig',
         },
         fields: [
-          { field: 'a', label: '订单打印LOGO', type: 'input' },
-          { field: 'b', label: '订单打印标题', type: 'input' },
+          { field: 'logo', label: '订单打印LOGO', type: 'input' },
+          { field: 'title', label: '订单打印标题', type: 'input' },
         ],
       },
     }
