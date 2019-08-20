@@ -27,6 +27,8 @@ export default {
         if (location.pathname === '/sys/adGroupView') {
           const obj = {
             '/sys/adGroupView':`/api/ad/groups/${query.id}`,
+            // 'wechatTemplateEdit': ``,
+            // '/sys/wechatTemplateView': ``
           }
           dispatch({
             type: 'save',
@@ -90,7 +92,27 @@ export default {
         result = yield call(create,'/api/term/config',{...payload,type })
       }
       tips.lookMes(result.code,result.message)
-    }
+    },
+
+    //添加微信模板消息
+    *addWechatTemplate({ payload },{ call,put }) {
+      console.log('7777',payload)
+      // const result = yield call(create,'/api/crud/store/warehouses',payload);
+      // tips.lookMes(result.code,result.message)
+      // if (result.code == 200) {
+      //   yield put(routerRedux.goBack())
+      // }
+    },
+
+    //更新微信模板消息
+    *updateWechatTemplate({ payload },{ call,put }) {
+      console.log('7777',payload)
+      // const result = yield call(update,'/api/crud/store/warehouses',payload);
+      // tips.lookMes(result.code,result.message)
+      // if (result.code == 200) {
+      //   yield put(routerRedux.goBack())
+      // }
+    },
   },
   reducers: {
     save(state, action) {

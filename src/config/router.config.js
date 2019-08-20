@@ -110,6 +110,11 @@ module.exports = [
         path: '/sys/advertising',
         name: '广告',
         icon: 'tags'
+      },
+      {
+        path: '/sys/wechatTemplate',
+        name: '微信模版消息设置',
+        icon: 'tags'
       }
     ]
   },

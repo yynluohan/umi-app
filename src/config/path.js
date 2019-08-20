@@ -97,7 +97,14 @@ module.exports = [
           { path: '/sys/adGroupView'}
         ]
       },
-      { path: '/sys/advertising'}
+      { path: '/sys/advertising'},
+      { path: '/sys/wechatTemplate',
+        items: [
+          {path: '/sys/wechatTemplateAdd'},
+          {path: '/sys/wechatTemplateEdit'},
+          {path: '/sys/wechatTemplateView'}
+        ]
+      }
     ]
   },
   {
