@@ -3,11 +3,8 @@ import styles from './index.css';
 
 export default function () {
 
-  var list = ['a', 1, true];
 
-  console.log(list.includes(1,1));
-  console.log(list.includes(1,2));
-  console.log(list.includes(1,-4));
+  console.log(Array.from({length: 2},() => 'hello'))
 
   return (
     <div>

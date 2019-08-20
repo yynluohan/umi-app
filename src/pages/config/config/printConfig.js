@@ -8,8 +8,8 @@ module.exports = {
       config: {
         path:'/subsysManage',
         API:{
-          getAPI:'/api/crud/subsys/subsyses/[id]',
-          updateAPI: '/api/crud/subsys/subsyses/[id]',
+          getAPI:'/api/crud/configmanagement/configs/printConfig',
+          createAPI: '/api/crud/configmanagement/configs/printConfig',
         },
         fields: [
           { field: 'a', label: '订单打印LOGO', type: 'input' },

@@ -104,7 +104,8 @@ module.exports = [
           {path: '/sys/wechatTemplateEdit'},
           {path: '/sys/wechatTemplateView'}
         ]
-      }
+      },
+      { path: '/sys/user'}
     ]
   },
   {

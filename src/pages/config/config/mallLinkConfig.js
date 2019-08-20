@@ -8,16 +8,16 @@ module.exports = {
       config: {
         path:'/subsysManage',
         API:{
-          getAPI:'/api/crud/subsys/subsyses/[id]',
-          updateAPI: '/api/crud/subsys/subsyses/[id]',
+          getAPI:'/api/crud/configmanagement/configs/shopLinkConfig',
+          createAPI: '/api/crud/configmanagement/configs/shopLinkConfig',
         },
         fields: [
-          { field: 'a', label: '商城首页', type: 'input' },
-          { field: 'b', label: '产品详情页', type: 'input' },
-          { field: 'c', label: '我的订单页', type: 'input' },
-          { field: 'd', label: '订单详情页', type: 'input' },
-          { field: 'e', label: '个人中心页', type: 'input' },
-          { field: 'f', label: '门店列表页', type: 'input' },
+          { field: 'home', label: '商城首页', type: 'input' },
+          { field: 'productDetail', label: '产品详情页', type: 'input' },
+          { field: 'myOrder', label: '我的订单页', type: 'input' },
+          { field: 'orderDetail', label: '订单详情页', type: 'input' },
+          { field: 'personalCenter', label: '个人中心页', type: 'input' },
+          { field: 'storeList', label: '门店列表页', type: 'input' },
         ],
       },
     }

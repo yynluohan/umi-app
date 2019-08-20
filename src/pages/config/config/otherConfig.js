@@ -8,8 +8,8 @@ module.exports = {
       config: {
         path:'/subsysManage',
         API:{
-          getAPI:'/api/crud/subsys/subsyses/[id]',
-          updateAPI: '/api/crud/subsys/subsyses/[id]',
+          getAPI:'/api/crud/configmanagement/configs/otherConfig',
+          createAPI: '/api/crud/configmanagement/configs/otherConfig',
         },
         fields: [
           { field: 'a', label: '默认角色', type: 'input' },

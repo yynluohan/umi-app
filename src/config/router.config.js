@@ -115,6 +115,11 @@ module.exports = [
         path: '/sys/wechatTemplate',
         name: '微信模版消息设置',
         icon: 'tags'
+      },
+      {
+        path: '/sys/user',
+        name: '用户管理',
+        icon: 'tags'
       }
     ]
   },

@@ -8,15 +8,15 @@ module.exports = {
       config: {
         path:'/subsysManage',
         API:{
-          getAPI:'/api/crud/subsys/subsyses/[id]',
-          updateAPI: '/api/crud/subsys/subsyses/[id]',
+          getAPI:'/api/crud/configmanagement/configs/goodsConfig',
+          createAPI: '/api/crud/configmanagement/configs/goodsConfig',
         },
         fields: [
-          { field: 'a', label: '分区1名称', type: 'input' },
-          { field: 'b', label: '分区2名称', type: 'input' },
-          { field: 'c', label: '分区3名称', type: 'input' },
-          { field: 'd', label: '显示分成设置开关', type: 'input' },
-          { field: 'e', label: '显示规格设置开关', type: 'input' },
+          { field: 'partnerLevelZone1', label: '分区1名称', type: 'input' },
+          { field: 'partnerLevelZone2', label: '分区2名称', type: 'input' },
+          { field: 'partnerLevelZone3', label: '分区3名称', type: 'input' },
+          { field: 'showSettlementSetting', label: '显示分成设置开关', type: 'switch' },
+          { field: 'showSpecificationSetting', label: '显示规格设置开关', type: 'switch' },
         ],
       },
     }

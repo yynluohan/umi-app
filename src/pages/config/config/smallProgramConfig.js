@@ -8,11 +8,11 @@ module.exports = {
       config: {
         path:'/subsysManage',
         API:{
-          getAPI:'/api/crud/subsys/subsyses/[id]',
-          updateAPI: '/api/crud/subsys/subsyses/[id]',
+          getAPI:'/api/crud/configmanagement/configs/shopLinkPageConfig',
+          createAPI: '/api/crud/configmanagement/configs/shopLinkPageConfig',
         },
         fields: [
-          { field: 'a', label: '商城首页', type: 'input' },
+          { field: 'home', label: '商城首页', type: 'input' },
         ],
       },
     }

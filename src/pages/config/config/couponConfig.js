@@ -8,11 +8,11 @@ module.exports = {
       config: {
         path:'/subsysManage',
         API:{
-          getAPI:'/api/crud/subsys/subsyses/[id]',
-          updateAPI: '/api/crud/subsys/subsyses/[id]',
+          getAPI:'/api/crud/configmanagement/configs/couponConfig',
+          createAPI: '/api/crud/configmanagement/configs/couponConfig',
         },
         fields: [
-          { field: 'a', label: '快过期优惠券通知时间', type: 'input' },
+          { field: 'overdueTimeInterval', label: '快过期优惠券通知时间', type: 'input' },
         ],
       },
     }
