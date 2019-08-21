@@ -25,14 +25,14 @@ const WechatTemplateView = ({ dispatch,sys }) => {
   }
 
   const enabledObj = {
-    0: '否',
-    1: '是'
+    0: '禁用',
+    1: '启用'
   }
 
   const formItemProps = {
     title: '微信模版消息详情',
     list: [
-      {label:'订单退款申请通知',data: typeObj[item.type]},
+      {label:'类型',data: typeObj[item.type]},
       {label:'是否启用',data: enabledObj[item.enabled]},
       {label:'模板id',data: item.templateId},
       {label:'名称',data:item.name},

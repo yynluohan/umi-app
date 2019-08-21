@@ -54,11 +54,17 @@ module.exports = {
             }
           },
           { field: 'id', label: '模板id'},
-          { field: 'enabled', label: '是否启用',
-            options: [
-              {label: '启用',value: 1},
-              {label: '禁用',value: 0}
-            ]
+          { field: 'enabled', label: '是否启用',valueType:'showStatus',
+            options: {
+              statusMap: {
+                0: '禁用',
+                1: '启用'
+              },
+              colorMap: {
+                1: '#428bca',
+                0: '#777'
+              }
+            }
           },
           { field:'operation'}
         ],
@@ -85,6 +91,24 @@ module.exports = {
                 }
                 return data
               }
+            }
+          },
+          {
+            title: '禁用',action:'request',
+            options:{
+              expectedField:[['enabled']],
+              expectedValue:[[1]],
+              API:'/api/crud/wxTemplateMessage/wechatTemplateMessages/(id)/disable',
+              method:'post'
+            }
+          },
+          {
+            title: '启用',action:'request',
+            options:{
+              expectedField:[['enabled']],
+              expectedValue:[[0]],
+              API:'/api/crud/wxTemplateMessage/wechatTemplateMessages/(id)/enable',
+              method:'post'
             }
           },
           {

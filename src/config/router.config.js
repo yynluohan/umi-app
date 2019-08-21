@@ -120,6 +120,16 @@ module.exports = [
         path: '/sys/user',
         name: '用户管理',
         icon: 'tags'
+      },
+      {
+        path: '/sys/autoReplay',
+        name: '自动回复',
+        icon: 'tags'
+      },
+      {
+        path: '/sys/printer',
+        name: '打印机设置',
+        icon: 'tags'
       }
     ]
   },
