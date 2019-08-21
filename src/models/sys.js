@@ -2,6 +2,7 @@ import { query,create,update } from '../framework/utils/services'
 import { message,notification } from 'antd';
 import { getArgment } from '../framework/utils/parameter';
 import tips from '../framework/utils/tips';
+import { routerRedux } from 'dva/router';
 
 export default {
   namespace: 'sys',
@@ -24,11 +25,13 @@ export default {
             type: 'query',
           })
         }
-        if (location.pathname === '/sys/adGroupView') {
+        if (location.pathname === '/sys/adGroupView' || location.pathname === '/sys/wechatTemplateEdit'
+            || location.pathname === '/sys/wechatTemplateView'
+          ) {
           const obj = {
             '/sys/adGroupView':`/api/ad/groups/${query.id}`,
-            // 'wechatTemplateEdit': ``,
-            // '/sys/wechatTemplateView': ``
+            '/sys/wechatTemplateEdit': `/api/crud/wxTemplateMessage/wechatTemplateMessages/${query.id}`,
+            '/sys/wechatTemplateView': `/api/crud/wxTemplateMessage/wechatTemplateMessages/${query.id}`,
           }
           dispatch({
             type: 'save',
@@ -96,22 +99,21 @@ export default {
 
     //添加微信模板消息
     *addWechatTemplate({ payload },{ call,put }) {
-      console.log('7777',payload)
-      // const result = yield call(create,'/api/crud/store/warehouses',payload);
-      // tips.lookMes(result.code,result.message)
-      // if (result.code == 200) {
-      //   yield put(routerRedux.goBack())
-      // }
+      const result = yield call(create,'/api/crud/wxTemplateMessage/wechatTemplateMessages',payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code == 200) {
+        yield put(routerRedux.goBack())
+      }
     },
 
     //更新微信模板消息
-    *updateWechatTemplate({ payload },{ call,put }) {
-      console.log('7777',payload)
-      // const result = yield call(update,'/api/crud/store/warehouses',payload);
-      // tips.lookMes(result.code,result.message)
-      // if (result.code == 200) {
-      //   yield put(routerRedux.goBack())
-      // }
+    *updateWechatTemplate({ payload },{ call,put,select }) {
+      const { id } = yield select(({ sys }) => sys);
+      const result = yield call(update,`/api/crud/wxTemplateMessage/wechatTemplateMessages/${id}`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code == 200) {
+        yield put(routerRedux.goBack())
+      }
     },
   },
   reducers: {

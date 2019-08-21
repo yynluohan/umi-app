@@ -23,28 +23,29 @@ class WechatTemplateForm extends React.Component {
     super(props);
     this.state = {
       item:props.item || {},
-      list: []
+      items:props.item && props.item.items ? props.item.items : []
     }
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     if (nextProps.item) {
       this.setState({
-        item: nextProps.item
+        item: nextProps.item,
+        items: nextProps.item && nextProps.item.items ? nextProps.item.items : this.state.items,
       })
     }
   }
 
   onSubmit = () => {
     const { validateFields,getFieldsValue } = this.props.form;
-    const { list,item } = this.state;
+    const { items,item } = this.state;
     validateFields((errors) => {
       if (errors) {
         return;
       }
       let data = {
         ...item,
-        list,
+        items,
         ...getFieldsValue(),
       };
       this.props.onSave(data)
@@ -52,10 +53,10 @@ class WechatTemplateForm extends React.Component {
   }
 
   onChangeInput = (a,b,c) => {
-    let { list } = this.state;
-    list[b][c] = a.target.value;
+    let { items } = this.state;
+    items[b][c] = a.target.value;
     this.setState({
-      list
+      items
     })
   }
 
@@ -80,31 +81,29 @@ class WechatTemplateForm extends React.Component {
     }
     typeObj[e].map((item,index) => {
       list[index] = {
-        title: item,
+        name: item,
         displayAttr:'',
         displayValue: ''
       }
     })
     this.setState({
-      list
+      items:list
     })
   }
 
  render() {
 
    const { getFieldDecorator } = this.props.form;
-   const { item,list } = this.state;
-
-   console.log('66660',list)
+   const { item,items } = this.state;
 
    const tableInSpinProps = {
      loading: false,
-     list,
+     list:items,
      columns:[
        {
          title: '属性名',
-         key:'title',
-         dataIndex:'title'
+         key:'name',
+         dataIndex:'name'
        },
        {
          title: '模板消息属性',
@@ -112,6 +111,7 @@ class WechatTemplateForm extends React.Component {
          render:(record,text,index) => (
            <Input placeholder='模板消息属性，与公众号的模板对应'
             onChange={(e) => this.onChangeInput(e,index,'displayAttr')}
+            value={record.displayAttr}
            />
          )
        },
@@ -121,6 +121,7 @@ class WechatTemplateForm extends React.Component {
          render:(record,text,index) => (
            <Input placeholder='若配置此值，则模板消息按照该值来显示'
             onChange={(e) => this.onChangeInput(e,index,'displayValue')}
+            value={record.displayValue}
            />
          )
        }
@@ -179,8 +180,8 @@ class WechatTemplateForm extends React.Component {
 
           <Col span={12}>
             <FormItem label='模板id' hasFeedback {...formItemLayout()}>
-              {getFieldDecorator('id', {
-                initialValue: item.id,
+              {getFieldDecorator('templateId', {
+                initialValue: item.templateId,
                 rules: [
                   {
                     required: true,
@@ -210,7 +211,7 @@ class WechatTemplateForm extends React.Component {
             </FormItem>
           </Col>
           {
-            list.length > 0 ?
+            items.length > 0 ?
             <Col span={24}>
               <FormItem label='属性配置' hasFeedback {...formItemLayout(2,22)}>
                 <TableInSpin {...tableInSpinProps}/>
