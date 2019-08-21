@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form,Col,Row,Input,Button,message,Divider,Select,Radio,DatePicker } from 'antd';
+import { Form,Col,Row,Input,Button,message,Select,Radio } from 'antd';
 import { query } from '../../../framework/utils/services';
 import TableInSpin from '../../../common/TableInSpin'
 
@@ -21,18 +21,9 @@ class WechatTemplateForm extends React.Component {
 
   constructor(props){
     super(props);
-    let list = ['标题','订单号','订单金额','收货人','收货地址','联系电话','备注'];
-    list.map((item,index) => {
-      list[index] = {
-        title: item,
-        value: '',
-        name: ''
-      }
-    })
-
     this.state = {
       item:props.item || {},
-      list
+      list: []
     }
   }
 
@@ -60,9 +51,40 @@ class WechatTemplateForm extends React.Component {
     });
   }
 
-  onChange = (a,b,c) => {
+  onChangeInput = (a,b,c) => {
     let { list } = this.state;
     list[b][c] = a.target.value;
+    this.setState({
+      list
+    })
+  }
+
+  onChangeType = (e) => {
+    let list = [];
+    const typeObj = {
+      'orderCreated': ['标题','订单号','订单金额','收货人','收货地址','联系电话','备注'],
+      'orderCefunded':['标题','订单号','订单金额','退款时间','备注'],
+      'orderCanceled':['标题','订单号','订单金额','取消时间','备注'],
+      'orderPayTimeout': ['标题','订单号','备注'],
+      'orderDelivering': ['标题','订单号','快递公司','快递单号','收件人','备注'],
+      'orderServiceCreated':['标题','订单号','退款金额','备注'],
+      'rewardCashApplying': ['标题','订单号','申请时间','备注'],
+      'rewardCashHandling': ['标题','备注'],
+      'rewardCashRejected': ['标题','拒绝时间','拒绝原因','备注'],
+      'rewardCashCompleted': ['标题','金额','提现成功时间','备注'],
+      'couponDispatched': ['标题','消息','到期日','备注'],
+      'couponOverdue': ['标题','消息','到期日','备注'],
+      'tempCrownApproved': ['标题','授权人','被授权人','授权状态','备注'],
+      'physicalSellerApproved': ['标题','授权人','被授权人','授权状态','备注'],
+      'tempCrownResetted': ['标题','时间','原因','备注'],
+    }
+    typeObj[e].map((item,index) => {
+      list[index] = {
+        title: item,
+        displayAttr:'',
+        displayValue: ''
+      }
+    })
     this.setState({
       list
     })
@@ -86,19 +108,19 @@ class WechatTemplateForm extends React.Component {
        },
        {
          title: '模板消息属性',
-         key:'name',
+         key:'displayAttr',
          render:(record,text,index) => (
            <Input placeholder='模板消息属性，与公众号的模板对应'
-            onChange={(e) => this.onChange(e,index,'name')}
+            onChange={(e) => this.onChangeInput(e,index,'displayAttr')}
            />
          )
        },
        {
          title: '属性名',
-         key:'value',
+         key:'displayValue',
          render:(record,text,index) => (
            <Input placeholder='若配置此值，则模板消息按照该值来显示'
-            onChange={(e) => this.onChange(e,index,'value')}
+            onChange={(e) => this.onChangeInput(e,index,'displayValue')}
            />
          )
        }
@@ -117,26 +139,26 @@ class WechatTemplateForm extends React.Component {
                 rules: [
                   {
                     required: true,
-                    message:'请填写店铺编号'
+                    message:'请选择类型'
                   },
                 ],
               })(
-                <Select>
-                  <Option value='成功下单通知'>成功下单通知</Option>
-                  <Option value='订单退款通知'>订单退款通知</Option>
-                  <Option value='取消订单通知'>取消订单通知</Option>
-                  <Option value='订单支付超时通知'>订单支付超时通知</Option>
-                  <Option value='订单发货通知'>订单发货通知</Option>
-                  <Option value='订单退款申请通知'>订单退款申请通知</Option>
-                  <Option value='提现申请提交成功通知'>提现申请提交成功通知</Option>
-                  <Option value='提现申请处理中通知'>提现申请处理中通知</Option>
-                  <Option value='提现申请被拒绝通知'>提现申请被拒绝通知</Option>
-                  <Option value='成功提现通知'>成功提现通知</Option>
-                  <Option value='优惠券发送通知'>优惠券发送通知</Option>
-                  <Option value='优惠券即将到期通知'>优惠券即将到期通知</Option>
-                  <Option value='成为临时皇冠商通知'>成为临时皇冠商通知</Option>
-                  <Option value='成为星级经销商通知'>成为星级经销商通知</Option>
-                  <Option value='临时皇冠商撤销通知'>临时皇冠商撤销通知</Option>
+                <Select onChange={(e) => this.onChangeType(e)}>
+                  <Option value='orderCreated'>成功下单通知</Option>
+                  <Option value='orderCefunded'>订单退款通知</Option>
+                  <Option value='orderCanceled'>取消订单通知</Option>
+                  <Option value='orderPayTimeout'>订单支付超时通知</Option>
+                  <Option value='orderDelivering'>订单发货通知</Option>
+                  <Option value='orderServiceCreated'>订单退款申请通知</Option>
+                  <Option value='rewardCashApplying'>提现申请提交成功通知</Option>
+                  <Option value='rewardCashHandling'>提现申请处理中通知</Option>
+                  <Option value='rewardCashRejected'>提现申请被拒绝通知</Option>
+                  <Option value='rewardCashCompleted'>成功提现通知</Option>
+                  <Option value='couponDispatched'>优惠券发送通知</Option>
+                  <Option value='couponOverdue'>优惠券即将到期通知</Option>
+                  <Option value='tempCrownApproved'>成为临时皇冠商通知</Option>
+                  <Option value='physicalSellerApproved'>成为星级经销商通知</Option>
+                  <Option value='tempCrownResetted'>临时皇冠商撤销通知</Option>
                 </Select>
               )}
             </FormItem>
@@ -148,6 +170,7 @@ class WechatTemplateForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写名称'
                   },
                 ],
               })( <Input />)}
@@ -161,6 +184,7 @@ class WechatTemplateForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写模板id'
                   },
                 ],
               })(
@@ -185,11 +209,15 @@ class WechatTemplateForm extends React.Component {
               )}
             </FormItem>
           </Col>
-          <Col span={24}>
-            <FormItem label='属性配置' hasFeedback {...formItemLayout(2,22)}>
-              <TableInSpin {...tableInSpinProps}/>
-            </FormItem>
-          </Col>
+          {
+            list.length > 0 ?
+            <Col span={24}>
+              <FormItem label='属性配置' hasFeedback {...formItemLayout(2,22)}>
+                <TableInSpin {...tableInSpinProps}/>
+              </FormItem>
+            </Col>
+            : ''
+          }
          </Row>
        </Form>
 

@@ -170,6 +170,7 @@ class AddTrialForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写简短描述'
                   },
                 ],
               })(
@@ -227,6 +228,7 @@ class AddTrialForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请选择'
                   },
                 ],
               })(

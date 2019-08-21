@@ -97,6 +97,7 @@ class AddStoreForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写店铺名称'
                   },
                 ],
               })( <Input />)}
@@ -109,6 +110,7 @@ class AddStoreForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请选择仓库'
                   },
                 ],
               })(
@@ -124,6 +126,7 @@ class AddStoreForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请选择省市区'
                   },
                 ],
               })(
@@ -138,6 +141,7 @@ class AddStoreForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写店铺地址'
                   },
                 ],
               })(

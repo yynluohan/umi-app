@@ -130,6 +130,7 @@ class AddProductForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写缩略名称'
                   },
                 ],
               })(
@@ -144,6 +145,7 @@ class AddProductForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写品牌'
                   },
                 ],
               })(
@@ -172,6 +174,7 @@ class AddProductForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请选择类别'
                   },
                 ],
               })(
@@ -186,6 +189,7 @@ class AddProductForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写价格'
                   },
                 ],
               })(<Input type='number' />)}
@@ -199,6 +203,7 @@ class AddProductForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写产品单位'
                   },
                 ],
               })(<Input  />)}
@@ -211,6 +216,7 @@ class AddProductForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写成本价'
                   },
                 ],
               })(<Input type='number' />)}
@@ -223,6 +229,7 @@ class AddProductForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写建议售价'
                   },
                 ],
               })(<Input type='number' />)}
@@ -235,6 +242,7 @@ class AddProductForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写重量'
                   },
                 ],
               })(<Input type='number' />)}
@@ -277,6 +285,7 @@ class AddProductForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写优惠活动-积分'
                   },
                 ],
               })(<Input type='number' />)}

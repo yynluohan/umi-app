@@ -233,6 +233,7 @@ class AddCategroyForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请选择销售类别'
                   },
                 ],
               })(

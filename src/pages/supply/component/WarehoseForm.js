@@ -88,6 +88,7 @@ class WarehoseForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写仓库名称'
                   },
                 ],
               })( <Input />)}
@@ -100,6 +101,7 @@ class WarehoseForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请选择省市'
                   },
                 ],
               })(
@@ -114,6 +116,7 @@ class WarehoseForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写详细地址'
                   },
                 ],
               })(

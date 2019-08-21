@@ -288,7 +288,7 @@ class AddFreightForm extends React.Component {
                 rules: [
                   {
                     required: true,
-                    message:'请填写名称'
+                    message:'请填写模板名称'
                   },
                 ],
               })(<Input type="text" />)}
@@ -301,6 +301,7 @@ class AddFreightForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写标题'
                   },
                 ],
               })(
@@ -315,6 +316,7 @@ class AddFreightForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写内容'
                   },
                 ],
               })(
@@ -358,6 +360,7 @@ class AddFreightForm extends React.Component {
                 rules: [
                   {
                     required: true,
+                    message:'请填写发货时间'
                   },
                 ],
               })(
