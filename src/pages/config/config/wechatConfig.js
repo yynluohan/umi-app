@@ -13,7 +13,12 @@ module.exports = {
         },
         fields: [
           { field: 'token', label: 'token令牌', type: 'input' },
-          { field: 'encryptMessage', label: '启用消息加密', type: 'input' },
+          { field: 'encryptMessage', label: '启用消息加密', type: 'switch',
+            props: {
+              checkedChildren: 'ON',
+              unCheckedChildren: 'OFF'
+            }
+          },
           { field: 'encodingAesKey', label: '消息加解密密钥', type: 'input' },
           { field: 'appId', label: '应用ID', type: 'input' },
           { field: 'appSecret', label: '应用密钥', type: 'input' },
@@ -22,7 +27,12 @@ module.exports = {
           { field: 'appPartnerKey', label: '商户Key', type: 'input' },
           { field: 'certPath', label: '证书路径', type: 'input' },
           { field: 'wxaAppid', label: '小程序AppId', type: 'input' },
-          { field: 'autoReg', label: '登录自动注册', type: 'input' },
+          { field: 'autoReg', label: '登录自动注册', type: 'switch',
+            props: {
+              checkedChildren: 'ON',
+              unCheckedChildren: 'OFF'
+            }
+          },
           { field: 'appAppid', label: '移动应用AppId', type: 'input' },
           { field: 'appAppSecret', label: '移动应用密钥', type: 'input' },
           { field: 'appName', label: '移动应用名称', type: 'input' },

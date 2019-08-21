@@ -12,10 +12,9 @@ module.exports = {
           createAPI: '/api/crud/configmanagement/configs/couponConfig',
         },
         fields: [
-          { field: 'overdueTimeInterval', label: '快过期优惠券通知时间', type: 'input' },
+          { field: 'overdueTimeInterval', label: '快过期优惠券通知时间', type: 'input',placeholder:'单位：小时' },
         ],
       },
     }
   ]
-
 }

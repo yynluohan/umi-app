@@ -9,7 +9,7 @@ module.exports = {
       config: {
         share:'user',
         fields: [
-          { field: 'name', label: '名称', type: 'input' }
+          { field: 'account', label: '账户名', type: 'input' }
         ],
       },
     },
@@ -19,14 +19,14 @@ module.exports = {
       config: {
         share:'user',
         API: {
-          listAPI: '/api/ad',
-          deleteAPI:'/api/ad/(id)'
+          listAPI: '/api/adm/users',
+          deleteAPI:'/api/adm/users/(id)'
         },
         actions:[
           {
             title: '添加',type:'modal',
             options:{
-              modalTitle:'添加',
+              modalTitle:'添加用户',
               modalWidth:900,
               items:[
                 {
@@ -34,41 +34,31 @@ module.exports = {
                   component: 'BaseForm',
                   config: {
                     API:{
-                      createAPI:'/api/ad'
+                      createAPI:'/api/adm/users/new'
                     },
                     fields: [
-                      { field: 'name', label: '名称',type:'input',rules: ['required'] },
-                      { field: 'groupId', label: '组',type:'select-fetch',rules: ['required'],
-                        options: {
-                          API: '/api/ad/groups',
-                          label:'name',
-                          value:'id',
-                          dataField: 'data'
-                        }
-                      },
-                      { field: 'enabled', label: '是否启用',type:'radio',
-                        options: [
-                          { label: '是',value: 1},
-                          { label: '否',value: 0}
-                        ]
-                      },
-                      { field: 'strategyStr', label: '轮播策略',type:'checkbox',
-                        options: [
-                          { label: '每天',value: 'EVERY_DAY'},
-                          { label: '单号',value: 'ODD_DAY'},
-                          { label: '双号',value: 'EVEN_DAY'},
-                          { label: '单时',value: 'ODD_HOUR'},
-                          { label: '双时',value: 'EVEN_HOUR'}
-                        ]
-                      },
-                      { field: 'type', label: '类型',type:'input' },
-                      { field: 'logo', label: '图片',type:'upload-image',
-                        options: {
-                          API: `${window.MC.UPLOADHOST}/api/uploadfile`,
+                      { field: 'email', label: '邮箱',type:'input',rules: ['required'] },
+                      { field: 'account', label: '账户名',type:'input' },
+                      { field: 'name',label: '姓名',type:'input'},
+                      { field: 'avatar',label: '头像',type:'upload-image',
+                        options:{
+                          API:'/api/uploadfile',
                           max: 1
                         }
-                     },
-                     { field: 'targetUrl', label: '目标链接',type:'input' },
+                      },
+                      { field: 'phone', label: '电话',type:'input' },
+                      { field: 'birthday', label: '出生年月',type:'date',
+                        options:{
+                          nowTime:false,
+                          format: 'YYYY-MM-DD HH:mm:SS'
+                        }
+                      },
+                      { field: 'sex', label: '性别',type:'select',
+                        options:[
+                          { label: '男',value: '0'},
+                          { label: '女',value: '1'}
+                        ]
+                      },
                     ]
                   }
                 }
@@ -77,38 +67,40 @@ module.exports = {
           }
         ],
         fields: [
-          { field: 'name', label: '名称'},
-          { field: 'groupId', label: '组'},
-          { field: 'enabled', label: '是否启用',valueType:'status',
+          { field: 'email', label: '邮箱'},
+          { field: 'account', label: '账户名' },
+          { field: 'avatar',label: '头像',valueType:'image'},
+          { field: 'birthday', label: '出生年月' },
+          { field: 'sex', label: '性别',valueType:'status',
+          options:{
+            statusMap:{
+              '0':'男',
+              '1':'女',
+            }
+          }
+          },
+          { field: 'registeredGithubUsername', label: 'github账号' },
+          {
+            field: 'platformRoles',label:'平台角色',valueType:'status',
             options: {
               statusMap: {
-                1: '是',
-                0: '否'
+                'SUBSYS_OWNER':'子系统持有者',
+                'MODULE_OWNER': '模块持有者',
+                'TENANT': '租户',
+                'AGENT': '代理'
               }
             }
           },
-          { field: 'strategyStr', label: '轮播策略',valueType:'status',
-            options: {
-              statusMap: {
-                'EVERY_DAY': '每天',
-                'ODD_DAY': '单号',
-                'EVEN_DAY': '双号',
-                'ODD_HOUR':'单时',
-                'EVEN_HOUR': '双时'
-              }
-            }
-          },
-          { field: 'type', label: '类型' },
-          { field: 'logo', label: '图片',valueType:'showImage'},
-          { field: 'targetUrl', label: '目标链接' },
+          { field: 'createtime', label: '创建时间' },
           { field:'operation'}
         ],
         operation: [
           {
             title: '编辑', action: 'modal',
             options:{
-              modalTitle:'编辑广告',
+              modalTitle:'编辑用户',
               modalWidth:800,
+
               layout: 'Empty',
               items:[
                 {
@@ -116,42 +108,32 @@ module.exports = {
                   component: 'BaseForm',
                   config: {
                     API: {
-                      getAPI:'/api/ad',
-                      updateAPI: '/api/ad/(id)',
+                      getAPI:'/api/adm/users/(id)',
+                      updateAPI: '/api/adm/users/(id)',
                     },
                     fields: [
-                      { field: 'name', label: '名称',type:'input',rules: ['required'] },
-                      { field: 'groupId', label: '组',type:'select-fetch',rules: ['required'],
-                        options: {
-                          API: '/api/ad/groups',
-                          label:'name',
-                          value:'id',
-                          dataField: 'data'
-                        }
-                      },
-                      { field: 'enabled', label: '是否启用',type:'radio',
-                        options: [
-                          { label: '是',value: 1},
-                          { label: '否',value: 0}
-                        ]
-                      },
-                      { field: 'strategyStr', label: '轮播策略',type:'checkbox',
-                        options: [
-                          { label: '每天',value: 'EVERY_DAY'},
-                          { label: '单号',value: 'ODD_DAY'},
-                          { label: '双号',value: 'EVEN_DAY'},
-                          { label: '单时',value: 'ODD_HOUR'},
-                          { label: '双时',value: 'EVEN_HOUR'}
-                        ]
-                      },
-                      { field: 'type', label: '类型',type:'input' },
-                      { field: 'logo', label: '图片',type:'upload-image',
-                        options: {
-                          API: `${window.MC.UPLOADHOST}/api/uploadfile`,
+                      { field: 'email', label: '邮箱',type:'input',rules: ['required']},
+                      { field: 'account', label: '账户名',type:'input' },
+                      { field: 'name',label: '姓名',type:'input'},
+                      { field: 'avatar',label: '头像',type:'upload-image',
+                        options:{
+                          API:'/api/uploadfile',
                           max: 1
                         }
-                     },
-                     { field: 'targetUrl', label: '目标链接',type:'input' },
+                      },
+                      { field: 'phone', label: '电话',type:'input' },
+                      { field: 'birthday', label: '出生年月',type:'date',
+                        options:{
+                          nowTime:false,
+                          format: 'YYYY-MM-DD HH:mm:SS'
+                        }
+                      },
+                      { field: 'sex', label: '性别',type:'select',
+                        options:[
+                          { label: '男',value: '0'},
+                          { label: '女',value: '1'}
+                        ]
+                      },
                     ]
                   }
                 }

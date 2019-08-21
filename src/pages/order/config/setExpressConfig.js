@@ -14,7 +14,7 @@ export default {
       config: {
         share:'product',
         fields: [
-          { field: 'name',label: '模板名称',type:'input'},
+          { field: 'name',label: '名称',type:'input'},
         ]
       }
     },
