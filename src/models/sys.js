@@ -26,12 +26,13 @@ export default {
           })
         }
         if (location.pathname === '/sys/adGroupView' || location.pathname === '/sys/wechatTemplateEdit'
-            || location.pathname === '/sys/wechatTemplateView'
+            || location.pathname === '/sys/wechatTemplateView' || location.pathname === '/sys/userView'
           ) {
           const obj = {
             '/sys/adGroupView':`/api/ad/groups/${query.id}`,
             '/sys/wechatTemplateEdit': `/api/crud/wxTemplateMessage/wechatTemplateMessages/${query.id}`,
             '/sys/wechatTemplateView': `/api/crud/wxTemplateMessage/wechatTemplateMessages/${query.id}`,
+            '/sys/userView': `/api/crud/user/users/${query.id}`
           }
           dispatch({
             type: 'save',

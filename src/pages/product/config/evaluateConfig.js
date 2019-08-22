@@ -26,19 +26,29 @@ export default {
         share:'product',
         // scroll:{x:2750},
         API: {
-          listAPI: '/api/crud/subsys/subsyses',
-          deleteAPI:'/api/crud/subsys/subsyses/(id)'
+          listAPI: '/api/gw/product/comments',
+          deleteAPI:'/api/gw/product/comments/(id)'
         },
         fields: [
-          { field: 'code',label: '订单编号'},
-          { field: 'oderTime',label: '下单时间'},
-          { field: 'name',label: '商品名称'},
-          { field: 'rank',label: '评价等级'},
-          { field: 'content',label: '评价内容'},
-          { field: 'time',label: '评价时间'},
-          { field: 'reply',label: '回复时间'},
-          { field: 'top',label: '置顶'},
-          { field: '1',label: '屏蔽'},
+          { field: 'orderNumber',label: '订单编号'},
+          { field: 'payDate',label: '下单时间'},
+          { field: 'productName',label: '商品名称'},
+          { field: 'commentStar',label: '评价等级'},
+          { field: 'commentContent',label: '评价内容'},
+          { field: 'commentTime',label: '评价时间'},
+          { field: 'replyTime',label: '回复时间'},
+          { field: 'isStick',label: '置顶',valueType:'status',
+            options:{
+              0: '不置顶',
+              1: '置顶'
+            }
+          },
+          { field: 'isDisplay',label: '屏蔽',valueType:'status',
+            options:{
+              0: '不屏蔽',
+              1: '屏蔽'
+            }
+          },
           { field:'operation'}
         ],
         operation: [

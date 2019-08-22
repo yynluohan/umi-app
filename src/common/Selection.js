@@ -11,7 +11,7 @@ class Selection extends React.Component {
       selectedData: [],      //选择表格某项或者多项的时候，用于组件导出
       selectedRowKeys: [],
       type: this.props.type || 'radio',    //表格数据限制单选（也可传入'checkbox'设置多选）
-      modalTitle: this.props.modalTitle || '选择账户',  //modal框的标题
+      modalTitle: this.props.modalTitle || '选择',  //modal框的标题
       total: 1,
       pageSize: 10,
       size: this.props.size || 'default',  //表格类型，也可传入'small'

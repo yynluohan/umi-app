@@ -45,6 +45,7 @@ module.exports = [
   { path: '/sys/wechatTemplateEdit'},
   { path: '/sys/wechatTemplateView'},
   { path: '/sys/user'},
+  { path: '/sys/userView'},
   { path: '/sys/autoReplay'},
   { path: '/sys/printer'},
   { path: '/config/mall' },
