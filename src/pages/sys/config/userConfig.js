@@ -9,7 +9,7 @@ module.exports = {
       config: {
         share:'user',
         fields: [
-          { field: 'account', label: '账户名', type: 'input' }
+          { field: 'wechatName', label: '昵称', type: 'input' }
         ],
       },
     },
@@ -68,6 +68,7 @@ module.exports = {
         ],
         fields: [
           { field: 'avatar',label: '头像',valueType:'showImage'},
+          { field: 'wechatName',label:'昵称'},
           { field: 'realName', label: '名字' },
           { field: 'email', label: '邮箱'},
           { field: 'birthday', label: '出生年月' },

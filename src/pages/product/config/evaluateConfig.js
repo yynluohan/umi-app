@@ -26,12 +26,12 @@ export default {
         share:'product',
         // scroll:{x:2750},
         API: {
-          listAPI: '/api/gw/product/comments',
-          deleteAPI:'/api/gw/product/comments/(id)'
+          listAPI: '/api/cms/evaluations',
+          deleteAPI:'/api/cms/evaluations/(id)'
         },
         fields: [
-          { field: 'orderNumber',label: '订单编号'},
-          { field: 'payDate',label: '下单时间'},
+          { field: 'tradeNumber',label: '订单编号'},
+          { field: 'tradeTime',label: '下单时间'},
           { field: 'productName',label: '商品名称'},
           { field: 'commentStar',label: '评价等级'},
           { field: 'commentContent',label: '评价内容'},
