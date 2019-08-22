@@ -1,0 +1,21 @@
+.siderStyle {
+  position: relative;
+  width:200px;
+  min-width: 200px;
+}
+
+.siderStyle aside {
+  height: calc(100vh - 84px);
+  overflow-x: hidden;
+  position: fixed;
+}
+
+.siderStyle aside>div {
+  overflow-y: scroll;
+  min-width: 220px;
+  background-color: #001529;
+}
+
+.siderStyle aside>div>ul {
+  width:100%;
+}

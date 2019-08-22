@@ -24,7 +24,6 @@ export default {
       component: 'BaseList',
       config: {
         share:'product',
-        // scroll:{x:2750},
         API: {
           listAPI: '/api/crud/order/expresses',
           deleteAPI:'/api/crud/order/expresses/(id)'

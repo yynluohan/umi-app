@@ -6,6 +6,7 @@ import dynamic from 'umi/dynamic';
 import router from '@/config/path.js';
 import Default404 from '../../pages/404';
 import { getPath } from '../utils/parameter';
+import styles from './style.css';
 
 const { Header, Content, Sider } = Layout;
 
@@ -18,11 +19,11 @@ export default function PrimaryLayout({ location, children }) {
       var n = window.event.screenX - window.screenLeft;
       var b = n > document.documentElement.scrollWidth - 20;
       if (b && window.event.clientY < 0 || window.event.altKey) {
-        console.log("这是一个关闭操作");
+        // console.log("这是一个关闭操作");
       } else {
         window.scrollTo(0,0);
       }
-     }
+    }
   }
 
   if (children) {
@@ -87,9 +88,11 @@ export default function PrimaryLayout({ location, children }) {
     <Layout className="ant-layout-has-sider" style={token ? { marginTop: '84px'} : {}}>
       {
         token ?
-        <Sider width={200} style={{ background: '#fff',minHeight:'calc(100vh - 108px)'}}>
-          <LeftNav path={location.pathname} />
-        </Sider>
+        <div className={styles.siderStyle}>
+          <Sider width={200} style={{ background: '#fff',minHeight:'calc(100vh - 108px)'}}>
+            <LeftNav path={location.pathname} />
+          </Sider>
+        </div>
         : ''
       }
       <Layout style={token ? { padding: '0 24px 24px' } : {}}>
@@ -98,7 +101,6 @@ export default function PrimaryLayout({ location, children }) {
           style={{
             background: '#fff',
             margin: 0,
-            // marginTop:'1em' ,
             minHeight: 280,
           }}
         >

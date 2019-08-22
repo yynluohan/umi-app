@@ -116,7 +116,7 @@ module.exports = {
                   component: 'BaseForm',
                   config: {
                     API: {
-                      getAPI:'/api/ad/(id)',
+                      getAPI:'/api/ad',
                       updateAPI: '/api/ad/(id)',
                     },
                     fields: [
