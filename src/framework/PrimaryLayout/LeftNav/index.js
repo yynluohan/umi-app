@@ -6,6 +6,7 @@ import router from '@/config/router.config';
 const { SubMenu } = Menu;
 
 export default function LeftNav({ path }) {
+
   return <Menu
     theme='dark'
     mode="inline"
@@ -16,7 +17,7 @@ export default function LeftNav({ path }) {
       const { name, path, icon, items } = route;
       if (items) {
         return <SubMenu
-          key={path || i}
+          key={path}
           title={
             <span>
               <Icon type={icon} />

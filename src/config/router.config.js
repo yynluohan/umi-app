@@ -82,6 +82,27 @@ module.exports = [
     icon: 'tag',
   },
   {
+    name: '营销活动',
+    icon: 'tag',
+    items: [
+      {
+        path: '/marketing/plan',
+        name: '营销方案',
+        icon: 'tags'
+      },
+      {
+        path: '/marketing/couponTemplate',
+        name: '优惠券模板',
+        icon: 'tags'
+      },
+      {
+        path: '/marketing/couponUsage',
+        name: '优惠券使用情况',
+        icon: 'tags'
+      }
+    ]
+  },
+  {
     name: '供应链管理',
     icon: 'tag',
     items: [

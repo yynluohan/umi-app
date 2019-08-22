@@ -4,6 +4,7 @@ import LeftNav from './LeftNav';
 import Breadcrumb from './Breadcrumb';
 import dynamic from 'umi/dynamic';
 import router from '@/config/path.js';
+// import router from '@/config/router.config.js'
 import Default404 from '../../pages/404';
 import { getPath } from '../utils/parameter';
 import styles from './style.css';
@@ -11,7 +12,6 @@ import styles from './style.css';
 const { Header, Content, Sider } = Layout;
 
 export default function PrimaryLayout({ location, children }) {
-
 
   const onQuery = () => {
     window.scrollTo(0,0);
@@ -76,7 +76,7 @@ export default function PrimaryLayout({ location, children }) {
       token ?
       <Header className="header" style={{ color: '#fff',padding: '0 20px',position: 'fixed',width:'100%',zIndex:1100}}>
         <div style={{ display: 'flex',justifyContent: 'space-between'}}>
-          <div>product management</div>
+          <div>mall management</div>
           <Popover content={toDoContent}>
             <span>{window.localStorage.username || ''}</span>
           </Popover>
@@ -101,7 +101,8 @@ export default function PrimaryLayout({ location, children }) {
           style={{
             background: '#fff',
             margin: 0,
-            minHeight: 280,
+            // minHeight: 280,
+            minHeight: `calc(100vh - 108px)`,
           }}
         >
           {

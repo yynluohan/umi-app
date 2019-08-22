@@ -26,7 +26,7 @@ class Index extends React.Component {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      height:'100%'
+      minHeight:`calc(100vh - 84px)`
     }
 
     const contentStyle = {
