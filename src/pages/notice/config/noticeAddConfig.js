@@ -4,7 +4,7 @@ module.exports = {
   title: '添加通知',
   items: [
     {
-      layout: 'BaseFormLayout',
+      layout: 'LineLayout',
       component: 'BaseForm',
       config: {
         API: {
@@ -22,7 +22,6 @@ module.exports = {
           },
           { field: 'orderNum',label:'排序号',type: 'input'},
           { field: 'content',label:'内容',type: 'rich-text'},
-         { field:'operation'}
         ]
       },
     },

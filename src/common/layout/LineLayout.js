@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './baseFormLayout.css';
+import styles from './lineLayout.css';
 
-class BaseFormLayout extends React.Component {
+class LineLayout extends React.Component {
 
   render(){
 
@@ -15,4 +15,4 @@ class BaseFormLayout extends React.Component {
   }
 }
 
-export default BaseFormLayout
+export default LineLayout

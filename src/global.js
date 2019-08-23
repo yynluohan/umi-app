@@ -1,6 +1,7 @@
 // 入口文件
 
-import BaseFormLayout from './components/layout/BaseFormLayout'
+import BaseFormLayout from './common/layout/BaseFormLayout';
+import LineLayout from './common/layout/LineLayout';
 import ZEleA from 'zero-element-antd';
 
 import { set as setEndpoint } from 'zero-element/lib/utils/request/endpoint';
@@ -30,7 +31,8 @@ AITSet({
 });
 
 LayoutSet({
-  'BaseFormLayout': BaseFormLayout
+  'BaseFormLayout': BaseFormLayout,
+  'LineLayout': LineLayout
 })
 
 

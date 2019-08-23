@@ -6,6 +6,9 @@ export default {
   disableCSSModules: false,
   publicPath: "./",
   outputPath: "./dist",
+  targets: {
+    ie: 11,
+  },
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
