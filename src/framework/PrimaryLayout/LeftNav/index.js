@@ -17,7 +17,7 @@ export default function LeftNav({ path }) {
       const { name, path, icon, items } = route;
       if (items) {
         return <SubMenu
-          key={path}
+          key={path || i}
           title={
             <span>
               <Icon type={icon} />

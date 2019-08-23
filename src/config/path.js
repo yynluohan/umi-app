@@ -61,5 +61,8 @@ module.exports = [
   { path: '/marketing/plan'},
   { path: '/marketing/couponUsage'},
   { path: '/marketing/couponTemplate'},
-  { path: '/marketing/couponTemplateAdd'}
+  { path: '/marketing/couponTemplateAdd'},
+  { path: '/notice'},
+  { path: '/notice/noticeAdd'},
+  { path: '/notice/noticeEdit'}
 ]

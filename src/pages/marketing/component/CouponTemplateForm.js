@@ -258,7 +258,7 @@ class CouponTemplateForm extends React.Component {
                     message:'请填写描述'
                   },
                 ],
-              })(<TextArea rows={3}/>)}
+              })(<TextArea rows={1}/>)}
             </FormItem>
           </Col>
 
@@ -266,8 +266,8 @@ class CouponTemplateForm extends React.Component {
        </Form>
 
        <div style={{textAlign: 'right',marginTop:'2em'}}>
-        <Button type='primary' style={{ marginRight: '1em'}} onClick={()=> this.onSubmit()}>保存</Button>
-        <Button onClick={this.props.onBack}>返回</Button>
+          <Button type='primary' style={{ marginRight: '1em'}} onClick={()=> this.onSubmit()}>保存</Button>
+          <Button onClick={this.props.onBack}>返回</Button>
        </div>
      </div>
    )

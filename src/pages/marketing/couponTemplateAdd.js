@@ -16,7 +16,6 @@ const CouponTemplateAdd  = ({ dispatch,marketing }) => {
       <CouponTemplateForm {...fromProps}/>
     </div>
   )
-
 }
 
 function mapStateToProps(state) {

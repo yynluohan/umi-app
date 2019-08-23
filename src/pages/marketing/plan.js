@@ -4,6 +4,7 @@ import ZEle from 'zero-element';
 import planConfig from './config/planConfig.js';
 
 const Plan = ({ dispatch,marketing }) => {
+
   return (
     <div>
       <ZEle namespace='marketing'  config={planConfig} />
