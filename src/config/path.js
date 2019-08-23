@@ -17,6 +17,7 @@ module.exports = [
   { path: '/product/trialEdit' },
   { path: '/product/trialView' },
   { path: '/product/evaluate' },
+  { path: '/product/evaluateView'},
   { path: '/product/freight' },
   { path: '/product/freightAdd' },
   { path: '/product/freightEdit' },

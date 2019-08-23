@@ -55,10 +55,21 @@ const showStatus = (record) => {
   </span>
 }
 
+const showproductNames = (record) => {
+  return<div>
+    {
+      record.data.record[record.field].length > 0 && record.data.record[record.field].map((item,index) => (
+        <div key={index} style={{backgroundColor: '#f0f0f0',marginBottom:'5px'}}>{item}</div>
+      ))
+    }
+  </div>
+}
+
 
 VTSet({
   'showImage': (record) => record.data.record[record.field] != undefined ? showImage(record) : '',
-  'showStatus': (record) => record.data.record[record.field] != undefined ? showStatus(record) : ''
+  'showStatus': (record) => record.data.record[record.field] != undefined ? showStatus(record) : '',
+  'productNames': (record) => record.data.record[record.field] != undefined ? showproductNames(record) : ''
 })
 
 // window.localStorage.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEwMDEiLCJ1c2VySWQiOiI4NzY3MDgwODI0MzcxOTc4MjciLCJhY2NvdW50IjoiYWRtaW4iLCJpYXQiOjE1NjYxODAzNDcsImp0aSI6Ijg3NjcwODA4MjQzNzE5NzgyNyIsInN1YiI6ImFkbWluIiwiZXhwIjoxNTY2NDM5NTQ3fQ.rJjlToWRX6Ef1KCfN3OjuPguCUB4v9-P1KYypwglY0jYN6D-XCneFeMPWNQcqZsZYLLHm8fJLmSUkErtMqCvZQ'

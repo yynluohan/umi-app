@@ -21,6 +21,7 @@ export default {
             || location.pathname === '/product/productView' || location.pathname === '/product/productEdit'
             || location.pathname === '/product/freightView' || location.pathname === '/product/freightEdit'
             || location.pathname === '/product/trialEdit' || location.pathname === '/product/trialView'
+            || location.pathname === '/product/evaluateView'
           ) {
           const obj = {
             '/product/categroyView':`/api/crud/product/productCategoryies/${query.id}`,
@@ -31,6 +32,7 @@ export default {
             '/product/freightEdit': `/api/crud/product/fareTemplates/${query.id}`,
             '/product/trialEdit':`/api/crud/product/trials/${query.id}`,
             '/product/trialView': `/api/crud/product/trials/${query.id}`,
+            '/product/evaluateView': `/api/cms/evaluations/${query.id}`
           }
           dispatch({
             type: 'save',

@@ -60,7 +60,7 @@ class FormIemView extends React.Component {
               <span>{item.valueMap[record[item.value]]}</span>
             )
           }
-        } else if (item.type && item.type == 'image') {
+        } else if (item.type && item.type === 'image') {
           data[index] = {
             ...item,
             key: item.value,
@@ -99,7 +99,7 @@ class FormIemView extends React.Component {
                       } else {
                         let a = 6,
                             b= 18;
-                        if (k.span && k.span == 24) {
+                        if (k.span && k.span === 24) {
                           a = 2;
                           b = 22
                         }
