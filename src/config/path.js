@@ -39,6 +39,8 @@ module.exports = [
   { path: '/supply/warehouseView' },
   { path: '/supply/purchaseOrder'},
   { path: '/supply/purchaseOrderAdd'},
+  { path: '/supply/purchaseOrderEdit'},
+  { path: '/supply/purchaseOrderView'},
   { path: '/sys/rule' },
   { path: '/sys/adGroup'},
   { path: '/sys/adGroupView'},

@@ -16,10 +16,14 @@ export default {
     setup({ dispatch, history }) {
       history.listen((location) => {
         const query = getArgment(location.search);
-        if (location.pathname === '/supply/warehouseEdit' || location.pathname === '/supply/warehouseView') {
+        if (location.pathname === '/supply/warehouseEdit' || location.pathname === '/supply/warehouseView'
+            || location.pathname === '/supply/purchaseOrderEdit' || location.pathname === '/supply/purchaseOrderView'
+          ) {
           const obj = {
             '/supply/warehouseEdit':`/api/crud/store/warehouses/${query.id}`,
             '/supply/warehouseView':`/api/crud/store/warehouses/${query.id}`,
+            '/supply/purchaseOrderEdit': `/api/wms/procurements/${query.id}`,
+            '/supply/purchaseOrderView': `/api/wms/procurements/${query.id}`,
           }
           dispatch({
             type: 'save',
@@ -78,7 +82,17 @@ export default {
       if (result.code == 200) {
         yield put(routerRedux.goBack())
       }
-    }
+    },
+
+    //修改采购订单
+    *updatePurchaseOrder({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/procurements/${id}`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
 
   },
   reducers: {

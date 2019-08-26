@@ -83,7 +83,7 @@ export default {
             {
               title:'查看',action:'path',
               options:{
-                path:'/supply/warehouseView',
+                path:'/supply/purchaseOrderView',
                 // permission:'apply.view',
                 // location:true
                 queryData:(records) => {
@@ -97,7 +97,7 @@ export default {
             {
               title: '编辑',action:'path',
               options:{
-                path:'/supply/warehouseEdit',
+                path:'/supply/purchaseOrderEdit',
                 queryData:(records) => {
                   const data = {
                     id:records.id,

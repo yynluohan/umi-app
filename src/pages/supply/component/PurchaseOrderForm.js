@@ -24,17 +24,19 @@ class PurchaseOrderForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      item:props.item || {},
+      item: {},
       items: [], //选中的产品
     }
-    this.getProcurementCode()
+    if (!this.props.title.includes('编辑')) {
+      this.getProcurementCode()
+    }
   }
-  
 
   componentWillReceiveProps(nextProps){
     if (nextProps.item) {
       this.setState({
-        item: nextProps.item
+        item: nextProps.item,
+        items: this.state.items.length > 0 ? this.state.items : nextProps.item.items
       })
     }
   }
@@ -125,7 +127,7 @@ class PurchaseOrderForm extends React.Component {
         isButton: true,
         method: query,
         apiUrl: '/api/wms/skus',
-        selected:(data) => this.setState({ items: data }),
+        selected:(data) => this.setState({ items: items.concat(data) }),
         columns:[
             {
                 title: '商品条码',
@@ -180,6 +182,7 @@ class PurchaseOrderForm extends React.Component {
             render:(record,text,index) => (
                 <InputNumber min={0} 
                     onChange={(e) => this.onChangeTable(index,e,'transactionQuantities')}
+                    value={record.transactionQuantities}
                 />
             )
         },
@@ -189,6 +192,7 @@ class PurchaseOrderForm extends React.Component {
             render:(record,text,index) => (
                 <InputNumber min={0} 
                     onChange={(e) => this.onChangeTable(index,e,'transactionSkuPrice')}
+                    value={record.transactionSkuPrice}
                 />
             )
         },
