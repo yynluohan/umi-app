@@ -1,7 +1,5 @@
 import React from 'react';
 import { Form,Col,Row,Input,Button } from 'antd';
-import { query } from '../../../framework/utils/services';
-import FieldOptionInput from '../../../common/FieldOptionInput';
 import CascaderSelect from '../../../common/CascaderSelect';
 import pcd from '../../../config/pcd';
 
@@ -53,15 +51,6 @@ class WarehoseForm extends React.Component {
 
    const { getFieldDecorator } = this.props.form;
    const { item } = this.state;
-
-   const fieldOptionInputProps = {
-     apiUrl: '/api/wms/warehouses',
-     method: query,
-     getway:{
-       'name': 'warehouseName',
-       'value': 'id'
-     }
-   }
 
    return (
      <div style={{ backgroundColor: '#fff',padding: '20px'}}>

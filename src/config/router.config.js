@@ -115,6 +115,11 @@ module.exports = [
         path: '/supply/warehouse',
         name: '仓库管理',
         icon: 'tags',
+      },
+      {
+        path: '/supply/purchaseOrder',
+        name: '采购订单',
+        icon: 'tags',
       }
     ]
   },

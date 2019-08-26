@@ -71,6 +71,15 @@ export default {
       }
     },
 
+    //添加采购订单
+    *addPurchaseOrder({ payload },{ call,put }) {
+      const result = yield call(create,'/api/wms/procurements',payload)
+      tips.lookMes(result.code,result.message)
+      if (result.code == 200) {
+        yield put(routerRedux.goBack())
+      }
+    }
+
   },
   reducers: {
     save(state, action) {
