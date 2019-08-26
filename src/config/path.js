@@ -41,6 +41,7 @@ module.exports = [
   { path: '/supply/purchaseOrderAdd'},
   { path: '/supply/purchaseOrderEdit'},
   { path: '/supply/purchaseOrderView'},
+  { path: '/supply/purchaseReturn'},
   { path: '/sys/rule' },
   { path: '/sys/adGroup'},
   { path: '/sys/adGroupView'},

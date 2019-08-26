@@ -120,6 +120,11 @@ module.exports = [
         path: '/supply/purchaseOrder',
         name: '采购订单',
         icon: 'tags',
+      },
+      {
+        path: '/supply/purchaseReturn',
+        name: '采购退货',
+        icon: 'tags'
       }
     ]
   },
