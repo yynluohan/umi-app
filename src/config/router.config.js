@@ -130,6 +130,11 @@ module.exports = [
         path: '/supply/putStorage',
         name: '入库管理',
         icon: 'tags'
+      },
+      {
+        path: '/supply/outStorage',
+        name: '出库管理',
+        icon: 'tags'
       }
     ]
   },

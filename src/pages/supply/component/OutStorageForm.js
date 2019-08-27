@@ -19,13 +19,13 @@ const formItemLayout = (a,b) => {
   }
 }
 
-class PutStorageForm extends React.Component {
+class OutStorageForm extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
       item: {},
-      storageInItems: [], //选中的产品
+      storageOutItems: [], //选中的产品
     }
     if (!this.props.title.includes('编辑')) {
       this.getProcurementCode()
@@ -36,7 +36,7 @@ class PutStorageForm extends React.Component {
     if (nextProps.item) {
       this.setState({
         item: nextProps.item,
-        storageInItems: this.state.storageInItems.length > 0 ? this.state.storageInItems : nextProps.item.storageInItems
+        storageOutItems: this.state.storageOutItems.length > 0 ? this.state.storageOutItems : nextProps.item.storageOutItems
       })
     }
   }
@@ -44,7 +44,7 @@ class PutStorageForm extends React.Component {
   //获取入库编号
   getProcurementCode = () => {
       let { item } = this.state;
-      query('/api/pub/sn/serial',{prefix: 'IN'}).then(({ code,data }) => {
+      query('/api/pub/sn/serial',{prefix: 'OUT'}).then(({ code,data }) => {
           if (code === 200) {
             item.transactionCode = data
             this.setState({
@@ -57,28 +57,28 @@ class PutStorageForm extends React.Component {
 
   //表格入库数量发生改变时触发
   onChangeTable = (a,b,c) => {
-    let { storageInItems } = this.state;
-    storageInItems[a][c] = b;
+    let { storageOutItems } = this.state;
+    storageOutItems[a][c] = b;
     this.setState({
-        storageInItems
+        storageOutItems
     })
   }
 
   onSubmit = () => {
     const { validateFields,getFieldsValue } = this.props.form;
-    const { storageInItems,item } = this.state;
+    const { storageOutItems,item } = this.state;
     validateFields((errors) => {
       if (errors) {
         return;
       }
-      if (storageInItems.length === 0) {
+      if (storageOutItems.length === 0) {
         message.error('请选择需要入库的商品！');
         return;
       }
       let procurementTotal = 0;
       let productRefundQuantities = 0;
-      storageInItems.length > 0 && storageInItems.map((item,index) => {
-        storageInItems[index] = {
+      storageOutItems.length > 0 && storageOutItems.map((item,index) => {
+        storageOutItems[index] = {
           ...item,
           skuId: item.id
         }
@@ -87,7 +87,7 @@ class PutStorageForm extends React.Component {
     })
       let data = {
         ...item,
-        storageInItems,
+        storageOutItems,
         originatorName:window.localStorage.username || '',
         procurementTotal,
         productRefundQuantities,
@@ -102,7 +102,7 @@ class PutStorageForm extends React.Component {
  render() {
 
    const { getFieldDecorator } = this.props.form;
-   let { item,storageInItems } = this.state;
+   let { item,storageOutItems } = this.state;
 
 
    const fieldOptionInputProps = {
@@ -120,7 +120,7 @@ class PutStorageForm extends React.Component {
         isButton: true,
         method: query,
         apiUrl: '/api/wms/skus',
-        selected:(data) => this.setState({ storageInItems: storageInItems.concat(data) }),
+        selected:(data) => this.setState({ storageOutItems: storageOutItems.concat(data) }),
         columns:[
             {
                 title: '商品条码',
@@ -146,7 +146,7 @@ class PutStorageForm extends React.Component {
    }
 
    const tableInspinProps = {
-      list: storageInItems,
+      list: storageOutItems,
       loading: false,
       columns:[
         {
@@ -155,7 +155,7 @@ class PutStorageForm extends React.Component {
             dataIndex: 'barCode'
         },
         {
-            title: '入库时间',
+            title: '出库时间',
             key: 'createTime',
             dataIndex: 'createTime'
         },
@@ -170,12 +170,22 @@ class PutStorageForm extends React.Component {
             dataIndex: 'skuName'
         },
         {
-            title: '入库数量',
+            title: '出库数量',
             key: 'transactionQuantities',
             render:(record,text,index) => (
                 <InputNumber min={0} 
                     onChange={(e) => this.onChangeTable(index,e,'transactionQuantities')}
                     value={record.transactionQuantities}
+                />
+            )
+        },
+        {
+            title: '出库价格',
+            key: 'transactionSkuPrice',
+            render:(record,text,index) => (
+                <InputNumber min={0} 
+                    onChange={(e) => this.onChangeTable(index,e,'transactionSkuPrice')}
+                    value={record.transactionSkuPrice}
                 />
             )
         },
@@ -194,13 +204,13 @@ class PutStorageForm extends React.Component {
        <Form>
          <Row>
           <Col span={12}>
-            <FormItem label='入库编号' hasFeedback {...formItemLayout()}>
+            <FormItem label='出库编号' hasFeedback {...formItemLayout()}>
               {getFieldDecorator('transactionCode', {
                 initialValue: item.transactionCode,
                 rules: [
                     {
                       required: true,
-                      message:'请填写入库编号'
+                      message:'请填写出库编号'
                     },
                   ],
               })(<Input type="text" />)}
@@ -218,8 +228,8 @@ class PutStorageForm extends React.Component {
                   ],
               })(
                 <Select>
-                    <Select.Option value='CustomerStorageIn'>分销商退货</Select.Option>
-                    <Select.Option value='OthersStorageIn'>其他入库</Select.Option>
+                    <Select.Option value='CustomerStorageOut'>分销商出库</Select.Option>
+                    <Select.Option value='OthersStorageOut'>其他出库</Select.Option>
                 </Select>
               )}
             </FormItem>
@@ -249,15 +259,33 @@ class PutStorageForm extends React.Component {
               )}
             </FormItem>
           </Col>
+          <Col span={12}>
+            <FormItem label='订单号信息' hasFeedback {...formItemLayout()}>
+              {getFieldDecorator('outOrderNum', {
+                initialValue: item.outOrderNum,
+              })(
+                <Input />
+              )}
+            </FormItem>
+          </Col>
+          <Col span={12}>
+            <FormItem label='客户' hasFeedback {...formItemLayout()}>
+              {getFieldDecorator('distributorCustomer', {
+                initialValue: item.distributorCustomer,
+              })(
+                <Input />
+              )}
+            </FormItem>
+          </Col>
 
           <Col span={12}>
-            <FormItem label='入库时间' hasFeedback {...formItemLayout()}>
+            <FormItem label='操作时间' hasFeedback {...formItemLayout()}>
               {getFieldDecorator('transactionTime', {
                 initialValue: item.transactionTime ? moment(item.transactionTime,dataFormat) : '',
                 rules: [
                     {
                       required: false,
-                      message:'请选择入库时间'
+                      message:'请选择操作时间'
                     },
                   ],
             })(
@@ -297,4 +325,4 @@ class PutStorageForm extends React.Component {
 
 }
 
-export default Form.create()(PutStorageForm)
+export default Form.create()(OutStorageForm)
