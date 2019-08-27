@@ -125,6 +125,11 @@ module.exports = [
         path: '/supply/purchaseReturn',
         name: '采购退货',
         icon: 'tags'
+      },
+      {
+        path: '/supply/putStorage',
+        name: '入库管理',
+        icon: 'tags'
       }
     ]
   },

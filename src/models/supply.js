@@ -19,7 +19,8 @@ export default {
         if (location.pathname === '/supply/warehouseEdit' || location.pathname === '/supply/warehouseView'
             || location.pathname === '/supply/purchaseOrderEdit' || location.pathname === '/supply/purchaseOrderView'
             || location.pathname === '/supply/purchaseReturnEdit' || location.pathname === '/supply/purchaseReturnView'  
-        ) {
+            || location.pathname === '/supply/putStorageEdit' || location.pathname === '/supply/putStorageView'
+         ) {
           const obj = {
             '/supply/warehouseEdit':`/api/crud/store/warehouses/${query.id}`,
             '/supply/warehouseView':`/api/crud/store/warehouses/${query.id}`,
@@ -27,6 +28,8 @@ export default {
             '/supply/purchaseOrderView': `/api/wms/procurements/${query.id}`,
             '/supply/purchaseReturnEdit': `/api/wms/refunds/${query.id}`,
             '/supply/purchaseReturnView':`/api/wms/refunds/${query.id}`,
+            '/supply/putStorageEdit': `/api/wms/storages/in/${query.id}`,
+            '/supply/putStorageView': `/api/wms/storages/in/${query.id}`,
           }
           dispatch({
             type: 'save',
@@ -110,6 +113,25 @@ export default {
     *updatePurchaseReturn({ payload },{ call,put,select }) {
       const { id } = yield select(({ supply }) => supply);
       const result = yield call(update,`/api/wms/refunds/${id}`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //添加入库
+    *addPutStorage({ payload },{ call,put }) {
+      const result = yield call(create,'/api/wms/storages/in',payload)
+      tips.lookMes(result.code,result.message)
+      if (result.code == 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //编辑入库
+    *updatePutStorage({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/storages/in/${id}`,payload);
       tips.lookMes(result.code,result.message)
       if (result.code === 200) {
         yield put(routerRedux.goBack())
