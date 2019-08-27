@@ -1,6 +1,6 @@
 export default {
     layout: 'Content',
-    title: '采购订单',
+    title: '采购退货',
     items: [
       {
         span: 24,
@@ -17,17 +17,15 @@ export default {
             { field: 'search',label: '编号/订单',type:'input',placeholder:'采购单编号/订单'},
             { field: 'procureStatus',label: '状态',type:'select',
               options: [
-                  {label: '等待入库',value: 'xxx'},
-                  {label: '部分入库',value: 'SectionStorageIn'},
-                  {label: '全部入库',value: 'TotalStorageIn'},
                   {label: '草稿',value: 'Draft'},
                   {label: '待审核',value: 'Wait_To_Audit'},
                   {label: '审核通过',value: 'Audit_Passed'},
-                  {label: '已关闭',value: 'Closed'},
+                  {label: '关闭',value: 'Closed'},
+                  {label: '完成',value: 'Done'},
               ]
             },
-            { field: 'procurementTime',label: '开始时间',type:'date'},
-            { field: 'procurementTime',label: '结束时间',type:'date'},
+            { field: 'productRefundTime',label: '开始时间',type:'date'},
+            { field: 'productRefundTime',label: '结束时间',type:'date'},
           ]
         }
       },
@@ -46,7 +44,7 @@ export default {
             {
               title: '添加',type:'path',
               options:{
-                path: '/supply/purchaseOrderAdd'
+                path: '/supply/purchaseReturnAdd'
               }
             }
           ],
@@ -64,7 +62,7 @@ export default {
                     'Closed':'关闭',
                   },
                   colorMap: {
-                    'Done':'#777',
+                    'Done':'rgb(82, 196, 26)',
                     'Draft':'#8BC34A',
                     'Wait_To_Audit':'#009688',
                     'Audit_Passed':'#777',
@@ -80,7 +78,7 @@ export default {
             {
               title:'查看',action:'path',
               options:{
-                path:'/supply/purchaseOrderView',
+                path:'/supply/purchaseReturnView',
                 // permission:'apply.view',
                 // location:true
                 queryData:(records) => {
@@ -94,7 +92,9 @@ export default {
             {
               title: '编辑',action:'path',
               options:{
-                path:'/supply/purchaseOrderEdit',
+                expectedField:[['productRefundStatus']],
+                expectedValue:[['Draft']],
+                path:'/supply/purchaseReturnEdit',
                 queryData:(records) => {
                   const data = {
                     id:records.id,
@@ -104,7 +104,11 @@ export default {
               }
             },
             {
-              title: '删除',action: 'delete'
+              title: '删除',action: 'delete',
+              options:{
+                expectedField:[['productRefundStatus']],
+                expectedValue:[['Draft']],
+              }
             }
           ],
         },
