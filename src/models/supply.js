@@ -21,6 +21,7 @@ export default {
             || location.pathname === '/supply/purchaseReturnEdit' || location.pathname === '/supply/purchaseReturnView'  
             || location.pathname === '/supply/putStorageEdit' || location.pathname === '/supply/putStorageView'
             || location.pathname === '/supply/outStorageEdit' || location.pathname === '/supply/outStorageView'
+            || location.pathname === '/supply/transferEdit' || location.pathname === '/supply/transferView'
             ) {
           const obj = {
             '/supply/warehouseEdit':`/api/crud/store/warehouses/${query.id}`,
@@ -33,6 +34,8 @@ export default {
             '/supply/putStorageView': `/api/wms/storages/in/${query.id}`,
             '/supply/outStorageEdit': `/api/wms/storages/out/${query.id}`,
             '/supply/outStorageView': `/api/wms/storages/out/${query.id}`,
+            '/supply/transferEdit': `/api/wms/transfers/${query.id}`,
+            '/supply/transferView': `/api/wms/transfers/${query.id}`,
           }
           dispatch({
             type: 'save',
@@ -159,6 +162,26 @@ export default {
         yield put(routerRedux.goBack())
       }
     },
+
+    //添加调拨
+    *addTransfer({ payload },{ call,put }) {
+      const result = yield call(create,'/api/wms/transfers',payload)
+      tips.lookMes(result.code,result.message)
+      if (result.code == 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //编辑调拨
+    *updateTransfer({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/transfers/${id}`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
 
   },
   reducers: {

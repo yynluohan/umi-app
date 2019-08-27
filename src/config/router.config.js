@@ -135,6 +135,11 @@ module.exports = [
         path: '/supply/outStorage',
         name: '出库管理',
         icon: 'tags'
+      },
+      {
+        path: '/supply/transfer',
+        name: '库存调拨',
+        icon: 'tags'
       }
     ]
   },
