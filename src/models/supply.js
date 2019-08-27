@@ -24,8 +24,8 @@ export default {
             || location.pathname === '/supply/transferEdit' || location.pathname === '/supply/transferView'
             ) {
           const obj = {
-            '/supply/warehouseEdit':`/api/crud/store/warehouses/${query.id}`,
-            '/supply/warehouseView':`/api/crud/store/warehouses/${query.id}`,
+            '/supply/warehouseEdit':`/api/wms/warehouses/${query.id}`,
+            '/supply/warehouseView':`/api/wms/warehouses/${query.id}`,
             '/supply/purchaseOrderEdit': `/api/wms/procurements/${query.id}`,
             '/supply/purchaseOrderView': `/api/wms/procurements/${query.id}`,
             '/supply/purchaseReturnEdit': `/api/wms/refunds/${query.id}`,
@@ -70,7 +70,7 @@ export default {
 
     // 添加仓库
     *addWarehouse({ payload },{ call,put }) {
-      const result = yield call(create,'/api/crud/store/warehouses',payload);
+      const result = yield call(create,'/api/wms/warehouses',payload);
       tips.lookMes(result.code,result.message)
       if (result.code == 200) {
         yield put(routerRedux.goBack())
@@ -80,7 +80,7 @@ export default {
     //修改仓库
     *updateWarehouse({ payload },{ call,put,select }) {
       const { id } = yield select(({ supply }) => supply);
-      const result = yield call(update,`/api/crud/store/warehouses/${id}`,payload);
+      const result = yield call(update,`/api/wms/warehouses/${id}`,payload);
       tips.lookMes(result.code,result.message)
       if (result.code === 200) {
         yield put(routerRedux.goBack())

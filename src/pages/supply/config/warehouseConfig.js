@@ -26,8 +26,8 @@ export default {
         share:'categroy',
         scroll:{ x:1400 },
         API: {
-          listAPI: '/api/crud/store/warehouses',
-          deleteAPI:'/api/crud/store/warehouses/(id)'
+          listAPI: '/api/wms/warehouses',
+          deleteAPI:'/api/wms/warehouses/(id)'
         },
         actions:[
           {
