@@ -16,8 +16,8 @@ const GoodsView = ({ dispatch,supply }) => {
       {label:'单位',data:item.field1},
       {label:'参考成本价格',data:item.costPrice},
       {label:'商品规格',data:item.spec},
-      {label:'商品体积',data:item.volume},
-      {label:'商品重量',data:item.weight},
+      {label:'商品体积',data:item.costPrice},
+      {label:'参考成本价格',data:item.costPrice},
     ]
   }
 

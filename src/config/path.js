@@ -69,6 +69,7 @@ module.exports = [
   { path: '/supply/goodsAdd'},
   { path: '/supply/goodsEdit'},
   { path: '/supply/goodsView'},
+  { path: '/supply/goodsCategroy'},
   { path: '/sys/rule' },
   { path: '/sys/adGroup'},
   { path: '/sys/adGroupView'},

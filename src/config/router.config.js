@@ -155,6 +155,11 @@ module.exports = [
         path: '/supply/goods',
         name: '商品管理',
         icon: 'tags'
+      },
+      {
+        path: '/supply/goodsCategroy',
+        name: '商品分类',
+        icon: 'tags'
       }
     ]
   },
