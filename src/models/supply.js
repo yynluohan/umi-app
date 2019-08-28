@@ -24,6 +24,7 @@ export default {
             || location.pathname === '/supply/transferEdit' || location.pathname === '/supply/transferView'
             || location.pathname === '/supply/inventoryEdit' || location.pathname === '/supply/inventoryView'
             || location.pathname === '/supply/goodsEdit' || location.pathname === '/supply/goodsView'
+            || location.pathname === '/supply/distributorEdit' || location.pathname === '/supply/distributorView'
             ) {
           const obj = {
             '/supply/warehouseEdit':`/api/wms/warehouses/${query.id}`,
@@ -42,6 +43,8 @@ export default {
             '/supply/inventoryView': `/api/wms/checks/${query.id}`,
             '/supply/goodsEdit': `/api/wms/skus/${query.id}`,
             '/supply/goodsView': `/api/wms/skus/${query.id}`,
+            '/supply/distributorEdit': `/api/warehouse/traders/${query.id}`,
+            '/supply/distributorView': `/api/warehouse/traders/${query.id}`,
           }
           dispatch({
             type: 'save',
@@ -220,6 +223,25 @@ export default {
     *updateGoods({ payload },{ call,put,select }) {
       const { id } = yield select(({ supply }) => supply);
       const result = yield call(update,`/api/wms/skus/${id}`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //添加分销商
+    *addDistributor({ payload },{ call,put }) {
+      const result = yield call(create,'/api/warehouse/traders',payload)
+      tips.lookMes(result.code,result.message)
+      if (result.code == 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //编辑分销商
+    *updateDistributor({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/warehouse/traders/${id}`,payload);
       tips.lookMes(result.code,result.message)
       if (result.code === 200) {
         yield put(routerRedux.goBack())

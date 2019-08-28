@@ -1,7 +1,7 @@
 import React from 'react';
-import { connect } from 'dva';
 import ZEle from 'zero-element';
-import goodsCategroyConfig from './config/goodsCategroyConfig.js';
+import goodsCategroyConfig from './config/goodsCategroyConfig';
+import { connect } from 'dva';
 
 class GoodsCategroy extends React.Component {
 
