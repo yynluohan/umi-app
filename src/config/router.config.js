@@ -136,16 +136,16 @@ module.exports = [
       //   name: '出库管理',
       //   icon: 'tags'
       // },
-      {
-        path: '/supply/transfer',
-        name: '库存调拨',
-        icon: 'tags'
-      },
-      {
-        path: '/supply/inventory',
-        name: '库存盘点',
-        icon: 'tags'
-      },
+      // {
+      //   path: '/supply/transfer',
+      //   name: '库存调拨',
+      //   icon: 'tags'
+      // },
+      // {
+      //   path: '/supply/inventory',
+      //   name: '库存盘点',
+      //   icon: 'tags'
+      // },
       {
         path: '/supply/goodsHub',
         name: '商品库存',
@@ -164,6 +164,11 @@ module.exports = [
       {
         path:'/supply/distributor',
         name: '分销商管理',
+        icon: 'tags'
+      },
+      {
+        path: '/supply/supplier',
+        name: '供应商管理',
         icon: 'tags'
       }
     ]
