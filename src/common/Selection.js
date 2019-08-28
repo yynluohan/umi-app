@@ -20,7 +20,7 @@ class Selection extends React.Component {
       visible:props.visible || false,
       isHiddenRow: props.isHiddenRow || false, //是否需要隐藏选择
     }
-    if(props.isShowButtonText === true){
+    if(props.isShowButtonText == true){
       this.showModal()
     }
   }
@@ -37,8 +37,8 @@ class Selection extends React.Component {
       visible: true,
     });
     //调用api，获取数据（method表示传进来的方法，比如get，post方法），apiUrl表示调用的api
-   this.props.apiUrl && this.props.method(this.props.apiUrl,{...this.props.queryData}).then(({ code, data, message }) => {
-     if(code === 200){
+   this.props.apiUrl && this.props.method(this.props.apiUrl,{...this.props.queryData}).then(({ code, data, message, status_code }) => {
+    if(code == 200 || status_code == 0){
        let listData = [];
        if(data.records) {      //判断api是否分页处理
          listData = data.records
@@ -77,8 +77,8 @@ class Selection extends React.Component {
   //查询功能
   onSearch = (e) => {
     //调用api，更新表格数据
-    this.props.method(this.props.apiUrl, {...e}).then(({ code, data, message }) => {
-      if(code === 200){
+    this.props.method(this.props.apiUrl, {...e}).then(({ code, data, message, status_code }) => {
+      if(code == 200 || status_code == 0){
         let listData = [];
         if(data.records) {
           listData = data.records
@@ -87,7 +87,8 @@ class Selection extends React.Component {
         }
         this.setState({
           list: listData,
-          total: data.total
+          total: data.total,
+          pageSize: data.size
         });
       }
     })
@@ -102,15 +103,17 @@ class Selection extends React.Component {
   }
 
   onPageChange = (e) => {
-    this.props.method(this.props.apiUrl, {pageNum: e,...this.props.queryData}).then(({ code, data,message }) => {
+    this.props.method(this.props.apiUrl, {pageNum: e,...this.props.queryData}).then(({ code, data,message, status_code }) => {
       let listData = [];
-      if(data.records) {
+      if(data.records || status_code == 0) {
         listData = data.records
       } else {
         listData = data
       }
       this.setState({
         list: listData,
+        total: data.total,
+        pageSize: data.size
       });
     })
   }

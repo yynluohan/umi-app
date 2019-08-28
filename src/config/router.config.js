@@ -87,6 +87,11 @@ module.exports = [
     icon:'tag'
   },
   {
+    name:'资讯管理',
+    icon:'tags',
+    path:'/information'
+  },
+  {
     name: '营销活动',
     icon: 'tag',
     items: [

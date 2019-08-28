@@ -110,5 +110,9 @@ module.exports = [
   { path: '/marketing/couponTemplateAdd'},
   { path: '/notice'},
   { path: '/notice/noticeAdd'},
-  { path: '/notice/noticeEdit'}
+  { path: '/notice/noticeEdit'},
+  { path: '/information'},
+  { path: '/information/addInfor'},
+  { path: '/information/editInfor'},
+  { path: '/information/viewInfor'}
 ]

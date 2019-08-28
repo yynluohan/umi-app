@@ -55,22 +55,22 @@ export default {
             { field: 'transactionTime',label: '创建时间'},
             { field: 'salesStatus',label: '状态',valueType:'showStatus',
                 options: {
-                statusMap: {
-                  'WaitForStorageOut':'待出库',
-                  'SectionStorageOut':'部分出库',
-                  'TotalStorageOut':'全部出库',
-                  'Draft':'草稿' ,
-                  'Wait_To_Audit':'待审核',
-                  'Closed':'关闭' 
-                },
-                colorMap: {
-                  'WaitForStorageOut':'rgb(172, 51, 193)',
-                  'SectionStorageOut':'rgb(245, 34, 45)',
-                  'TotalStorageOut':'#777',
-                  'Draft':'rgb(82, 196, 26)' ,
-                  'Wait_To_Audit':'#777',
-                  'Closed':'#777'  
-                }
+                    statusMap: {
+                    'WaitForStorageOut':'待出库',
+                    'SectionStorageOut':'部分出库',
+                    'TotalStorageOut':'全部出库',
+                    'Draft':'草稿',
+                    'Wait_To_Audit':'待审核',
+                    'Closed':'关闭' 
+                    },
+                    colorMap: {
+                    'WaitForStorageOut':'rgb(172, 51, 193)',
+                    'SectionStorageOut':'rgb(245, 34, 45)',
+                    'TotalStorageOut':'#777',
+                    'Draft':'rgb(82, 196, 26)' ,
+                    'Wait_To_Audit':'#777',
+                    'Closed':'#777'  
+                    }
                 }
             },
             { field: 'operation'}

@@ -1,0 +1,11 @@
+.particulars {
+  /* padding: 0.6em; */
+  /* text-indent:2em; */
+  /* line-height: 1.5 */
+  word-break: break-all;
+  /* padding: 8px; */
+}
+
+.particulars img{
+  max-width: 100%;
+}

@@ -1,0 +1,68 @@
+.countBody{
+    display: flex;
+    margin-top: 25px;
+    background-color: #FFFFFF;
+}
+
+.coverImg{
+    flex: 1;
+    flex-direction: column;
+    background-color: #FFFFFF;
+}
+
+.imgUrl{
+    width: 80px; 
+    Height: 80px;
+    margin-left: 20px;
+}
+
+.statistics{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.statistics span{
+    margin-right: 13px;
+}
+
+.relativeProductsContent{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.relativeProductImg{
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    width: 180px;
+
+}
+
+.relativeProductImg img{
+    width: 120px;
+    margin-left: 22px;
+}
+
+.nameStyle {
+    font-size: 14px;
+    color:#000;
+    line-height: 1.3em;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /*autoprefixer: off*/
+    -webkit-box-orient: vertical;
+    /*autoprefixer: on*/
+    text-align: center;
+  }
+
+  .paginationBody{
+      display: flex;
+      justify-content: flex-end;
+      margin: 20px 10px; 
+  }

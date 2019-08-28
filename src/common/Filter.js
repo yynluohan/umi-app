@@ -87,6 +87,17 @@ const Filter = ({ onSearch, fields = [], intlPrefix = '',
                 }
              </span>
            );
+         } else if (item.labelName && item.fieldName ){
+            return (
+              <span key={`${index}`}>
+                {getFieldDecorator(item.fieldName, {
+                  initialValue: undefined,
+                  })(
+                    <Input addonBefore={item.labelName} style={{ width: '185px', margin: '0 1em 0.5em 0' }} placeholder={item.labelName}/>
+                  )
+                }
+              </span>
+            );
          }
        } else {
          return (
