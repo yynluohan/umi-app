@@ -17,20 +17,20 @@ export default {
             { field: 'outOrderNum',label: '入库单编号',type:'input'},
             { field: 'status',label: '状态',type:'select',
               options: [
-                {title: '草稿',value: 'Draft'},
-                {title: '待审核',value: 'Wait_To_Audit'},
-                {title: '审核通过',value: 'Audit_Passed'},
-                {title: '完成',value: 'Done'},
-                {title: '关闭',value: 'Closed'}
+                {label: '草稿',value: 'Draft'},
+                {label: '待审核',value: 'Wait_To_Audit'},
+                {label: '审核通过',value: 'Audit_Passed'},
+                {label: '完成',value: 'Done'},
+                {label: '关闭',value: 'Closed'}
               ]
             },
             { field: 'transactionType',label: '类型',type:'select',
               options: [
-                {title: '销售出库',value: 'SalesOut'},
-                {title: '分销商出库',value: 'CustomerStorageOut'},
-                {title: '采购退货',value: 'Refund'},
-                {title: '调拨出库',value: 'TransferOut'},
-                {title: '其他出库',value: 'OthersStorageOut'}
+                {label: '销售出库',value: 'SalesOut'},
+                {label: '分销商出库',value: 'CustomerStorageOut'},
+                {label: '采购退货',value: 'Refund'},
+                {label: '调拨出库',value: 'TransferOut'},
+                {label: '其他出库',value: 'OthersStorageOut'}
               ]
             }
           ]

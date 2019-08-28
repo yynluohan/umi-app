@@ -1,6 +1,6 @@
 export default {
     layout: 'Content',
-    title: '库存调拨',
+    title: '库存盘点',
     items: [
       {
         span: 24,
@@ -14,24 +14,17 @@ export default {
         config: {
           share:'categroy',
           fields: [
-            { field: 'transactionCode',label: '调拨编号',type:'input'},
+            { field: 'checkCode',label: '盘点编号',type:'input'},
             { field: 'status',label: '状态',type:'select',
               options: [
-                {label: '调拨中',value: 'Transfer'},
+                {label: '待盘点',value: 'WaitForCheck'},
+                {label: '盘点中',value: 'Checking'},
+                {label: '盘点结束',value: 'CheckOut'},
                 {label: '草稿',value: 'Draft'},
                 {label: '待审核',value: 'Wait_To_Audit'},
-                {label: '审核通过',value: 'Audit_Passed'},
-                {label: '完成',value: 'Done'},
+                {label: '完成', value:'Done'},
                 {label: '关闭',value: 'Closed'}
               ]
-            },
-            { field: 'fromWarehouseName',label: '调出仓库',type:'select-fetch',
-              options: {
-                  API:'/api/wms/warehouses',
-                  label: 'warehouseName',
-                  value: 'id',
-                  dataField: 'records'
-              }
             }
           ]
         }
@@ -44,49 +37,52 @@ export default {
           share:'categroy',
           scroll:{ x:1400 },
           API: {
-            listAPI: '/api/wms/transfers',
-            deleteAPI:'/api/wms/transfers/(id)'
+            listAPI: '/api/wms/checks',
+            deleteAPI:'/api/wms/checks/(id)'
           },
           actions:[
             {
               title: '添加',type:'path',
               options:{
-                path: '/supply/transferAdd'
+                path: '/supply/inventoryAdd'
               }
             }
           ],
           fields: [
-            { field: 'transactionCode',label: '调拨编号'},
-            { field: 'fromWarehouseName',label: '调出仓库'},
-            { field: 'toWarehouseName',label: '调入仓库'},
-            { field: 'transferTime',label: '调出时间'},
-            { field: 'finishTime',label: '调入时间'},
+            { field: 'checkCode',label: '盘点编号'},
+            { field: 'warehouseName',label: '盘点仓库'},
+            { field: 'transactionBy',label: '经办人'},
+            { field: 'checkTime',label: '盘点时间'},
+            { field: 'originatorName',label: '制单人'},
             { field: 'status',label: '状态',valueType:'showStatus',
                 options: {
                 statusMap: {
+                  'WaitForCheck':'待盘点',
+                  'Checking':'盘点中',
+                  'CheckOut':'盘点结束',
                   'Draft':'草稿',
                   'Wait_To_Audit':'待审核',
-                  'Audit_Passed':'审核通过',
                   'Done':'完成' ,
                   'Closed':'关闭' 
                 },
                 colorMap: {
+                  'WaitForCheck':'#777',
+                  'Checking':'#777',
+                  'CheckOut':'#777',
                   'Draft':'rgb(172, 51, 193)',
                   'Wait_To_Audit':'rgb(245, 34, 45)',
-                  'Audit_Passed':'#777',
                   'Done':'rgb(82, 196, 26)' ,
                   'Closed':'#777'  
                 }
                 }
             },
-            { field: 'transactionBy',label: '经办人'},
             { field: 'operation'}
           ],
           operation: [
             {
               title:'查看',action:'path',
               options:{
-                path:'/supply/transferView',
+                path:'/supply/inventoryView',
                 // permission:'apply.view',
                 // location:true
                 queryData:(records) => {
@@ -102,7 +98,7 @@ export default {
               options:{
                 expectedField:[['status']],
                 expectedValue:[['Draft']],
-                path:'/supply/transferEdit',
+                path:'/supply/inventoryEdit',
                 queryData:(records) => {
                   const data = {
                     id:records.id,

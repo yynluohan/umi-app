@@ -126,19 +126,24 @@ module.exports = [
         name: '采购退货',
         icon: 'tags'
       },
-      {
-        path: '/supply/putStorage',
-        name: '入库管理',
-        icon: 'tags'
-      },
-      {
-        path: '/supply/outStorage',
-        name: '出库管理',
-        icon: 'tags'
-      },
+      // {
+      //   path: '/supply/putStorage',
+      //   name: '入库管理',
+      //   icon: 'tags'
+      // },
+      // {
+      //   path: '/supply/outStorage',
+      //   name: '出库管理',
+      //   icon: 'tags'
+      // },
       {
         path: '/supply/transfer',
         name: '库存调拨',
+        icon: 'tags'
+      },
+      {
+        path: '/supply/inventory',
+        name: '库存盘点',
         icon: 'tags'
       }
     ]

@@ -22,6 +22,7 @@ export default {
             || location.pathname === '/supply/putStorageEdit' || location.pathname === '/supply/putStorageView'
             || location.pathname === '/supply/outStorageEdit' || location.pathname === '/supply/outStorageView'
             || location.pathname === '/supply/transferEdit' || location.pathname === '/supply/transferView'
+            || location.pathname === '/supply/inventoryEdit' || location.pathname === '/supply/inventoryView'
             ) {
           const obj = {
             '/supply/warehouseEdit':`/api/wms/warehouses/${query.id}`,
@@ -36,6 +37,8 @@ export default {
             '/supply/outStorageView': `/api/wms/storages/out/${query.id}`,
             '/supply/transferEdit': `/api/wms/transfers/${query.id}`,
             '/supply/transferView': `/api/wms/transfers/${query.id}`,
+            '/supply/inventoryEdit': `/api/wms/checks/${query.id}`,
+            '/supply/inventoryView': `/api/wms/checks/${query.id}`,
           }
           dispatch({
             type: 'save',
@@ -182,6 +185,24 @@ export default {
       }
     },
 
+    // 添加盘点
+    *addInventory({ payload },{ call,put }) {
+      const result = yield call(create,'/api/wms/checks',payload)
+      tips.lookMes(result.code,result.message)
+      if (result.code == 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //编辑盘点
+    *updateInventory({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/checks/${id}`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
 
   },
   reducers: {

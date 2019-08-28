@@ -17,20 +17,20 @@ export default {
               { field: 'transactionCode',label: '入库单编号',type:'input'},
               { field: 'status',label: '草稿',type:'select',
                 options: [
-                  {title: '草稿',value: 'Draft'},
-                  {title: '待审核',value: 'Wait_To_Audit'},
-                  {title: '审核通过',value: 'Audit_Passed'},
-                  {title: '完成',value: 'Done'},
-                  {title: '关闭',value: 'Closed'}
+                  {label: '草稿',value: 'Draft'},
+                  {label: '待审核',value: 'Wait_To_Audit'},
+                  {label: '审核通过',value: 'Audit_Passed'},
+                  {label: '完成',value: 'Done'},
+                  {label: '关闭',value: 'Closed'}
                 ]
               },
               { field: 'transactionType',label: '类型',type:'select',
                 options: [
-                  {title: '销售退货',value: 'SalesIn'},
-                  {title: '调拨入库',value: 'TransferIn'},
-                  {title: '采购入库',value: 'Procurement'},
-                  {title: '分销商退货',value: 'CustomerStorageIn'},
-                  {title: '其他入库',value: 'OthersStorageIn'}
+                  {label: '销售退货',value: 'SalesIn'},
+                  {label: '调拨入库',value: 'TransferIn'},
+                  {label: '采购入库',value: 'Procurement'},
+                  {label: '分销商退货',value: 'CustomerStorageIn'},
+                  {label: '其他入库',value: 'OthersStorageIn'}
                 ]
               }
             ]
