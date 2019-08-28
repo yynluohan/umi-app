@@ -145,6 +145,11 @@ module.exports = [
         path: '/supply/inventory',
         name: '库存盘点',
         icon: 'tags'
+      },
+      {
+        path: '/supply/goodsHub',
+        name: '商品库存',
+        icon: 'tags'
       }
     ]
   },
