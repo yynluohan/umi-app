@@ -150,6 +150,11 @@ module.exports = [
         path: '/supply/goodsHub',
         name: '商品库存',
         icon: 'tags'
+      },
+      {
+        path: '/supply/goods',
+        name: '商品管理',
+        icon: 'tags'
       }
     ]
   },
