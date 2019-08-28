@@ -117,6 +117,7 @@ class FormIemView extends React.Component {
               ))
             }
         </Form>
+        {this.props.children || ''}
         {
           !isHiddenBackBut ?
           <div style={{textAlign:'right',marginTop:'2em'}}>

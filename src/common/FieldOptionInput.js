@@ -30,6 +30,12 @@ class FieldOptionInput extends React.Component {
     }
   }
 
+  onClick = (data) => {
+    if (this.props.onSelected) {
+      this.props.onSelected(data)
+    }
+  }
+
   render() {
 
     let { list,value } = this.state;
@@ -49,7 +55,11 @@ class FieldOptionInput extends React.Component {
         >
           {
             list.length > 0 && list.map((item,index) => (
-              <Select.Option key={index} value={ item[getway['value']] }>{ item[getway['name']] }</Select.Option>
+              <Select.Option key={index} value={ item[getway['value']] }
+                onClick={() => this.onClick(item)}
+              >
+                { item[getway['name']] }
+              </Select.Option>
             ))
           }
         </Select>

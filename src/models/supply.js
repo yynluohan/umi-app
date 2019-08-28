@@ -26,6 +26,7 @@ export default {
             || location.pathname === '/supply/goodsEdit' || location.pathname === '/supply/goodsView'
             || location.pathname === '/supply/distributorEdit' || location.pathname === '/supply/distributorView'
             || location.pathname === '/supply/supplierEdit' || location.pathname === '/supply/supplierView'
+            || location.pathname === '/supply/distributorOutEdit' || location.pathname === '/supply/distributorOutView'
             ) {
           const obj = {
             '/supply/warehouseEdit':`/api/wms/warehouses/${query.id}`,
@@ -48,6 +49,8 @@ export default {
             '/supply/distributorView': `/api/warehouse/traders/${query.id}`,
             '/supply/supplierEdit': `/api/wms/suppliers/${query.id}`,
             '/supply/supplierView':`/api/wms/suppliers/${query.id}`,
+            '/supply/distributorOutEdit':`/api/warehouse/sales/${query.id}`,
+            '/supply/distributorOutView':`/api/warehouse/sales/${query.id}`,
           }
           dispatch({
             type: 'save',
@@ -264,6 +267,25 @@ export default {
     *updateSupplier({ payload },{ call,put,select }) {
       const { id } = yield select(({ supply }) => supply);
       const result = yield call(update,`/api/wms/suppliers/${id}`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    // 添加分销订单
+    *addDistributorOut({ payload },{ call,put }) {
+      const result = yield call(create,'/api/warehouse/sales',payload)
+      tips.lookMes(result.code,result.message)
+      if (result.code == 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //编辑分销订单
+    *updateDistributorOut({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/warehouse/sales/${id}`,payload);
       tips.lookMes(result.code,result.message)
       if (result.code === 200) {
         yield put(routerRedux.goBack())

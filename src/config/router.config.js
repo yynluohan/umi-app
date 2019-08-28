@@ -170,6 +170,11 @@ module.exports = [
         path: '/supply/supplier',
         name: '供应商管理',
         icon: 'tags'
+      },
+      {
+        path: '/supply/distributorOut',
+        name: '分销商出库管理',
+        icon: 'tags'
       }
     ]
   },
