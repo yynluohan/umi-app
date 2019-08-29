@@ -13,11 +13,19 @@ const TransferEdit = ({ dispatch,supply }) => {
         onBack() {
             dispatch(routerRedux.goBack())
         },
-        onSave(data) {
-            dispatch({
-                type: 'supply/updateTransfer',
-                payload: data
-            })
+        onSave(data,statusData) {
+            if (statusData) {
+                dispatch({
+                    type: 'supply/submitApproveTransfer',
+                    payload: data
+                })
+            } else {
+                dispatch({
+                    type: 'supply/updateTransfer',
+                    payload: data
+                })
+            }
+            
         }
     }
 

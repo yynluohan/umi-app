@@ -28,6 +28,7 @@ export default {
             || location.pathname === '/supply/supplierEdit' || location.pathname === '/supply/supplierView'
             || location.pathname === '/supply/distributorOutEdit' || location.pathname === '/supply/distributorOutView'
             || location.pathname === '/supply/putStorageApprove' || location.pathname === '/supply/outStorageApprove'
+            || location.pathname === '/supply/transferApprove'
             ) {
           const obj = {
             '/supply/warehouseEdit':`/api/wms/warehouses/${query.id}`,
@@ -56,6 +57,7 @@ export default {
             '/supply/wmsApprove': `/api/wms/refunds/${query.id}`,
             '/supply/putStorageApprove': `/api/wms/storages/in/${query.id}`,
             '/supply/outStorageApprove': `/api/wms/storages/out/${query.id}`,
+            '/supply/transferApprove': `/api/wms/transfers/${query.id}`,
           }
           dispatch({
             type: 'save',
@@ -156,9 +158,8 @@ export default {
     },
 
     //采购退货提交审核
-    *submitApprovePurchaseReturn({ payload },{ call,put,select }) {
-      const { id } = yield select(({ supply }) => supply);
-      const result = yield call(update,`/api/wms/refunds/${id}/audit`,payload);
+    *submitApprovePurchaseReturn({ payload },{ call,put }) {
+      const result = yield call(update,`/api/wms/refunds/${payload.id}/audit`,payload);
       tips.lookMes(result.code,result.message)
       if (result.code === 200) {
         yield put(routerRedux.goBack())
@@ -254,8 +255,7 @@ export default {
     },
 
     //出库提交审核
-    *submitApproveOutStorage({ payload },{ call,put,select }) {
-      const { id } = yield select(({ supply }) => supply);
+    *submitApproveOutStorage({ payload },{ call,put }) {
       const result = yield call(update,`/api/wms/storages/out/${payload.id}/audit`,payload);
       tips.lookMes(result.code,result.message)
       if (result.code === 200) {
@@ -297,6 +297,35 @@ export default {
     *updateTransfer({ payload },{ call,put,select }) {
       const { id } = yield select(({ supply }) => supply);
       const result = yield call(update,`/api/wms/transfers/${id}`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //调拨提交审核
+    *submitApproveTransfer({ payload },{ call,put }) {
+      const result = yield call(update,`/api/wms/transfers/${payload.id}/audit`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //调拨审核拒绝
+    *transferApproveReject({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/transfers/${id}/closed`);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //调拨审核通过
+    *transferApprovePass({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/transfers/${id}/pass`,payload);
       tips.lookMes(result.code,result.message)
       if (result.code === 200) {
         yield put(routerRedux.goBack())

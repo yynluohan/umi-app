@@ -61,6 +61,7 @@ module.exports = [
   { path: '/supply/transferAdd'},
   { path: '/supply/transferEdit'},
   { path: '/supply/transferView'},
+  { path: '/supply/transferApprove'},
   { path: '/supply/inventory'},
   { path: '/supply/inventoryAdd'},
   { path: '/supply/inventoryEdit'},
