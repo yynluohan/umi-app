@@ -13,11 +13,19 @@ const PutStorageEdit = ({ dispatch,supply }) => {
         onBack() {
             dispatch(routerRedux.goBack())
         },
-        onSave(data) {
-            dispatch({
-                type: 'supply/updatePutStorage',
-                payload: data
-            })
+        onSave(data,statusData) {
+            if (statusData) {
+                dispatch({
+                    type: 'supply/submitApprovePutStorage',
+                    payload: data
+                })
+            } else {
+                dispatch({
+                    type: 'supply/updatePutStorage',
+                    payload: data
+                })
+            }
+            
         }
     }
 

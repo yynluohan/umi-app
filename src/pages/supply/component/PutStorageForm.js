@@ -64,7 +64,7 @@ class PutStorageForm extends React.Component {
     })
   }
 
-  onSubmit = () => {
+  onSubmit = (statusData) => {
     const { validateFields,getFieldsValue } = this.props.form;
     const { storageInItems,item } = this.state;
     validateFields((errors) => {
@@ -93,7 +93,7 @@ class PutStorageForm extends React.Component {
         productRefundQuantities,
         ...getFieldsValue(),
       };
-      this.props.onSave(data)
+      this.props.onSave(data,statusData)
     });
   }
   
@@ -278,6 +278,11 @@ class PutStorageForm extends React.Component {
        <TableInSpin {...tableInspinProps} />
         
        <div style={{textAlign: 'right',marginTop:'2em'}}>
+         {
+           this.props.title.includes('编辑') ?
+           <Button type='primary' style={{ marginRight: '1em'}} onClick={()=> this.onSubmit('审核')}>提交审核</Button>
+           : ''
+         }
         <Button type='primary' style={{ marginRight: '1em'}} onClick={()=> this.onSubmit()}>保存</Button>
         <Button onClick={this.props.onBack}>返回</Button>
        </div>

@@ -113,6 +113,29 @@ export default {
                 }
               },
               {
+                title: '审核',action:'path',
+                options:{
+                  expectedField:[['status']],
+                  expectedValue:[['Wait_To_Audit']],
+                  path: '/supply/putStorageApprove',
+                  queryData:(records) => {
+                    const data = {
+                      id:records.id,
+                    }
+                    return data
+                  }
+                }
+              },
+              {
+                title: '完成入库',action:'request',
+                options:{
+                  expectedField:[['status']],
+                  expectedValue:[['Audit_Passed']],
+                  API:'/api/wms/storages/in/(id)/execution',
+                  method:'put'
+                }
+              },
+              {
                 title: '编辑',action:'path',
                 options:{
                   expectedField:[['status']],

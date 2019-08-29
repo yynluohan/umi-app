@@ -27,6 +27,7 @@ export default {
             || location.pathname === '/supply/distributorEdit' || location.pathname === '/supply/distributorView'
             || location.pathname === '/supply/supplierEdit' || location.pathname === '/supply/supplierView'
             || location.pathname === '/supply/distributorOutEdit' || location.pathname === '/supply/distributorOutView'
+            || location.pathname === '/supply/putStorageApprove' || location.pathname === '/supply/outStorageApprove'
             ) {
           const obj = {
             '/supply/warehouseEdit':`/api/wms/warehouses/${query.id}`,
@@ -52,7 +53,9 @@ export default {
             '/supply/supplierView':`/api/wms/suppliers/${query.id}`,
             '/supply/distributorOutEdit':`/api/warehouse/sales/${query.id}`,
             '/supply/distributorOutView':`/api/warehouse/sales/${query.id}`,
-            '/supply/wmsApprove': `/api/wms/refunds/${query.id}`
+            '/supply/wmsApprove': `/api/wms/refunds/${query.id}`,
+            '/supply/putStorageApprove': `/api/wms/storages/in/${query.id}`,
+            '/supply/outStorageApprove': `/api/wms/storages/out/${query.id}`,
           }
           dispatch({
             type: 'save',
@@ -183,7 +186,6 @@ export default {
     },
 
     
-
     //添加入库
     *addPutStorage({ payload },{ call,put }) {
       const result = yield call(create,'/api/wms/storages/in',payload)
@@ -197,6 +199,35 @@ export default {
     *updatePutStorage({ payload },{ call,put,select }) {
       const { id } = yield select(({ supply }) => supply);
       const result = yield call(update,`/api/wms/storages/in/${id}`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //入库提交审核
+    *submitApprovePutStorage({ payload },{ call,put }) {
+      const result = yield call(update,`/api/wms/storages/in/${payload.id}/audit`,payload)
+      tips.lookMes(result.code,result.message)
+      if (result.code == 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    // 入库审核拒绝
+    *putStorageApproveReject({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/storages/in/${id}/closed`);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    // 入库审核通过
+    *putStorageApprovePass({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/storages/in/${id}/pass`,payload);
       tips.lookMes(result.code,result.message)
       if (result.code === 200) {
         yield put(routerRedux.goBack())
@@ -221,6 +252,37 @@ export default {
         yield put(routerRedux.goBack())
       }
     },
+
+    //出库提交审核
+    *submitApproveOutStorage({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/storages/out/${payload.id}/audit`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //出库审核拒绝
+    *outStorageApproveReject({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/storages/out/${id}/closed`);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //出库审核通过
+    *outStorageApprovePass({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/storages/out/${id}/pass`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
 
     //添加调拨
     *addTransfer({ payload },{ call,put }) {

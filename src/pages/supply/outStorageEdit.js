@@ -13,11 +13,18 @@ const OutStorageEdit = ({ dispatch,supply }) => {
         onBack() {
             dispatch(routerRedux.goBack())
         },
-        onSave(data) {
-            dispatch({
-                type: 'supply/updateOutStorage',
-                payload: data
-            })
+        onSave(data,statusData) {
+            if (statusData) {
+                dispatch({
+                    type: 'supply/submitApproveOutStorage',
+                    payload: data
+                })
+            } else {
+                dispatch({
+                    type: 'supply/updateOutStorage',
+                    payload: data
+                })
+            }
         }
     }
 

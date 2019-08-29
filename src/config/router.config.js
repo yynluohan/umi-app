@@ -131,41 +131,41 @@ module.exports = [
         name: '采购退货',
         icon: 'tags'
       },
-      // {
-      //   path: '/supply/putStorage',
-      //   name: '入库管理',
-      //   icon: 'tags'
-      // },
-      // {
-      //   path: '/supply/outStorage',
-      //   name: '出库管理',
-      //   icon: 'tags'
-      // },
-      // {
-      //   path: '/supply/transfer',
-      //   name: '库存调拨',
-      //   icon: 'tags'
-      // },
-      // {
-      //   path: '/supply/inventory',
-      //   name: '库存盘点',
-      //   icon: 'tags'
-      // },
       {
-        path: '/supply/goodsHub',
-        name: '商品库存',
+        path: '/supply/putStorage',
+        name: '入库管理',
         icon: 'tags'
       },
       {
-        path: '/supply/goods',
-        name: '商品管理',
+        path: '/supply/outStorage',
+        name: '出库管理',
         icon: 'tags'
       },
       {
-        path: '/supply/goodsCategroy',
-        name: '商品分类',
+        path: '/supply/transfer',
+        name: '库存调拨',
         icon: 'tags'
       },
+      {
+        path: '/supply/inventory',
+        name: '库存盘点',
+        icon: 'tags'
+      },
+      // {
+      //   path: '/supply/goodsHub',
+      //   name: '商品库存',
+      //   icon: 'tags'
+      // },
+      // {
+      //   path: '/supply/goods',
+      //   name: '商品管理',
+      //   icon: 'tags'
+      // },
+      // {
+      //   path: '/supply/goodsCategroy',
+      //   name: '商品分类',
+      //   icon: 'tags'
+      // },
       {
         path:'/supply/distributor',
         name: '分销商管理',
