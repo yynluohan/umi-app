@@ -90,6 +90,20 @@ export default {
               }
             },
             {
+              title: '审核',action:'path',
+              options:{
+                expectedField:[['productRefundStatus']],
+                expectedValue:[['Wait_To_Audit']],
+                path: '/supply/wmsApprove',
+                queryData:(records) => {
+                  const data = {
+                    id:records.id,
+                  }
+                  return data
+                }
+              }
+            },
+            {
               title: '编辑',action:'path',
               options:{
                 expectedField:[['productRefundStatus']],

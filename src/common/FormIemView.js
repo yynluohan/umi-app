@@ -80,7 +80,7 @@ class FormIemView extends React.Component {
     }
 
     return (
-      <div style={{ background: '#fff',padding: '20px'}}>
+      <div style={{ background: '#fff',padding: title ? '20px' : '0'}}>
         <h2>{title || ''}</h2>
         <Form>
             {
@@ -93,6 +93,15 @@ class FormIemView extends React.Component {
                           <Col span={24} key={i} style ={{ marginBottom: '2em'}}>
                             <CardLayout title={k.label}>
                               <Table columns={createColmns(k.columns)} dataSource={k.data} pagination={false}/>
+                              <div style={k.otherData ? {padding: '1em'} : {}}>
+                                {
+                                  k.otherData && k.otherData.length > 0 && k.otherData.map((m,n) => (
+                                    <div key={n}>
+                                      <span>{m.title}</span>: <span>{m.value}</span>
+                                    </div>
+                                  ))
+                                }
+                              </div>
                             </CardLayout>
                           </Col>
                         )

@@ -173,12 +173,12 @@ class ViewInformation extends React.Component {
         okText="删除"
         cancelText="取消"
       >
-        <a style={{color:'#888888', fontSize:'12px'}}>删除</a>
+        <span style={{color:'#888888', fontSize:'12px',cursor:'pointer'}}>删除</span>
       </Popconfirm>
     ];
     if(isRaply){
       actionList.push(
-        <a style={{color:'#428bca', fontSize:'12px', marginLeft:'20px'}} onClick={() => onReply(item)}>回复</a>
+        <span style={{color:'#428bca', fontSize:'12px', marginLeft:'20px',cursor:'pointer'}} onClick={() => onReply(item)}>回复</span>
       )
     }
     
@@ -186,10 +186,10 @@ class ViewInformation extends React.Component {
       <Comment
         actions={actionList}
         author={
-          <a style={{fontSize:'16px'}}>
+          <span style={{fontSize:'16px'}}>
             <span>{name}</span>
             <span style={{marginLeft:'20px'}}>{item.createTime}</span>
-          </a>
+          </span>
         }
         avatar={
           <Avatar

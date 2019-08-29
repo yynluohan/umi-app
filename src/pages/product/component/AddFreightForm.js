@@ -1,12 +1,8 @@
 import React from 'react';
-import { Form,Col,Row,Input,Button,message,Divider,Select,Radio,DatePicker,Checkbox,InputNumber   } from 'antd';
-import { query } from '../../../framework/utils/services';
-import UploadFile from '../../../common/UploadFile';
-import htmlToDraft from 'html-to-draftjs';
+import { Form,Col,Row,Input,Button,Radio,Checkbox,InputNumber } from 'antd';
 import TableInSpin from '../../../common/TableInSpin';
 
 const FormItem = Form.Item;
-const formatDate = window.MC.DATETIMEFORMAT;
 const formItemLayout = (a,b) => {
   return {
     labelCol: {
@@ -25,12 +21,12 @@ class AddFreightForm extends React.Component {
     let fastList = [];
     let emsList = [];
     let mailList = [];
-    if (props.item != undefined) {
+    if (props.item !== undefined) {
       if (props.item.carryModeList && props.item.carryModeList.length > 0) {
-        props.item.carryModeList.map((k,i) => {
-          if (k.carryWay == 0) {
+        props.item.carryModeList.map((k) => {
+          if (k.carryWay === 0) {
             fastList.push(k)
-          }else if (k.carryWay == 1) {
+          }else if (k.carryWay === 1) {
             emsList.push(k)
           } else {
             mailList.push(k)
@@ -53,13 +49,13 @@ class AddFreightForm extends React.Component {
 
   updateItem = (e,field,record,index) => {
     let { fastList,emsList,mailList } = this.state;
-    if (record.carryWay == 0) {
+    if (record.carryWay === 0) {
       fastList[index][field] = e
     }
-    if (record.carryWay == 1) {
+    if (record.carryWay === 1) {
       emsList[index][field] = e
     }
-    if (record.carryWay == 2) {
+    if (record.carryWay === 2) {
       mailList[index][field] = e
     }
     this.setState({
@@ -86,13 +82,13 @@ class AddFreightForm extends React.Component {
 
   onMove = (data,index) => {
     let { fastList,emsList,mailList } = this.state;
-    if (data.carryWay == 0) {
+    if (data.carryWay === 0) {
       fastList.splice(index,1)
     }
-    if (data.carryWay == 1) {
+    if (data.carryWay === 1) {
       emsList.splice(index,1)
     }
-    if (data.carryWay == 2) {
+    if (data.carryWay === 2) {
       mailList.splice(index,1)
     }
     this.setState({
@@ -109,16 +105,16 @@ class AddFreightForm extends React.Component {
         firstAmount: '',
         secondPiece: '',
         secondAmount: '',
-        carryWay: type == 'fast' ? 0 : type == 'ems' ? 1 : 2
+        carryWay: type === 'fast' ? 0 : type === 'ems' ? 1 : 2
       }
     ]
-    if (type == 'fast') {
+    if (type === 'fast') {
       fastList = fastList.concat(data)
     }
-    if (type == 'ems') {
+    if (type === 'ems') {
       emsList = emsList.concat(data)
     }
-    if (type == 'mail') {
+    if (type === 'mail') {
       mailList = mailList.concat(data)
     }
     this.setState({
@@ -136,7 +132,7 @@ class AddFreightForm extends React.Component {
         firstAmount: 0,
         secondPiece: 1,
         secondAmount: 0,
-        carryWay: type == 'fast' ? 0 : type == 'ems' ? 1 : 2
+        carryWay: type === 'fast' ? 0 : type === 'ems' ? 1 : 2
       }
     } else {
       data = {}
@@ -178,7 +174,7 @@ class AddFreightForm extends React.Component {
  render() {
 
    const { getFieldDecorator } = this.props.form;
-   const { item,fastType,fastList,emsType,emsList,mailType,mailList } = this.state;
+   const { item,fastList,emsList,mailList } = this.state;
 
    const columnsObj = [
      {
@@ -188,7 +184,7 @@ class AddFreightForm extends React.Component {
          <span>
           {
             index !== 0 ?
-            <Input value={record.region != undefined ? record.region : ''}
+            <Input value={record.region !== undefined ? record.region : ''}
               onChange={(e) => this.updateItem(e.target.value,'region',record,index)}
             />
             :
@@ -201,7 +197,7 @@ class AddFreightForm extends React.Component {
        title: '首件数量',
        key: 'firstPiece',
        render: (record,text,index) => (
-         <InputNumber value={record.firstPiece != undefined ? record.firstPiece : ''}
+         <InputNumber value={record.firstPiece !== undefined ? record.firstPiece : ''}
           onChange={(e) => this.updateItem(e,'firstPiece',record,index)}
           min={0}
          />
@@ -211,7 +207,7 @@ class AddFreightForm extends React.Component {
        title: '首费',
        key: 'firstAmount',
        render: (record,text,index) => (
-         <InputNumber value={record.firstAmount != undefined ? record.firstAmount : ''}
+         <InputNumber value={record.firstAmount !== undefined ? record.firstAmount : ''}
          onChange={(e) => this.updateItem(e,'firstAmount',record,index)}
          min={0}
          />
@@ -221,7 +217,7 @@ class AddFreightForm extends React.Component {
        title: '续件',
        key: 'secondPiece',
        render: (record,text,index) => (
-         <InputNumber value={record.secondPiece != undefined ? record.secondPiece : ''}
+         <InputNumber value={record.secondPiece !== undefined ? record.secondPiece : ''}
          onChange={(e) => this.updateItem(e,'secondPiece',record,index)}
          min={0}
          />
@@ -231,7 +227,7 @@ class AddFreightForm extends React.Component {
        title:'续费',
        key:'secondAmount',
        render: (record,text,index) => (
-         <InputNumber value={record.secondAmount != undefined ? record.secondAmount :  ''}
+         <InputNumber value={record.secondAmount !== undefined ? record.secondAmount :  ''}
          onChange={(e) => this.updateItem(e,'secondAmount',record,index)}
          min={0}
          />
@@ -244,7 +240,7 @@ class AddFreightForm extends React.Component {
          <span>
           {
             index !== 0 ?
-            <a onClick={() => this.onMove(record,index)}>移除</a>
+            <span style={{color: 'blue',cursor:'pointer'}} onClick={() => this.onMove(record,index)}>移除</span>
             : ''
           }
          </span>
@@ -379,8 +375,8 @@ class AddFreightForm extends React.Component {
                 ],
               })(
                 <Radio.Group>
-                  <Radio value={1}>卖家承担运费 </Radio>
-                  <Radio value={0}>自定义运费  </Radio>
+                  <Radio value={1}>卖家承担运费</Radio>
+                  <Radio value={0}>自定义运费</Radio>
                 </Radio.Group>
               )}
             </FormItem>
@@ -396,9 +392,9 @@ class AddFreightForm extends React.Component {
                 ],
               })(
                 <Radio.Group>
-                  <Radio value={0}>按件数 </Radio>
-                  <Radio value={1}>按重量 </Radio>
-                  <Radio value={2}>按体积 </Radio>
+                  <Radio value={0}>按件数</Radio>
+                  <Radio value={1}>按重量</Radio>
+                  <Radio value={2}>按体积</Radio>
                 </Radio.Group>
               )}
             </FormItem>

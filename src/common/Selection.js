@@ -148,7 +148,7 @@ class Selection extends React.Component {
             {
               isShowButtonText ? ''
               :
-              <a onClick={this.showModal} style={{color:'#558eea'}}>{butName || '请选择'}</a>
+              <span style={{color:'blue',cursor:'pointer'}} onClick={this.showModal} style={{color:'#558eea'}}>{butName || '请选择'}</span>
             }
           </span>
         }

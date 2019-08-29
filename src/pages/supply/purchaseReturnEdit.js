@@ -13,11 +13,19 @@ const PurchaseReturnEdit = ({ dispatch,supply }) => {
         onBack() {
             dispatch(routerRedux.goBack())
         },
-        onSave(data) {
-            dispatch({
-                type: 'supply/updatePurchaseReturn',
-                payload: data
-            })
+        onSave(data,statusData) {
+            if (statusData) {
+                dispatch({
+                    type: 'supply/submitApprovePurchaseReturn',
+                    payload: data
+                })
+            } else {
+                dispatch({
+                    type: 'supply/updatePurchaseReturn',
+                    payload: data
+                })
+            }
+            
         }
     }
 

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Upload, Icon, Modal, Button } from 'antd';
+import { Upload, Icon, Button } from 'antd';
 
 export default class UploadFile extends PureComponent {
   constructor(props) {
@@ -20,7 +20,7 @@ export default class UploadFile extends PureComponent {
     }
     return null;
   }
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate() {
     const { reFormat, value } = this.state;
     if (reFormat) {
       this.setState({

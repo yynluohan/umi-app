@@ -58,7 +58,7 @@ export default {
             { field: 'procureStatus',label: '状态',valueType: 'showStatus',
               options: {
                   statusMap: {
-                    'xxx':'等待入库',
+                    'WaitForStorageIn':'等待入库',
                     'SectionStorageIn':'部分入库',
                     'TotalStorageIn':'全部入库',
                     'Draft':'草稿',
@@ -67,7 +67,7 @@ export default {
                     'Closed':'已关闭',
                   },
                   colorMap: {
-                    'xxx':'#777',
+                    'WaitForStorageIn':'#777',
                     'SectionStorageIn':'#8BC34A',
                     'TotalStorageIn':'#009688',
                     'Draft':'#777',
@@ -95,8 +95,33 @@ export default {
               }
             },
             {
+              title: '入库',action:'path',
+              options:{
+                expectedField:[['procureStatus']],
+                expectedValue:[['Audit_Passed','SectionStorageIn']],
+                path:'/supply/purchaseOrderPut',
+                queryData:(records) => {
+                  const data = {
+                    id:records.id,
+                  }
+                  return data
+                }
+              }
+            },
+            {
+              title: '关闭',action:'request',
+              options:{
+                expectedField:[['procureStatus']],
+                expectedValue:[['SectionStorageIn']],
+                API:'/api/wms/procurements/(id)/closed',
+                method:'put'
+              }
+            },
+            {
               title: '编辑',action:'path',
               options:{
+                expectedField:[['procureStatus']],
+                expectedValue:[['Draft']],
                 path:'/supply/purchaseOrderEdit',
                 queryData:(records) => {
                   const data = {
@@ -107,7 +132,11 @@ export default {
               }
             },
             {
-              title: '删除',action: 'delete'
+              title: '删除',action: 'delete',
+              options:{
+                expectedField:[['procureStatus']],
+                expectedValue:[['Draft',]],
+              }
             }
           ],
         },

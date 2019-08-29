@@ -17,6 +17,7 @@ export default {
         const query = getArgment(location.search);
         if (location.pathname === '/supply/warehouseEdit' || location.pathname === '/supply/warehouseView'
             || location.pathname === '/supply/purchaseOrderEdit' || location.pathname === '/supply/purchaseOrderView'
+            || location.pathname === '/supply/purchaseOrderPut' || location.pathname === '/supply/wmsApprove'
             || location.pathname === '/supply/purchaseReturnEdit' || location.pathname === '/supply/purchaseReturnView'  
             || location.pathname === '/supply/putStorageEdit' || location.pathname === '/supply/putStorageView'
             || location.pathname === '/supply/outStorageEdit' || location.pathname === '/supply/outStorageView'
@@ -33,6 +34,7 @@ export default {
             '/supply/purchaseOrderEdit': `/api/wms/procurements/${query.id}`,
             '/supply/purchaseOrderView': `/api/wms/procurements/${query.id}`,
             '/supply/purchaseReturnEdit': `/api/wms/refunds/${query.id}`,
+            '/supply/purchaseOrderPut':  `/api/wms/procurements/${query.id}`,
             '/supply/purchaseReturnView':`/api/wms/refunds/${query.id}`,
             '/supply/putStorageEdit': `/api/wms/storages/in/${query.id}`,
             '/supply/putStorageView': `/api/wms/storages/in/${query.id}`,
@@ -50,6 +52,7 @@ export default {
             '/supply/supplierView':`/api/wms/suppliers/${query.id}`,
             '/supply/distributorOutEdit':`/api/warehouse/sales/${query.id}`,
             '/supply/distributorOutView':`/api/warehouse/sales/${query.id}`,
+            '/supply/wmsApprove': `/api/wms/refunds/${query.id}`
           }
           dispatch({
             type: 'save',
@@ -120,6 +123,16 @@ export default {
       }
     },
 
+    //采购订单入库
+    *addPurchaseOrderPut({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/procurements/${id}/execution`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
     //添加采购退货
     *addPurchaseReturn({ payload },{ call,put }) {
       const result = yield call(create,'/api/wms/refunds',payload)
@@ -138,6 +151,38 @@ export default {
         yield put(routerRedux.goBack())
       }
     },
+
+    //采购退货提交审核
+    *submitApprovePurchaseReturn({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/refunds/${id}/audit`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //采购退货审核拒绝
+    *purchaseReturnApproveReject({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/refunds/${id}/closed`);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    //采购退货审核通过
+    *purchaseReturnApprovePass({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/wms/refunds/${id}/passed`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    
 
     //添加入库
     *addPutStorage({ payload },{ call,put }) {
