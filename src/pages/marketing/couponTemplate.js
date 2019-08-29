@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import couponTemplateConfig from './config/couponTemplateConfig.js';
 
-const CouponTemplate = ({ dispatch,marketing }) => {
+const CouponTemplate = () => {
 
   return (
     <div>

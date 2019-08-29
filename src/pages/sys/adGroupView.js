@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import FormIemView from '../../common/FormIemView';
 
-const AdGroupView = ({ dispatch,sys }) => {
+const AdGroupView = ({ sys }) => {
 
   const { item } = sys;
 

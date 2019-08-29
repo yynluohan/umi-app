@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import TransferForm from './component/TransferForm';
 
-const TransferAdd = ({ dispatch,supply }) => {
+const TransferAdd = ({ dispatch }) => {
 
     const transferFormProps = {
         title: '添加库存调拨',

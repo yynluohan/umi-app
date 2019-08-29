@@ -1,21 +1,19 @@
 import React from 'react';
 import { connect } from 'dva';
-import ZEle from 'zero-element';
-import { routerRedux } from 'dva/router';
 import FormIemView from '../../common/FormIemView';
 
-const FreightView = ({ dispatch,product }) => {
+const FreightView = ({ product }) => {
 
   const { item } = product;
 
   const showIsInclPostage = {
-    '1':'卖家承担运费 ',
-    '0':'自定义运费  ',
+    '1':'卖家承担运费',
+    '0':'自定义运费',
     undefined: ''
   }
 
   const showValuationModel = {
-    '0':'按件数 ',
+    '0':'按件数',
     '1':'按重量',
     '2':'按体积',
     undefined: ''

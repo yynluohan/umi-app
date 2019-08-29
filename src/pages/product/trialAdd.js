@@ -2,7 +2,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import AddTrialForm from './component/AddTrialForm'
 
-const TrialAdd = ({ dispatch,product }) => {
+const TrialAdd = ({ dispatch }) => {
 
 
   const addFormProps = {

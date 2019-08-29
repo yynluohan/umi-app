@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import advertisingConfig from './config/advertisingConfig.js';
 
-const Advertising = ({ dispatch,sys }) => {
+const Advertising = () => {
 
   return (
     <div>

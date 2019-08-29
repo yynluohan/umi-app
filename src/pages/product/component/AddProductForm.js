@@ -1,15 +1,13 @@
 import React from 'react';
-import { Form,Col,Row,Input,Button,message,Divider,Select,Radio,Checkbox  } from 'antd';
+import { Form,Col,Row,Input,Button,Select,Radio,Checkbox  } from 'antd';
 import { query } from '../../../framework/utils/services';
 import UploadFile from '../../../common/UploadFile';
 import BraftEditor from 'braft-editor';
 import 'braft-editor/dist/index.css';
-import htmlToDraft from 'html-to-draftjs';
 import SelectTree from '../../../common/SelectTree';
 import FieldOptionInput from '../../../common/FieldOptionInput';
 
 const FormItem = Form.Item;
-const { TextArea } = Input
 const formItemLayout = (a,b) => {
   return {
     labelCol: {
@@ -27,7 +25,6 @@ class AddProductForm extends React.Component {
     super(props);
     this.state = {
       item:props.item || {},
-      visible: false,
     }
   }
 
@@ -84,7 +81,7 @@ class AddProductForm extends React.Component {
  render() {
 
    const { getFieldDecorator } = this.props.form;
-   const { item,visible } = this.state;
+   const { item } = this.state;
 
    const vedioProps = {
 

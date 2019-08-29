@@ -1,4 +1,3 @@
-import { Icon } from 'antd-mobile';
 import styles from './ParseHtmlJson.css';
 
 const ParseHtmlJson = ({

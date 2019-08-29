@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import FormIemView from '../../common/FormIemView';
 
-const UserView = ({ dispatch,sys }) => {
+const UserView = ({ sys }) => {
 
   const { item } = sys;
 

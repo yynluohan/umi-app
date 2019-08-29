@@ -1,5 +1,4 @@
 import { query,create,update } from '../framework/utils/services'
-import { message,notification } from 'antd';
 import { getArgment } from '../framework/utils/parameter';
 import tips from '../framework/utils/tips';
 import { routerRedux } from 'dva/router';
@@ -65,7 +64,7 @@ export default {
       }
     },
 
-    *query({ payload },{ call,put,select }) {
+    *query({},{ call,put }) {
       const vipResult = yield call(query,'/api/term/config',{type: 'VIP_RULES'})
       const redictResult = yield call(query,'/api/term/config',{type: 'CREDIT_RULES'})
       const brandResult = yield call(query,'/api/term/config',{type: 'BRAND'})
@@ -81,7 +80,7 @@ export default {
       })
     },
 
-    *onUpdate({ payload },{ call,put,select }) {
+    *onUpdate({ payload },{ call,select }) {
       const { vipItem,credictItem,brandItem,privacyItem,type } = yield select(({ sys }) => sys);
       const obj = {
         'VIP_RULES': vipItem,

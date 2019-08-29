@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import AddFreightForm from './component/AddFreightForm'
 
-const FreightAdd = ({ dispatch,product  }) => {
+const FreightAdd = ({ dispatch }) => {
 
 
   const addFreightFormProps = {

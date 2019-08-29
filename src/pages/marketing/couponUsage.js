@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import couponUsageConfig from './config/couponUsageConfig.js';
 
-const CouponUsage = ({ dispatch,marketing }) => {
+const CouponUsage = () => {
   return (
     <div>
       <ZEle namespace='marketing'  config={couponUsageConfig} />

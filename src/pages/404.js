@@ -10,7 +10,7 @@ class Index extends React.Component {
     const myVar = setInterval(function(){
       const time = document.getElementById("time") || '';
       if (time) {
-        if (time.innerHTML == 0){
+        if (time.innerHTML === 0){
           clearInterval(myVar)
           window.location.href = '#/';
         } else {

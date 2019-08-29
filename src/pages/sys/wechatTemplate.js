@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import wechatTemplateConfig from './config/wechatTemplateConfig.js';
 
-const WechatTemplate = ({ dispatch,sys }) => {
+const WechatTemplate = () => {
   return (
     <div>
       <ZEle namespace='sys'  config={wechatTemplateConfig} />

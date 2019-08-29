@@ -1,16 +1,14 @@
 import React from 'react';
-import { Form,Col,Row,Input,Button,message,Divider,Select,Radio,DatePicker } from 'antd';
+import { Form,Col,Row,Input,Button,message,Radio,DatePicker } from 'antd';
 import { query } from '../../../framework/utils/services';
 import UploadFile from '../../../common/UploadFile';
 import BraftEditor from 'braft-editor';
 import 'braft-editor/dist/index.css';
-import htmlToDraft from 'html-to-draftjs';
 import TableInSpin from '../../../common/TableInSpin';
 import Selection from '../../../common/Selection';
 import moment from 'moment';
 
 const FormItem = Form.Item;
-const { TextArea } = Input;
 const formatDate = window.MC.DATETIMEFORMAT;
 const formItemLayout = (a,b) => {
   return {

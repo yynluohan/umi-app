@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
 import FormIemView from '../../common/FormIemView';
 
-const OrderView = ({ dispatch,order }) => {
+const OrderView = ({ order }) => {
 
   const { item } = order;
 

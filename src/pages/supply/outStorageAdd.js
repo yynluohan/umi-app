@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import OutStorageForm from './component/OutStorageForm';
 
-const OutStorageAdd = ({ dispatch,supply }) => {
+const OutStorageAdd = ({ dispatch }) => {
 
     const outStorageFormProps = {
         title: '添加出库信息',

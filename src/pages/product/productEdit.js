@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'dva';
-import ZEle from 'zero-element';
 import AddProductForm from './component/AddProductForm';
 import { routerRedux } from 'dva/router';
 

@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import SupplierForm from './component/SupplierForm';
 
-const SupplierAdd = ({ dispatch,supply }) => {
+const SupplierAdd = ({ dispatch }) => {
 
     const supplierFormProps = {
         title: '添加供应商',

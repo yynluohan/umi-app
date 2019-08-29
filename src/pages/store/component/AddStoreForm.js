@@ -1,19 +1,14 @@
 import React from 'react';
-import { Form,Col,Row,Input,Button,message,Divider,Select,Radio,DatePicker } from 'antd';
+import { Form,Col,Row,Input,Button,Radio } from 'antd';
 import { query } from '../../../framework/utils/services';
-import UploadFile from '../../../common/UploadFile';
 import BraftEditor from 'braft-editor';
 import 'braft-editor/dist/index.css';
-import htmlToDraft from 'html-to-draftjs';
-import moment from 'moment';
 import FieldOptionInput from '../../../common/FieldOptionInput';
 import CascaderSelect from '../../../common/CascaderSelect';
 import pcd from '../../../config/pcd';
 import PicturesWall from '../../../common/PicturesWall';
 
 const FormItem = Form.Item;
-const { TextArea } = Input;
-const formatDate = window.MC.DATETIMEFORMAT;
 const formItemLayout = (a,b) => {
   return {
     labelCol: {

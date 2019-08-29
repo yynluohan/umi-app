@@ -12,7 +12,7 @@ class Login extends React.Component {
     super(props);
     this.state = {
       modalVisible: false,
-      codeUrl: 'http://120.79.77.207:8080' + '/auth/captcha'
+      codeUrl: 'http://120.79.77.207:8080/auth/captcha'
     }
   }
 

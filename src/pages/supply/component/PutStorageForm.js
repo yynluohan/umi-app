@@ -104,16 +104,6 @@ class PutStorageForm extends React.Component {
    const { getFieldDecorator } = this.props.form;
    let { item,storageInItems } = this.state;
 
-
-   const fieldOptionInputProps = {
-       apiUrl: '/api/wms/suppliers',
-       method:query,
-       getway:{
-           name: 'supplierName',
-           value: 'id'
-       }
-   }
-
    const selectionProps = {
         type: 'checkbox',
         butName:'+ 添加',

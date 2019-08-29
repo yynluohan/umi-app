@@ -1,15 +1,9 @@
 import React from 'react';
-import { Form,Col,Row,Input,Button,Layout,message,List,Avatar,Skeleton,Pagination,Popconfirm,Modal,Comment } from 'antd';
-import { query } from '../../../framework/utils/services';
-import BraftEditor from 'braft-editor';
+import { Form,Input,Button,Layout,message,List,Avatar,Pagination,Popconfirm,Modal,Comment } from 'antd';
 import 'braft-editor/dist/index.css';
-import PicturesWall from '../../../common/PicturesWall';
-import Selection from '../../../common/Selection';
-
 import styles from './ViewInformation.css';
 import HtmlContent from '../../../common/parseHtmlJson/ParseHtmlJson';
 
-const FormItem = Form.Item;
 const { Sider, Content,Footer } = Layout;
 const { TextArea } = Input;
 const { confirm } = Modal;
@@ -17,16 +11,6 @@ message.config({
   top: 74,
   maxCount: 3,
 });
-const formItemLayout = (a,b) => {
-  return {
-    labelCol: {
-      span: a || 6,
-    },
-    wrapperCol: {
-      span: b || 18,
-    },
-  }
-}
 
 class ViewInformation extends React.Component {
 
@@ -54,7 +38,7 @@ class ViewInformation extends React.Component {
   }
 
   onSubmit = () => {
-    const { validateFields,getFieldsValue } = this.props.form;
+
     const { item, content } = this.state;
 
     if(!content){
@@ -128,9 +112,8 @@ class ViewInformation extends React.Component {
 
  render() {
    const _this =this;
-   const { getFieldDecorator } = this.props.form;
    const { item, evaluationList } = this.state;
-   const { pageNum, pageSize, pages, pageTotal } = this.props;
+   const { pageNum, pageTotal } = this.props;
 
    //封面
    const coverHandler = (list) => {

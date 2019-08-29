@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import purchaseOrdeConfig from './config/purchaseOrdeConfig.js';
 
-const PurchaseOrder = ({ dispatch,supply }) => {
+const PurchaseOrder = () => {
 
 
     return(

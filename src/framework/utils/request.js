@@ -1,5 +1,4 @@
 import { get as getEndpoint } from './endpoint';
-import qs from 'qs';
 import fetch from 'dva/fetch';
 
 function checkServerError(response) {
@@ -27,7 +26,7 @@ function parseJSON(response) {
   // return fileURL;
 }
 
-function checkStatus({ responseJSON = {}, response, url }) {
+function checkStatus({ responseJSON = {}, url }) {
   if (responseJSON.code !== undefined || responseJSON.status_code !== undefined) {
     return responseJSON;
   }

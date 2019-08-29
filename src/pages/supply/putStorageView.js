@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import FormIemView from '../../common/FormIemView'
 
-const PutStorageView = ({ dispatch,supply }) => {
+const PutStorageView = ({ supply }) => {
 
   const { item } = supply;
 

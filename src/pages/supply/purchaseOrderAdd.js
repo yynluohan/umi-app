@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import PurchaseOrderForm from './component/PurchaseOrderForm';
 
-const PurchaseOrderAdd = ({ dispatch,supply }) => {
+const PurchaseOrderAdd = ({ dispatch }) => {
 
     const purchaseOrderFormProps = {
         title: '添加采购订单',

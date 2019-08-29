@@ -8,7 +8,7 @@ export default class SelectTree extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.getId != undefined ? props.getId : undefined,
+      value: props.getId !== undefined ? props.getId : undefined,
       list: []
     }
   }
@@ -26,7 +26,7 @@ export default class SelectTree extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.getId != undefined) {
+    if (nextProps.getId !== undefined) {
       this.setState({
         value: nextProps.getId
       })

@@ -2,7 +2,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import CouponTemplateForm from './component/CouponTemplateForm';
 
-const CouponTemplateAdd  = ({ dispatch,marketing }) => {
+const CouponTemplateAdd  = ({ dispatch }) => {
 
   const fromProps = {
     title: '添加优惠券模板',

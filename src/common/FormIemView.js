@@ -26,7 +26,7 @@ class FormIemView extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.list != undefined) {
+    if (nextProps.list !== undefined) {
       this.setState({
         list: nextProps.list
       })

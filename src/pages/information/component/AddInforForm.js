@@ -4,7 +4,7 @@ import { query } from '../../../framework/utils/services';
 import BraftEditor from 'braft-editor';
 import 'braft-editor/dist/index.css';
 import PicturesWall from '../../../common/PicturesWall';
-import Selection from '../../../common/Selection';
+// import Selection from '../../../common/Selection';
 
 const FormItem = Form.Item;
 const formItemLayout = (a,b) => {

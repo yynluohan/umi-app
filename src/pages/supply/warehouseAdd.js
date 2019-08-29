@@ -2,7 +2,7 @@ import { connect } from 'dva';
 import WarehoseForm from './component/WarehoseForm';
 import { routerRedux } from 'dva/router';
 
-const WarehouseAdd = ({ dispatch,supply }) => {
+const WarehouseAdd = ({ dispatch }) => {
 
   const formProps = {
     title: '添加仓库',

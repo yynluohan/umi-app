@@ -2,7 +2,7 @@ import { connect } from 'dva';
 import WechatTemplateForm from './component/WechatTemplateForm';
 import { routerRedux } from 'dva/router';
 
-const WechatTemplateAdd = ({ dispatch, sys }) => {
+const WechatTemplateAdd = ({ dispatch }) => {
 
   const wechatTemplateProps = {
     title: '添加微信模板消息',

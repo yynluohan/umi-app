@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input,message,Form,Select,Button,Radio } from 'antd';
+import { Input,message,Form,Button,Radio } from 'antd';
 import styles from './css/register.css';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
@@ -24,9 +24,9 @@ class Register extends React.Component {
   //点击注册按钮
   onRegisterOk = () => {
     const { validateFields,getFieldsValue } = this.props.form;
-    const { password,passwordAgain,registerType } = this.state;
+    const { registerType } = this.state;
     let data = {};
-    if (registerType == 'email') {
+    if (registerType === 'email') {
       data = {
         email: getFieldsValue().email,
       }
@@ -60,10 +60,10 @@ class Register extends React.Component {
     const { getFieldsValue } = this.props.form;
     const { registerType } = this.state;
     const _this = this;
-    const value = registerType == 'email' ? getFieldsValue().email : getFieldsValue().phone;
+    const value = registerType === 'email' ? getFieldsValue().email : getFieldsValue().phone;
     if (value) {
       let data = {};
-      if (registerType == 'email') {
+      if (registerType === 'email') {
         data = {
           receiver: getFieldsValue().email,
           type: 'EmailValidate'
@@ -74,7 +74,7 @@ class Register extends React.Component {
           type: 'PhoneValidate'
         }
       }
-      create(`${window.MC.BASEURL}/api/pub/validateCodes/send`,data).then(({ code,data,message }) => {
+      create(`${window.MC.BASEURL}/api/pub/validateCodes/send`,data).then(({ code,message }) => {
         if (code === 200) {
           _this.setState({
             isShowTime: true
@@ -85,7 +85,7 @@ class Register extends React.Component {
         }
       })
     } else {
-       message.error(`请填写${ registerType == 'email' ? '邮箱' : '手机号码'}！`)
+       message.error(`请填写${ registerType === 'email' ? '邮箱' : '手机号码'}！`)
     }
   }
 
@@ -94,7 +94,7 @@ class Register extends React.Component {
     let setInter = window.setInterval(function() {
       var time = document.getElementById("time");
       console.log('BBB');
-      if (time.innerHTML == 0){
+      if (time.innerHTML === 0){
         window.clearInterval(setInter)
         _this.setState({
           isShowTime: false
@@ -122,7 +122,7 @@ class Register extends React.Component {
     setFieldsValue({'emailValidateCode': ''})
   }
 
-  handleConfirmPassword = (rule, value, callback) => {
+  handleConfirmPassword = (value, callback) => {
     const { getFieldValue } = this.props.form
     if (value && value !== getFieldValue('password')) {
         callback('两次输入不一致！')
@@ -159,7 +159,7 @@ class Register extends React.Component {
             </FormItem>
 
             {
-              registerType == 'email' ?
+              registerType === 'email' ?
               <FormItem style={{width:'70%',marginTop:'0.5em'}}>
                 {getFieldDecorator('email', {
                   rules: [

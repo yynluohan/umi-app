@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'dva';
-import ZEle from 'zero-element';
-import { routerRedux } from 'dva/router';
 import FormIemView from '../../common/FormIemView';
 
-const EvaluateView = ({ dispatch,product }) => {
+const EvaluateView = ({ product }) => {
 
   const { item } = product;
 

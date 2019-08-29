@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import printerConfig from './config/printerConfig.js';
 
-const Printer = ({ dispatch,sys }) => {
+const Printer = () => {
   return (
     <div>
       <ZEle namespace='sys'  config={printerConfig} />

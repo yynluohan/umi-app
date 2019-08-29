@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form,Col,Row,Input,Button,message,Select,Radio } from 'antd';
-import { query } from '../../../framework/utils/services';
 import TableInSpin from '../../../common/TableInSpin'
 
 const FormItem = Form.Item;

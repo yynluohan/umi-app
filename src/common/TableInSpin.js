@@ -2,8 +2,8 @@ import React from 'react';
 import { Form, Spin, Table, Pagination } from 'antd';
 
 const TableInSpin = ({ loading, current = 1, total, pageSize = 10,
-  columns = [], list = [], intlPrefix = '', onPageChange,
-  rowSelection, width = 150, scrollX = false, onSorter, sortAll = false,rowKey='id' }) => {
+  columns = [], list = [], onPageChange,
+  rowSelection, scrollX = false, onSorter, sortAll = false,rowKey='id' }) => {
 
   const onNewSort = (name) => {
     return function (o, p) {
@@ -16,18 +16,18 @@ const TableInSpin = ({ loading, current = 1, total, pageSize = 10,
         }
         if (typeof a === 'number' && typeof b === 'number') {
           if (a > b) return 1;
-          if (a == b) return 0;
+          if (a === b) return 0;
           if (a < b) return -1;
         }
       }
     };
   };
 
-  const handleTableChange = (pagination, filters, sorter) => {
+  const handleTableChange = (sorter) => {
     if (sortAll) {
       onSorter(sorter);
     } else if (sorter.order) {
-      if (sorter.order == 'descend') {
+      if (sorter.order === 'descend') {
         const newList = list.sort(onNewSort(sorter.columnKey));
         list = newList.reverse();
       } else {
@@ -37,10 +37,10 @@ const TableInSpin = ({ loading, current = 1, total, pageSize = 10,
   };
 
 
-  const createByColumns = columns => columns.length > 0 && columns.map((item, index) => {
+  const createByColumns = columns => columns.length > 0 && columns.map((item) => {
     if (typeof (item) === 'object') {
       item.width = item.fixed ? 150 : '';
-      item.sorter = onSorter ? (!(item.key == 'action' || item.key == 'desc' || item.key == 'associateStaff')) : false;
+      item.sorter = onSorter ? (!(item.key === 'action' || item.key === 'desc' || item.key === 'associateStaff')) : false;
       return item;
     } else {
       return ({

@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import purchaseReturnConfig from './config/purchaseReturnConfig.js';
 
-const PurchaseReturn = ({ dispatch,supply }) => {
+const PurchaseReturn = () => {
 
 
     return(

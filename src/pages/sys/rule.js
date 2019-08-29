@@ -39,7 +39,7 @@ const Rule = ({ dispatch,sys }) => {
       <h2>规则配置</h2>
       <Tabs defaultActiveKey="VIP_RULES" onChange={callback} activeKey={type}>
         {
-          typeList.map((item,index) => (
+          typeList.map((item) => (
             <TabPane tab={item.title} key={item.key}>
               <RichText onGetValue={onGetValue} value={item.content} />
             </TabPane>

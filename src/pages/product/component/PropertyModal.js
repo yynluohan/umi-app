@@ -1,6 +1,5 @@
 import React from 'react';
 import { Modal,Form,Input,Select,Radio,Row,Col } from 'antd';
-import { query } from '../../../framework/utils/services'
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -39,7 +38,7 @@ const formItemLayout = {
 
   handleOk = () => {
     const { getFieldsValue,validateFields } = this.props.form;
-    const { item,selectedPerm } = this.state;
+    const { item } = this.state;
     validateFields((errors) => {
       if (errors) {
         return;
@@ -68,7 +67,7 @@ const formItemLayout = {
       <Modal
           title={Object.keys(item).length === 0 ? '添加属性' : '修改属性'}
           width = '900px'
-          visible
+          visible={visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >

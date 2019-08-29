@@ -1,4 +1,4 @@
-import { query,create } from '../framework/utils/services'
+import { create } from '../framework/utils/services'
 import { message,notification } from 'antd';
 import { getArgment } from '../framework/utils/parameter';
 
@@ -39,9 +39,9 @@ export default {
 
   effects: {
 
-    *create({ payload },{ call,put }) {
+    *create({ payload },{ call }) {
       const result = yield call(create,`${window.MC.BASEURL}/api/sys/oauth/login`,{...payload});
-      if (result.code == 200) {
+      if (result.code === 200) {
         message.success('登录成功！')
         window.localStorage.token = result.data.accessToken;
         window.localStorage.username = payload.account;
@@ -60,7 +60,7 @@ export default {
       }
     },
 
-    *onRegister({ payload },{ call,put,select }) {
+    *onRegister({ payload },{ call,select }) {
       const { registeredGithubUsername } = yield select(({ login }) => login)
       let data = {...payload}
       if (registeredGithubUsername) {
@@ -72,7 +72,7 @@ export default {
       } else {
         result = yield call(create,`${window.MC.BASEURL}/api/sys/oauth/register`,data);
       }
-      if (result.code == 200) {
+      if (result.code === 200) {
         message.success(`${registeredGithubUsername ? '绑定成功！' : '注册成功！'}`)
         setTimeout(function() {
           window.location.href = '#/login'

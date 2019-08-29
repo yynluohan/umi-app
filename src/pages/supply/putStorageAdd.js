@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import PutStorageForm from './component/PutStorageForm';
 
-const PutStorageAdd = ({ dispatch,supply }) => {
+const PutStorageAdd = ({ dispatch }) => {
 
     const putStorageFormProps = {
         title: '添加入库信息',

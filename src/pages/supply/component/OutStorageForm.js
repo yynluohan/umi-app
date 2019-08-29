@@ -104,16 +104,6 @@ class OutStorageForm extends React.Component {
    const { getFieldDecorator } = this.props.form;
    let { item,storageOutItems } = this.state;
 
-
-   const fieldOptionInputProps = {
-       apiUrl: '/api/wms/suppliers',
-       method:query,
-       getway:{
-           name: 'supplierName',
-           value: 'id'
-       }
-   }
-
    const selectionProps = {
         type: 'checkbox',
         butName:'+ 添加',

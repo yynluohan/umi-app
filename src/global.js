@@ -15,8 +15,8 @@ import { set as VTSet } from 'zero-element-global/lib/valueType';
 import onPath from './listAction/onPath';
 import path from './listAction/path';
 
-// setEndpoint('http://192.168.3.16:8080')
-setEndpoint('http://106.12.212.64:8180')
+setEndpoint('http://192.168.3.16:8080')
+// setEndpoint('http://106.12.212.64:8180')
 
 // saveToken({
 //   token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwiYWNjb3VudCI6ImFkbWluIiwiaWF0IjoxNTYxMTcyMzMyLCJqdGkiOiIxIiwic3ViIjoiYWRtaW4iLCJleHAiOjE1NjE0MzE1MzJ9.EwlEBQBhdzbJUTWNCjorE9ECK2WTbCejO4Q86W_ezUHoZu7cmjprRbZnYJhZTHH2_9GFphRNq1sdjBUmcqyaAQ',
@@ -76,8 +76,8 @@ VTSet({
 
 window.MC = {
   HASH: '',
-  // HOST:'http://192.168.3.16:8080',
-  HOST:'http://106.12.212.64:8180',
+  HOST:'http://192.168.3.16:8080',
+  // HOST:'http://106.12.212.64:8180',
   DATETIMEFORMAT:'YYYY/MM/DD HH:mm:ss',
   DATAFORMAT:'YYYY/MM/DD',
   BASEURL:'http://192.168.3.28:8088'

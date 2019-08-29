@@ -2,7 +2,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import AddInforForm from './component/AddInforForm';
 
-const AddInfo = ({dispatch, information }) =>{
+const AddInfo = ({dispatch }) =>{
 
   const addInfoFormProps = {
     title:'添加资讯',

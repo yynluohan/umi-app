@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Form,Col,Row,Button } from 'antd';
-import { routerRedux } from 'dva/router';
 import FormIemView from '../../common/FormIemView'
 
 const FormItem = Form.Item;
@@ -17,13 +16,9 @@ const formItemLayout = (a,b) => {
   }
 };
 
-const ProductView = ({ dispatch,product }) => {
+const ProductView = ({ product }) => {
 
   const { item } = product;
-
-  const imgStyle = {
-    wordWrap: 'break-word'
-  }
 
   const showPartnerLevelZone = {
     '1':'零元区',

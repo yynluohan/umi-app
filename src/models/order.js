@@ -1,6 +1,4 @@
-import { query,create,update } from '../framework/utils/services'
-import { message,notification } from 'antd';
-import { routerRedux } from 'dva/router';
+import { query } from '../framework/utils/services'
 import { getArgment } from '../framework/utils/parameter';
 
 export default {

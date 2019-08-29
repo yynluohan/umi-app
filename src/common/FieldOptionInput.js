@@ -1,5 +1,5 @@
 import React from 'react';
-import { Select,Input } from 'antd';
+import { Select } from 'antd';
 
 class FieldOptionInput extends React.Component {
 
@@ -38,7 +38,7 @@ class FieldOptionInput extends React.Component {
 
   render() {
 
-    let { list,value } = this.state;
+    let { list } = this.state;
     let { getway={} } = this.props;
     if (Object.keys(getway).length === 0) {
       getway = {

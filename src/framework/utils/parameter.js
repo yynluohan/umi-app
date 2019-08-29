@@ -4,7 +4,7 @@ export function getArgment(x) {
   }
   let str = x.split('&');
   let obj = {};
-  str.length > 0 && str.map((item,index) => {
+  str.length > 0 && str.map((item) => {
     const data = item.replace(/\?/g,'').split('=');
     obj[data[0]] = data[1]
   })

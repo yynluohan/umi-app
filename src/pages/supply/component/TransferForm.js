@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form,Col,Row,Input,Button,DatePicker,InputNumber,message,Select } from 'antd';
+import { Form,Col,Row,Input,Button,DatePicker,InputNumber,message } from 'antd';
 import { query } from '../../../framework/utils/services';
 import FieldOptionInput from '../../../common/FieldOptionInput';
 import moment from 'moment';
@@ -111,16 +111,6 @@ class TransferForm extends React.Component {
 
    const { getFieldDecorator } = this.props.form;
    let { item,outItems } = this.state;
-
-
-   const fieldOptionInputProps = {
-       apiUrl: '/api/wms/suppliers',
-       method:query,
-       getway:{
-           name: 'supplierName',
-           value: 'id'
-       }
-   }
 
    const selectionProps = {
         type: 'checkbox',

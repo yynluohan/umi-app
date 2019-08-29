@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import adGroupConfig from './config/adGroupConfig.js';
 
-const AdGroup = ({ dispatch,sys }) => {
+const AdGroup = () => {
   return (
     <div>
       <ZEle namespace='sys'  config={adGroupConfig} />

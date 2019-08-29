@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import distributorOutConfig from './config/distributorOutConfig.js';
 
-const DistributorOut = ({ dispatch,supply }) => {
+const DistributorOut = () => {
 
 
     return(

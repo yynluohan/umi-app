@@ -1,5 +1,4 @@
 import { notification } from 'antd';
-import { routerRedux } from 'dva/router';
 
 export default {
 

@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import userConfig from './config/userConfig.js';
 
-const User = ({ dispatch,sys }) => {
+const User = () => {
   return (
     <div>
       <ZEle namespace='sys'  config={userConfig} />

@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import ZEle from 'zero-element';
 import noticeAddConfig from './config/noticeAddConfig.js';
 
-const NoticeAdd = ({ dispatch,notice }) => {
+const NoticeAdd = () => {
   return (
     <div>
       <ZEle namespace='notice'  config={noticeAddConfig} />
