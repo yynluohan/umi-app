@@ -13,11 +13,19 @@ const DistributorOutEdit = ({ dispatch,supply }) => {
         onBack() {
             dispatch(routerRedux.goBack())
         },
-        onSave(data) {
-            dispatch({
-                type: 'supply/updateDistributorOut',
-                payload: data
-            })
+        onSave(data,statusData) {
+            if (statusData) {
+                dispatch({
+                    type: 'supply/submitApproveDistributorOut',
+                    payload: data
+                })
+            } else {
+                dispatch({
+                    type: 'supply/updateDistributorOut',
+                    payload: data
+                })
+            }
+            
         }
     }
 

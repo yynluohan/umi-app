@@ -94,6 +94,43 @@ export default {
               }
             },
             {
+              title: '盘点',action:'path',
+              options:{
+                expectedField:[['status']],
+                expectedValue:[['Draft']],
+                path: '/supply/inventoryCheck',
+                queryData:(records) => {
+                  const data = {
+                    id:records.id,
+                  }
+                  return data
+                }
+              }
+            },
+            {
+              title: '继续盘点',action:'path',
+              options:{
+                expectedField:[['status']],
+                expectedValue:[['Checking']],
+                path: '/supply/inventoryCheckAgain',
+                queryData:(records) => {
+                  const data = {
+                    id:records.id,
+                  }
+                  return data
+                }
+              }
+            },
+            {
+              title: '完成盘点',action:'request',
+              options:{
+                expectedField:[['status']],
+                expectedValue:[['Checking']],
+                API:'/api/wms/checks/(id)/done',
+                method:'post'
+              }
+            },
+            {
               title: '编辑',action:'path',
               options:{
                 expectedField:[['status']],

@@ -89,6 +89,20 @@ export default {
               }
             },
             {
+              title: '审核',action:'path',
+              options:{
+                expectedField:[['salesStatus']],
+                expectedValue:[['Wait_To_Audit']],
+                path: '/supply/distributorOutApprove',
+                queryData:(records) => {
+                  const data = {
+                    id:records.id,
+                  }
+                  return data
+                }
+              }
+            },
+            {
               title: '编辑',action:'path',
               options:{
                 expectedField:[['salesStatus']],

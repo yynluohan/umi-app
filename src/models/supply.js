@@ -28,7 +28,8 @@ export default {
             || location.pathname === '/supply/supplierEdit' || location.pathname === '/supply/supplierView'
             || location.pathname === '/supply/distributorOutEdit' || location.pathname === '/supply/distributorOutView'
             || location.pathname === '/supply/putStorageApprove' || location.pathname === '/supply/outStorageApprove'
-            || location.pathname === '/supply/transferApprove'
+            || location.pathname === '/supply/transferApprove' || location.pathname === '/supply/inventoryCheck'
+            || location.pathname === '/supply/inventoryCheckAgain' || location.pathname === '/supply/distributorOutApprove'
             ) {
           const obj = {
             '/supply/warehouseEdit':`/api/wms/warehouses/${query.id}`,
@@ -58,6 +59,9 @@ export default {
             '/supply/putStorageApprove': `/api/wms/storages/in/${query.id}`,
             '/supply/outStorageApprove': `/api/wms/storages/out/${query.id}`,
             '/supply/transferApprove': `/api/wms/transfers/${query.id}`,
+            '/supply/inventoryCheck': `/api/wms/checks/${query.id}`,
+            '/supply/inventoryCheckAgain': `/api/wms/checks/${query.id}`,
+            '/supply/distributorOutApprove': `/api/warehouse/sales/${query.id}`
           }
           dispatch({
             type: 'save',
@@ -360,6 +364,24 @@ export default {
       }
     },
 
+    //库存盘点-盘点
+    *inventoryCheck({ payload },{ call,put }) {
+      const result = yield call(update,`/api/wms/checks/${payload.id}/checking`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    // 库存盘点-继续盘点
+    *inventoryCheckAgain({ payload },{ call,put }) {
+      const result = yield call(update,`/api/wms/checks/${payload.id}/checking`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
     //添加商品
     *addGoods({ payload },{ call,put }) {
       const result = yield call(create,'/api/wms/skus',payload)
@@ -430,6 +452,35 @@ export default {
     *updateDistributorOut({ payload },{ call,put,select }) {
       const { id } = yield select(({ supply }) => supply);
       const result = yield call(update,`/api/warehouse/sales/${id}`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    // 分销商出库-提交审核
+    *submitApproveDistributorOut({ payload },{ call,put }) {
+      const result = yield call(update,`/api/warehouse/sales/${payload.id}/audit`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    // 分销商出库-审核拒绝
+    *distributorOutApproveReject({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/warehouse/sales/${id}/closed`);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
+    // 分销商出库-审核通过
+    *distributorOutApprovePass({ payload },{ call,put,select }) {
+      const { id } = yield select(({ supply }) => supply);
+      const result = yield call(update,`/api/warehouse/sales/${id}/pass`,payload);
       tips.lookMes(result.code,result.message)
       if (result.code === 200) {
         yield put(routerRedux.goBack())
