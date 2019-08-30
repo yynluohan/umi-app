@@ -12,7 +12,7 @@ class Login extends React.Component {
     super(props);
     this.state = {
       modalVisible: false,
-      codeUrl: 'http://120.79.77.207:8080/auth/captcha'
+      codeUrl: `${window.MC.SENDCODE}/auth/captcha`
     }
   }
 
@@ -35,7 +35,7 @@ class Login extends React.Component {
 
   onChangeCode = () => {
     this.setState({
-      codeUrl: 'http://120.79.77.207:8080' + '/auth/captcha' + '?d=' + new Date().getTime()
+      codeUrl: `${window.MC.SENDCODE}/auth/captcha` + '?d=' + new Date().getTime()
     })
   }
 

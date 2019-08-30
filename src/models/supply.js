@@ -128,6 +128,15 @@ export default {
       }
     },
 
+    //采购订单提交审核
+    *submitApprovePurchaseOrder({ payload },{ call,put }) {
+      const result = yield call(update,`/api/wms/procurements/${payload.id}/audit`,payload);
+      tips.lookMes(result.code,result.message)
+      if (result.code === 200) {
+        yield put(routerRedux.goBack())
+      }
+    },
+
     //采购订单入库
     *addPurchaseOrderPut({ payload },{ call,put,select }) {
       const { id } = yield select(({ supply }) => supply);

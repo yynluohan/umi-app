@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import InventoryForm from './component/InventoryForm';
 
-const InventoryAdd = ({ dispatch,supply }) => {
+const InventoryAdd = ({ dispatch }) => {
 
     const inventoryFormProps = {
         title: '添加库存盘点',

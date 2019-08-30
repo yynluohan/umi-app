@@ -64,7 +64,7 @@ class PurchaseOrderForm extends React.Component {
     })
   }
 
-  onSubmit = () => {
+  onSubmit = (statusData) => {
     const { validateFields,getFieldsValue } = this.props.form;
     const { items,item } = this.state;
     validateFields((errors) => {
@@ -89,7 +89,7 @@ class PurchaseOrderForm extends React.Component {
         procurementTotal,
         ...getFieldsValue(),
       };
-      this.props.onSave(data)
+      this.props.onSave(data,statusData)
     });
   }
   
@@ -279,6 +279,11 @@ class PurchaseOrderForm extends React.Component {
        </div>
         
        <div style={{textAlign: 'right',marginTop:'2em'}}>
+         {
+           this.props.title.includes('编辑') ?
+           <Button type='primary' style={{ marginRight: '1em'}} onClick={()=> this.onSubmit('审核')}>提交审核</Button>
+           : ''
+         }
         <Button type='primary' style={{ marginRight: '1em'}} onClick={()=> this.onSubmit()}>保存</Button>
         <Button onClick={this.props.onBack}>返回</Button>
        </div>

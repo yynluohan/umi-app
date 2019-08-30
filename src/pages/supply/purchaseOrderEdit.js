@@ -13,11 +13,19 @@ const PurchaseOrderAdd = ({ dispatch,supply }) => {
         onBack() {
             dispatch(routerRedux.goBack())
         },
-        onSave(data) {
-            dispatch({
-                type: 'supply/updatePurchaseOrder',
-                payload: data
-            })
+        onSave(data,statusData) {
+            if (statusData) {
+                dispatch({
+                    type: 'supply/submitApprovePurchaseOrder',
+                    payload: data
+                })
+            } else {
+                dispatch({
+                    type: 'supply/updatePurchaseOrder',
+                    payload: data
+                })
+            }
+            
         }
     }
 

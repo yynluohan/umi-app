@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import PurchaseReturnForm from './component/PurchaseReturnForm';
 
-const PurchaseReturnAdd = ({ dispatch,supply }) => {
+const PurchaseReturnAdd = ({ dispatch }) => {
 
     const purchaseReturnFormProps = {
         title: '添加采购退货',

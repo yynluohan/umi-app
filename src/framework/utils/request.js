@@ -73,6 +73,7 @@ export default function request(url, options) {
     .catch(err => {
       const { response } = err;
       if (response && response.status === 401) {
+        window.localStorage.token = '';
         window.location.href = '#' + '/login'
       }
     })

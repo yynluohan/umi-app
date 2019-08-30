@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import DistributorOutForm from './component/DistributorOutForm';
 
-const DistributorOutAdd = ({ dispatch,supply }) => {
+const DistributorOutAdd = ({ dispatch }) => {
 
     const distributorOutFormProps = {
         title: '添加分销订单',
