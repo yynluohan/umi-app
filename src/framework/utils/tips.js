@@ -1,15 +1,15 @@
-import { notification } from 'antd';
+import { notification } from 'antd'
 
 export default {
 
-  lookMes(code,message) {
+  lookMes (code, message) {
     if (!code) {
-      return;
+      return
     }
     if (code === 200) {
-      notification.success({ message: '操作成功' });
+      notification.success({ message: '操作成功' })
     } else {
-      notification.error({ message:message || '操作失败' })
+      notification.error({ message: message || '操作失败' })
     }
   }
 }

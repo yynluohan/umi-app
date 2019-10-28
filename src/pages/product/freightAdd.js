@@ -1,17 +1,15 @@
-import React from 'react';
-import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
+import React from 'react'
+import { connect } from 'dva'
+import { routerRedux } from 'dva/router'
 import AddFreightForm from './component/AddFreightForm'
 
 const FreightAdd = ({ dispatch }) => {
-
-
   const addFreightFormProps = {
     title: '添加运费模板',
-    onBack(){
+    onBack () {
       dispatch(routerRedux.goBack())
     },
-    onSave(data) {
+    onSave (data) {
       dispatch({
         type: 'product/addFreight',
         payload: data
@@ -21,15 +19,15 @@ const FreightAdd = ({ dispatch }) => {
 
   return (
     <div>
-      <AddFreightForm {...addFreightFormProps}/>
+      <AddFreightForm {...addFreightFormProps} />
     </div>
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     product: state.product
   }
 }
 
-export default connect(mapStateToProps)(FreightAdd);
+export default connect(mapStateToProps)(FreightAdd)

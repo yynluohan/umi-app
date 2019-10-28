@@ -1,22 +1,20 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import goodsConfig from './config/goodsConfig';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import goodsConfig from './config/goodsConfig'
 
-const Goods = ({ dispatch,config }) => {
-
+const Goods = ({ dispatch, config }) => {
   return (
     <div>
-      <ZEle namespace='config'  config={goodsConfig} />
+      <ZEle namespace='config' config={goodsConfig} />
     </div>
   )
-
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     config: state.config
   }
 }
 
-export default connect(mapStateToProps)(Goods);
+export default connect(mapStateToProps)(Goods)

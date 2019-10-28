@@ -7,9 +7,8 @@
 export default {
   namespace: 'marketing',
   state: {
-    item: {},
+    item: {}
   },
-
 
   subscriptions: {
     // setup({ dispatch, history }) {
@@ -24,9 +23,9 @@ export default {
 
   },
   reducers: {
-    save(state, action) {
-      return { ...state, ...action.payload };
-    },
-  },
+    save (state, action) {
+      return { ...state, ...action.payload }
+    }
+  }
 
-};
+}

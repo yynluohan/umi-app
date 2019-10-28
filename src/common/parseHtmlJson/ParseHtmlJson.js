@@ -1,21 +1,19 @@
-import styles from './ParseHtmlJson.css';
+import styles from './ParseHtmlJson.css'
 
 const ParseHtmlJson = ({
-  htmlJson='',
+  htmlJson = ''
 }) => {
+  const createMarkup = (text) => {
+    return { __html: text }
+  }
 
-  const createMarkup =(text)=> {
-    return { __html: text };
-  };
-
-  return(
+  return (
     <div className={styles.particulars}>
       {htmlJson ? (
-        <div dangerouslySetInnerHTML={createMarkup(htmlJson)}></div>
-      ):'未能获取信息'}
+        <div dangerouslySetInnerHTML={createMarkup(htmlJson)} />
+      ) : '未能获取信息'}
     </div>
   )
 }
 
-
-export default ParseHtmlJson;
+export default ParseHtmlJson

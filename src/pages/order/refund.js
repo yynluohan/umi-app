@@ -1,12 +1,10 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import refundConfig from './config/refundConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import refundConfig from './config/refundConfig.js'
 
 class Refund extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
         <ZEle namespace='order' config={refundConfig} />
@@ -15,10 +13,10 @@ class Refund extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     order: state.order
   }
 }
 
-export default connect(mapStateToProps)(Refund);
+export default connect(mapStateToProps)(Refund)

@@ -1,24 +1,22 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import storeConfig from './config/storeConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import storeConfig from './config/storeConfig.js'
 
 class Store extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
-        <ZEle namespace='store'  config={storeConfig} />
+        <ZEle namespace='store' config={storeConfig} />
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     store: state.store
   }
 }
 
-export default connect(mapStateToProps)(Store);
+export default connect(mapStateToProps)(Store)

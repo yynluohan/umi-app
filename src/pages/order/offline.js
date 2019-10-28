@@ -1,12 +1,10 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import offlineConfig from './config/offlineConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import offlineConfig from './config/offlineConfig.js'
 
 class Offline extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
         <ZEle namespace='order' config={offlineConfig} />
@@ -15,10 +13,10 @@ class Offline extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     order: state.order
   }
 }
 
-export default connect(mapStateToProps)(Offline);
+export default connect(mapStateToProps)(Offline)

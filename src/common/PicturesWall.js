@@ -20,13 +20,17 @@ export default class PicturesWall extends React.Component {
       fileList: props.fileList || [],
       maxNumber: props.maxNumber || 1
     }
+    this.handleCancel = this.handleCancel.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentWillUnmount(a,b) {
     // console.log('update',a,b)
   }
 
-  handleCancel = () => this.setState({ previewVisible: false });
+  handleCancel () {
+    this.setState({ previewVisible: false })
+  };
 
   handlePreview = async file => {
     if (!file.url && !file.preview) {
@@ -39,7 +43,7 @@ export default class PicturesWall extends React.Component {
     });
   };
 
-  handleChange = ({ fileList }) => {
+  handleChange ({ fileList }) {
     this.setState({ fileList })
     if (this.props.onChange) {
       let list = [];

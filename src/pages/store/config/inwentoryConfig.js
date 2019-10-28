@@ -4,20 +4,20 @@ export default {
   items: [
     {
       span: 24,
-      layout:'Empty',
+      layout: 'Empty',
       component: 'BaseList',
       config: {
-        share:'categroy',
+        share: 'categroy',
         API: {
           listAPI: '/api/wms/inventories',
-          deleteAPI:'/api/wms/inventories/(id)'
+          deleteAPI: '/api/wms/inventories/(id)'
         },
         fields: [
-          { field: 'skuBarcode',label: '商品条码'},
-          { field: 'skuName',label: '商品名称'},
-          { field: 'validSku',label: '商品库存'},
+          { field: 'skuBarcode', label: '商品条码' },
+          { field: 'skuName', label: '商品名称' },
+          { field: 'validSku', label: '商品库存' }
         ]
-      },
-    },
+      }
+    }
   ]
 }

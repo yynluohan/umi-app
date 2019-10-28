@@ -1,35 +1,32 @@
-import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
+import { connect } from 'dva'
+import { routerRedux } from 'dva/router'
 import AddTrialForm from './component/AddTrialForm'
 
-const TrialEdit = ({ dispatch,product }) => {
-
-  const { item } = product;
+const TrialEdit = ({ dispatch, product }) => {
+  const { item } = product
 
   const addFormProps = {
     item,
     title: '修改试用装',
-    onBack() {
+    onBack () {
       dispatch(routerRedux.goBack())
     },
-    onSave(data) {
+    onSave (data) {
       dispatch({
         type: 'product/updateTrial',
-        payload:data
+        payload: data
       })
     }
   }
 
   return (
     <div>
-      <AddTrialForm {...addFormProps}/>
+      <AddTrialForm {...addFormProps} />
     </div>
   )
-
 }
 
-
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     product: state.product
   }

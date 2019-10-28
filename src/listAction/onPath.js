@@ -1,15 +1,13 @@
 
-export default function onPath({ options, record }) {
+export default function onPath ({ options, record }) {
+  const { path } = options
 
-  const { path, query = { id: 'id' } } = options;
-
-
-  let queryData = {};
+  let queryData = {}
   if (options.queryData) {
-    queryData = options.queryData(x => x);
+    queryData = options.queryData(x => x)
   }
   if (Object.keys(queryData).length > 0) {
-    for (let key in queryData) {
+    for (const key in queryData) {
       queryData[key] = record[key]
     }
   }
@@ -30,9 +28,9 @@ export default function onPath({ options, record }) {
   //   }
   // }
 
-  let str = '';
+  let str = ''
   if (Object.keys(queryData).length > 0) {
-    Object.keys(queryData).map((item,index) => {
+    Object.keys(queryData).map((item, index) => {
       if (index === 0) {
         str += '?' + `${item}=${queryData[item]}`
       } else {
@@ -43,5 +41,5 @@ export default function onPath({ options, record }) {
 
   // str = str ? `?${str}` : ''
 
-  window.location.href = '#' +  path +  str
+  window.location.href = '#' + path + str
 }

@@ -1,31 +1,31 @@
-import React from 'react';
-import { TreeSelect } from 'antd';
+import React from 'react'
+import { TreeSelect } from 'antd'
 
 // 展示树形选择组件
 
 export default class SelectTree extends React.Component {
-
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       value: props.getId !== undefined ? props.getId : undefined,
       list: []
     }
+    this.onChange = this.onChange.bind(this)
   }
 
-  componentDidMount() {
-    //获取数据源
-    const { apiUrl='',method='',queryData={} } = this.props;
-    apiUrl && method && method(apiUrl,queryData).then(({ code,data }) => {
+  componentDidMount () {
+    // 获取数据源
+    const { apiUrl = '', method = '', queryData = {} } = this.props
+    apiUrl && method && method(apiUrl, queryData).then(({ code, data }) => {
       if (code === 200) {
         this.setState({
-          list: data.records || data,
+          list: data.records || data
         })
       }
     })
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.getId !== undefined) {
       this.setState({
         value: nextProps.getId
@@ -33,28 +33,27 @@ export default class SelectTree extends React.Component {
     }
   }
 
-  onChange = (value) => {
-    this.setState({ value });
+  onChange (value) {
+    this.setState({ value })
     if (this.props.onChange) {
       this.props.onChange(value)
     }
   }
 
-  render() {
-
-    const { getway = {} } = this.props;
+  render () {
+    const { getway = {} } = this.props
     // getway用于处理某些api返回来的格式不能正确对应title和children是使用
-    let { list } = this.state;
+    const { list } = this.state
 
-    const isGetWay = Object.keys(getway).length > 0 ? true : false;
-    //传入getway对象，则说明需要数据处理
+    const isGetWay = Object.keys(getway).length > 0
+    // 传入getway对象，则说明需要数据处理
 
-    //数据格式处理
-    function mapChild(data) {
-      data.map((item,index) => {
+    // 数据格式处理
+    function mapChild (data) {
+      data.map((item, index) => {
         if (isGetWay) {
           data[index] = {
-            title: item[getway['title']],
+            title: item[getway.title],
             value: item.id,
             key: item.id,
             children: item[getway.children]
@@ -64,7 +63,7 @@ export default class SelectTree extends React.Component {
           }
         } else {
           data[index] = {
-            title:item.title,
+            title: item.title,
             value: item.id,
             key: item.id,
             children: item.children
@@ -74,18 +73,16 @@ export default class SelectTree extends React.Component {
       return data
     }
 
-
     return (
       <TreeSelect
         // style={{ width: 300 }}
         value={this.state.value}
         dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
         treeData={mapChild(list)}
-        placeholder="Please select"
+        placeholder='Please select'
         // treeDefaultExpandAll
-        onChange={this.onChange}
+        onChange={() => this.onChange()}
       />
-    );
-
+    )
   }
 }

@@ -1,20 +1,20 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import noticeEditConfig from './config/noticeEditConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import noticeEditConfig from './config/noticeEditConfig.js'
 
 const NoticeEdit = () => {
   return (
     <div>
-      <ZEle namespace='notice'  config={noticeEditConfig} />
+      <ZEle namespace='notice' config={noticeEditConfig} />
     </div>
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     sys: state.sys
   }
 }
 
-export default connect(mapStateToProps)(NoticeEdit);
+export default connect(mapStateToProps)(NoticeEdit)

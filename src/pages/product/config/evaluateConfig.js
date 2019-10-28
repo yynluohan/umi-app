@@ -4,63 +4,70 @@ export default {
   items: [
     {
       span: 24,
-      layout:'Empty',
-      layoutConfig:{
+      layout: 'Empty',
+      layoutConfig: {
         title: 'search',
-        rightIcon:false,
-        typeList:['General']
+        rightIcon: false,
+        typeList: ['General']
       },
       component: 'BaseSearch',
       config: {
-        share:'product',
+        share: 'product',
         fields: [
-          { field: 'name',label: '商品名称',type:'input'},
+          { field: 'name', label: '商品名称', type: 'input' }
         ]
       }
     },
     {
       span: 24,
-      layout:'Empty',
+      layout: 'Empty',
       component: 'BaseList',
       config: {
-        share:'product',
+        share: 'product',
         // scroll:{x:2750},
         API: {
           listAPI: '/api/cms/evaluations',
-          deleteAPI:'/api/cms/evaluations/(id)'
+          deleteAPI: '/api/cms/evaluations/(id)'
         },
         fields: [
-          { field: 'tradeNumber',label: '订单编号'},
-          { field: 'tradeTime',label: '下单时间'},
-          { field: 'productNames',label: '商品名称',valueType:'productNames'},
-          { field: 'commentStar',label: '评价等级'},
-          { field: 'commentContent',label: '评价内容'},
-          { field: 'createTime',label: '评价时间'},
-          { field: 'replyTime',label: '回复时间'},
-          { field: 'isStick',label: '置顶',valueType:'status',
-            options:{
+          { field: 'tradeNumber', label: '订单编号' },
+          { field: 'tradeTime', label: '下单时间' },
+          { field: 'productNames', label: '商品名称', valueType: 'productNames' },
+          { field: 'commentStar', label: '评价等级' },
+          { field: 'commentContent', label: '评价内容' },
+          { field: 'createTime', label: '评价时间' },
+          { field: 'replyTime', label: '回复时间' },
+          {
+            field: 'isStick',
+            label: '置顶',
+            valueType: 'status',
+            options: {
               0: '不置顶',
               1: '置顶'
             }
           },
-          { field: 'isDisplay',label: '屏蔽',valueType:'status',
-            options:{
+          {
+            field: 'isDisplay',
+            label: '屏蔽',
+            valueType: 'status',
+            options: {
               0: '不屏蔽',
               1: '屏蔽'
             }
           },
-          { field:'operation'}
+          { field: 'operation' }
         ],
         operation: [
           {
-            title:'查看',action:'path',
-            options:{
-              path:'/product/evaluateView',
+            title: '查看',
+            action: 'path',
+            options: {
+              path: '/product/evaluateView',
               // permission:'apply.view',
               // location:true
-              queryData:(records) => {
+              queryData: (records) => {
                 const data = {
-                  id:records.id,
+                  id: records.id
                 }
                 return data
               }
@@ -79,10 +86,10 @@ export default {
           //   }
           // },
           {
-            title: '删除',action: 'delete'
+            title: '删除', action: 'delete'
           }
-        ],
-      },
-    },
+        ]
+      }
+    }
   ]
 }

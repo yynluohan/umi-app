@@ -1,22 +1,20 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import mallLinkConfig from './config/mallLinkConfig';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import mallLinkConfig from './config/mallLinkConfig'
 
-const MallLink = ({ dispatch,config }) => {
-
+const MallLink = ({ dispatch, config }) => {
   return (
     <div>
-      <ZEle namespace='config'  config={mallLinkConfig} />
+      <ZEle namespace='config' config={mallLinkConfig} />
     </div>
   )
-
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     config: state.config
   }
 }
 
-export default connect(mapStateToProps)(MallLink);
+export default connect(mapStateToProps)(MallLink)

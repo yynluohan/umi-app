@@ -11,85 +11,85 @@ module.exports = [
       {
         path: '/product/categroy',
         name: '产品类别',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/product',
         name: '产品',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/product/tag',
         name: '产品标签',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/product/trial',
         name: '试用装管理',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/product/evaluate',
         name: '评价管理',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/product/freight',
         name: '运费模板',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/product/brand',
         name: '品牌管理',
-        icon: 'tags',
+        icon: 'tags'
       }
     ]
   },
   {
     name: '订单管理',
     icon: 'tag',
-    items:[
+    items: [
       {
         path: '/order/online',
         name: '线上订单',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/order/offline',
         name: '线下订单',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/order/refund',
         name: '退货处理',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/order/trialApplication',
         name: '试用装申请',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/order/setExpress',
         name: '快递设置',
-        icon: 'tags',
+        icon: 'tags'
       }
     ]
   },
   {
     path: '/store',
     name: '店铺管理',
-    icon: 'tag',
+    icon: 'tag'
   },
   {
     path: '/notice',
     name: '通知管理',
-    icon:'tag'
+    icon: 'tag'
   },
   {
-    name:'资讯管理',
-    icon:'tags',
-    path:'/information'
+    name: '资讯管理',
+    icon: 'tags',
+    path: '/information'
   },
   {
     name: '营销活动',
@@ -119,12 +119,12 @@ module.exports = [
       {
         path: '/supply/warehouse',
         name: '仓库管理',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/supply/purchaseOrder',
         name: '采购订单',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/supply/purchaseReturn',
@@ -167,7 +167,7 @@ module.exports = [
         icon: 'tags'
       },
       {
-        path:'/supply/distributor',
+        path: '/supply/distributor',
         name: '分销商管理',
         icon: 'tags'
       },
@@ -190,7 +190,7 @@ module.exports = [
       {
         path: '/sys/rule',
         name: '规则配置',
-        icon: 'tags',
+        icon: 'tags'
       },
       {
         path: '/sys/adGroup',

@@ -1,5 +1,5 @@
 import { query } from '../framework/utils/services'
-import { getArgment } from '../framework/utils/parameter';
+import { getArgment } from '../framework/utils/parameter'
 
 export default {
   namespace: 'notice',
@@ -7,43 +7,42 @@ export default {
     item: {}
   },
 
-
   subscriptions: {
-    setup({ dispatch, history }) {
+    setup ({ dispatch, history }) {
       history.listen((location) => {
-        const query = getArgment(location.search);
+        const query = getArgment(location.search)
         if (location.pathname === '/sys/noticeView') {
           const obj = {
-            '/sys/noticeView':`/api/cms/notice/notices/${query.id}`,
+            '/sys/noticeView': `/api/cms/notice/notices/${query.id}`
           }
           dispatch({
             type: 'onView',
-            payload:{
+            payload: {
               url: obj[location.pathname]
             }
           })
         }
-      });
-    },
+      })
+    }
   },
 
   effects: {
     *onView({ payload }, { call, put }) {  // eslint-disable-line
-      const result = yield call(query,payload.url);
+      const result = yield call(query, payload.url)
       if (result.code === 200) {
         yield put({
           type: 'save',
-          payload:{
+          payload: {
             item: result.data || {}
           }
         })
       }
-    },
+    }
   },
   reducers: {
-    save(state, action) {
-      return { ...state, ...action.payload };
-    },
-  },
+    save (state, action) {
+      return { ...state, ...action.payload }
+    }
+  }
 
-};
+}

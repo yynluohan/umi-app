@@ -1,12 +1,10 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import trialApplicationConfig from './config/trialApplicationConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import trialApplicationConfig from './config/trialApplicationConfig.js'
 
 class TrialApplication extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
         <ZEle namespace='order' config={trialApplicationConfig} />
@@ -15,10 +13,10 @@ class TrialApplication extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     order: state.order
   }
 }
 
-export default connect(mapStateToProps)(TrialApplication);
+export default connect(mapStateToProps)(TrialApplication)

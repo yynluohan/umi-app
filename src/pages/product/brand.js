@@ -1,12 +1,10 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import brandConfig from './config/brandConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import brandConfig from './config/brandConfig.js'
 
 class Brand extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
         <ZEle namespace='product' config={brandConfig} />
@@ -15,10 +13,10 @@ class Brand extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     product: state.product
   }
 }
 
-export default connect(mapStateToProps)(Brand);
+export default connect(mapStateToProps)(Brand)

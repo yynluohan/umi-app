@@ -1,12 +1,11 @@
-import { connect } from 'dva';
-import AddStoreForm from './component/AddStoreForm';
-import { routerRedux } from 'dva/router';
+import { connect } from 'dva'
+import AddStoreForm from './component/AddStoreForm'
+import { routerRedux } from 'dva/router'
 
-const EditStore = ({ dispatch,store }) => {
+const EditStore = ({ dispatch, store }) => {
+  const { item } = store
 
-  let { item } = store;
-
-  item.images && item.images.length > 0 && item.images.map((k,i) => {
+  item.images && item.images.length > 0 && item.images.map((k, i) => {
     item.images[i] = {
       ...k,
       status: 'done',
@@ -16,27 +15,26 @@ const EditStore = ({ dispatch,store }) => {
 
   const addStoreFormProps = {
     item,
-    title:'修改门店',
-    onBack(){
+    title: '修改门店',
+    onBack () {
       dispatch(routerRedux.goBack())
     },
-    onSave(data) {
+    onSave (data) {
       dispatch({
         type: 'store/updateStore',
-        payload:data
+        payload: data
       })
     }
   }
 
   return (
     <div>
-      <AddStoreForm {...addStoreFormProps}/>
+      <AddStoreForm {...addStoreFormProps} />
     </div>
   )
-
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     store: state.store
   }

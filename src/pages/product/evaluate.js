@@ -1,12 +1,10 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import evaluateConfig from './config/evaluateConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import evaluateConfig from './config/evaluateConfig.js'
 
 class Evaluate extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
         <ZEle namespace='product' config={evaluateConfig} />
@@ -15,10 +13,10 @@ class Evaluate extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     product: state.product
   }
 }
 
-export default connect(mapStateToProps)(Evaluate);
+export default connect(mapStateToProps)(Evaluate)

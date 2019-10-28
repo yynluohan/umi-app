@@ -1,24 +1,23 @@
-import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
-import CouponTemplateForm from './component/CouponTemplateForm';
+import { connect } from 'dva'
+import { routerRedux } from 'dva/router'
+import CouponTemplateForm from './component/CouponTemplateForm'
 
-const CouponTemplateAdd  = ({ dispatch }) => {
-
+const CouponTemplateAdd = ({ dispatch }) => {
   const fromProps = {
     title: '添加优惠券模板',
-    onBack() {
+    onBack () {
       dispatch(routerRedux.goBack())
     }
   }
 
-  return(
+  return (
     <div>
-      <CouponTemplateForm {...fromProps}/>
+      <CouponTemplateForm {...fromProps} />
     </div>
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     marketing: state.marketing
   }

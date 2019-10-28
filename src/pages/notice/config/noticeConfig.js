@@ -7,80 +7,90 @@ module.exports = {
       layout: 'Empty',
       component: 'BaseSearch',
       config: {
-        share:'user',
+        share: 'user',
         fields: [
           { field: 'title', label: '标题', type: 'input' },
-          { field: 'status', label: '状态', type: 'select',
+          {
+            field: 'status',
+            label: '状态',
+            type: 'select',
             options: [
-              {label: '草稿',value:'Draft'},
-              {label: '已发布',value:'Publish'},
-              {label: '已下架',value:'Deprecated'},
+              { label: '草稿', value: 'Draft' },
+              { label: '已发布', value: 'Publish' },
+              { label: '已下架', value: 'Deprecated' }
             ]
           }
-        ],
-      },
+        ]
+      }
     },
     {
       layout: 'Empty',
       component: 'BaseList',
       config: {
-        share:'user',
+        share: 'user',
         API: {
           listAPI: '/api/cms/notice/notices',
-          deleteAPI:'/api/cms/notice/notices/(id)'
+          deleteAPI: '/api/cms/notice/notices/(id)'
         },
-        actions:[
-          {title:'添加',type:'path',
-            options: {path: '/notice/noticeAdd'}
+        actions: [
+          {
+            title: '添加',
+            type: 'path',
+            options: { path: '/notice/noticeAdd' }
           }
         ],
         fields: [
-          { field: 'title',label: '标题',},
-          { field: 'author',label:'作者'},
+          { field: 'title', label: '标题' },
+          { field: 'author', label: '作者' },
           { field: 'createTime', label: '创建时间' },
-          { field: 'updateTime', label: '发布时间'},
+          { field: 'updateTime', label: '发布时间' },
           { field: 'orderNum', label: '排序' },
-          { field: 'status', label: '状态',valueType:'status',
-          options:{
-            statusMap:{
-              'Draft':'草稿',
-              'Publish':'已发布',
-              'Deprecated':'已下架'
+          {
+            field: 'status',
+            label: '状态',
+            valueType: 'status',
+            options: {
+              statusMap: {
+                Draft: '草稿',
+                Publish: '已发布',
+                Deprecated: '已下架'
+              }
             }
-          }
-         },
-         { field:'operation'}
+          },
+          { field: 'operation' }
         ],
         operation: [
           {
-            title: '编辑', action: 'path',
-            options:{
+            title: '编辑',
+            action: 'path',
+            options: {
               path: '/notice/noticeEdit',
-              queryData:(records) => {
+              queryData: (records) => {
                 const data = {
-                  id:records.id,
+                  id: records.id
                 }
                 return data
               }
             }
           },
           {
-            title:'查看',action:'path',
+            title: '查看',
+            action: 'path',
             options: {
               path: '/sys/noticeView',
-              queryData:(records) => {
+              queryData: (records) => {
                 const data = {
-                  id:records.id,
+                  id: records.id
                 }
                 return data
               }
             }
           },
           {
-            title:'删除',action:'delete'
+            title: '删除', action: 'delete'
           }
         ]
-      },
-    },
-  ],
-};
+      }
+    }
+  ]
+}

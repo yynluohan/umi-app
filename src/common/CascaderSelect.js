@@ -1,16 +1,16 @@
-import React from 'react';
-import { Cascader } from 'antd';
+import React from 'react'
+import { Cascader } from 'antd'
 
 export default class CascaderSelect extends React.Component {
-
-  constructor(props){
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       data: props.data && props.data.length > 0 ? props.data : []
     }
+    this.onChange = this.onChange.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.data) {
       this.setState({
         data: nextProps.data && nextProps.data.length > 0 ? nextProps.data : this.state.data
@@ -18,13 +18,13 @@ export default class CascaderSelect extends React.Component {
     }
   }
 
-  componentWillMount(a,b) {
+  componentWillMount (a, b) {
   }
 
-  onChange = (value) => {
+  onChange (value) {
     if (this.props.onChange) {
-      let text = '';
-      value.length > 0 && value.map((item,index) => {
+      let text = ''
+      value.length > 0 && value.map((item, index) => {
         if (index === 0) {
           text += item
         } else {
@@ -38,10 +38,9 @@ export default class CascaderSelect extends React.Component {
     })
   }
 
-  render() {
-
-    const { list } = this.props;
-    const { data } = this.state;
+  render () {
+    const { list } = this.props
+    const { data } = this.state
 
     const value = data.length > 0 ? {
       value: data
@@ -51,11 +50,11 @@ export default class CascaderSelect extends React.Component {
       <div>
         <Cascader
           options={list}
-          onChange={this.onChange}
-          placeholder="Please select"
-          autoFocus={true}
+          onChange={() => this.onChange()}
+          placeholder='Please select'
+          autoFocus
           {...value}
-         />
+        />
       </div>
     )
   }

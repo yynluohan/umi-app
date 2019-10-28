@@ -1,20 +1,19 @@
-import React from 'react';
-import { Menu, Icon, } from 'antd';
-import Link from 'umi/link';
-import router from '@/config/router.config';
+import React from 'react'
+import { Menu, Icon } from 'antd'
+import Link from 'umi/link'
+import router from '@/config/router.config'
 
-const { SubMenu } = Menu;
+const { SubMenu } = Menu
 
-export default function LeftNav({ path }) {
-
+export default function LeftNav ({ path }) {
   return <Menu
     theme='dark'
-    mode="inline"
+    mode='inline'
     style={{ height: '100%', borderRight: 0 }}
     selectedKeys={[path]}
   >
     {router.map((route, i) => {
-      const { name, path, icon, items } = route;
+      const { name, path, icon, items } = route
       if (items) {
         return <SubMenu
           key={path || i}
@@ -26,7 +25,7 @@ export default function LeftNav({ path }) {
           }
         >
           {items.map(item => {
-            const { name, path, icon } = item;
+            const { name, path, icon } = item
             return <Menu.Item key={path}>
               <Link to={window.MC.HASH + path}>
                 <div>
@@ -48,7 +47,7 @@ export default function LeftNav({ path }) {
           </Link>
         </Menu.Item>
       }
-      return <Menu.Divider key={i} />;
+      return <Menu.Divider key={i} />
     })}
   </Menu>
 }

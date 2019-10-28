@@ -1,24 +1,22 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import productConfig from './config/productConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import productConfig from './config/productConfig.js'
 
 class Product extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
-        <ZEle namespace='product'  config={productConfig} />
+        <ZEle namespace='product' config={productConfig} />
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     product: state.product
   }
 }
 
-export default connect(mapStateToProps)(Product);
+export default connect(mapStateToProps)(Product)

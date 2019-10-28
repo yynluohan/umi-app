@@ -1,12 +1,12 @@
-import React from 'react';
-import PrimaryLayout from '@/framework/PrimaryLayout';
+import React from 'react'
+import PrimaryLayout from '@/framework/PrimaryLayout'
 
-function BasicLayout(props) {
+function BasicLayout (props) {
   return (
     <PrimaryLayout {...props}>
       {props.children}
     </PrimaryLayout>
-  );
+  )
 }
 
-export default BasicLayout;
+export default BasicLayout

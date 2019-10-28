@@ -1,18 +1,18 @@
-import React from 'react';
-import { Tree } from 'antd';
+import React from 'react'
+import { Tree } from 'antd'
 
-const { TreeNode } = Tree;
+const { TreeNode } = Tree
 
 export default class TreeList extends React.Component {
-
-  constructor(props){
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
-      list: props.list || [],   //树形数据源
+      list: props.list || [] // 树形数据源
     }
+    this.onSelect = this.onSelect.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.list) {
       this.setState({
         list: nextProps.list
@@ -20,54 +20,56 @@ export default class TreeList extends React.Component {
     }
   }
 
-  onSelect = (a,b) => {
+  onSelect (a, b) {
     if (b.selected && this.props.onSelectId) {
-      this.props.onSelectId(a[0].split('-')[a[0].split('-').length-1])
+      this.props.onSelectId(a[0].split('-')[a[0].split('-').length - 1])
     }
   }
 
-  render() {
+  render () {
+    const { list } = this.state
 
-    const { list } = this.state;
-
-    function createTree(data,pid) {
-      return data.length > 0 && data.map((item,index) => {
+    function createTree (data, pid) {
+      return data.length > 0 && data.map((item, index) => {
         return (
           <TreeNode title={item.name} key={`${pid}-${item.id}`}>
-            { item.items && item.items.length > 0 ?
-              createTree(item.items,`${pid}-${item.id}`)
-              : ''
-            }
+            {item.items && item.items.length > 0
+              ? createTree(item.items, `${pid}-${item.id}`)
+              : ''}
           </TreeNode>
         )
       })
     }
 
+    const createTreeElement = () => {
+      return (
+        <Tree showLine onSelect={(selectedKeys, e) => this.onSelect(selectedKeys, e)}>
+          {
+            list.map((item, index) => {
+              const pid = item.pid ? `${item.pid}-${item.id}` : item.id
+              return (
+                <TreeNode title={item.name} key={pid} onClick={() => this.onClick(item)}>
+                  {
+                    item.items && item.items.length > 0
+                      ? createTree(item.items, pid)
+                      : null
+                  }
+                </TreeNode>
+              )
+            })
+          }
+        </Tree>
+      )
+    }
+
     return (
       <>
         {
-          list.length > 0 ?
-          <Tree showLine onSelect={(selectedKeys,e) => this.onSelect(selectedKeys,e)}>
-            {
-              list.map((item,index) => {
-                const pid = item.pid ? `${item.pid}-${item.id}` :  item.id;
-                return (
-                  <TreeNode title={item.name} key={pid} onClick={() => this.onClick(item)}>
-                    {
-                      item.items && item.items.length > 0 ?
-                      createTree(item.items,pid)
-                      : null
-                    }
-                  </TreeNode>
-                )
-              })
-            }
-
-          </Tree>
-          : ''
+          list.length > 0
+            ? createTreeElement()
+            : ''
         }
       </>
     )
   }
-
 }

@@ -1,33 +1,29 @@
-import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
+import { connect } from 'dva'
+import { routerRedux } from 'dva/router'
 import AddProductForm from './component/AddProductForm'
 
-const ProductAdd = ({ dispatch,product }) => {
-
-
+const ProductAdd = ({ dispatch, product }) => {
   const addFormProps = {
     title: '添加产品',
-    onBack() {
+    onBack () {
       dispatch(routerRedux.goBack())
     },
-    onSave(data) {
+    onSave (data) {
       dispatch({
         type: 'product/addProduct',
-        payload:data
+        payload: data
       })
     }
   }
 
   return (
     <div>
-      <AddProductForm {...addFormProps}/>
+      <AddProductForm {...addFormProps} />
     </div>
   )
-
 }
 
-
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     product: state.product
   }

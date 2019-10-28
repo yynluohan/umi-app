@@ -7,44 +7,48 @@ module.exports = {
       layout: 'Empty',
       component: 'BaseSearch',
       config: {
-        share:'user',
+        share: 'user',
         fields: [
           { field: 'name', label: '名称', type: 'input' }
-        ],
-      },
+        ]
+      }
     },
     {
       layout: 'Empty',
       component: 'BaseList',
       config: {
-        share:'user',
+        share: 'user',
         API: {
           listAPI: '/api/crud/product/productBrands',
-          deleteAPI:'/api/crud/product/productBrands/(id)'
+          deleteAPI: '/api/crud/product/productBrands/(id)'
         },
-        actions:[
+        actions: [
           {
-            title: '添加',type:'modal',
-            options:{
-              modalTitle:'添加品牌',
-              modalWidth:900,
-              items:[
+            title: '添加',
+            type: 'modal',
+            options: {
+              modalTitle: '添加品牌',
+              modalWidth: 900,
+              items: [
                 {
                   layout: 'Empty',
                   component: 'BaseForm',
                   config: {
-                    API:{
-                      createAPI:'/api/crud/product/productBrands'
+                    API: {
+                      createAPI: '/api/crud/product/productBrands'
                     },
                     fields: [
-                      { field: 'name', label: '名称',type:'input',rules: ['required'] },
-                      { field: 'logo', label: 'logo',type:'upload-image',
+                      { field: 'name', label: '名称', type: 'input', rules: ['required'] },
+                      {
+                        field: 'logo',
+                        label: 'logo',
+                        type: 'upload-image',
                         options: {
                           API: `${window.MC.UPLOADHOST}/api/uploadfile`,
                           max: 1
                         }
-                     },
-                      { field: 'description',label: '描述',type:'input'},
+                      },
+                      { field: 'description', label: '描述', type: 'input' }
                     ]
                   }
                 }
@@ -54,36 +58,40 @@ module.exports = {
         ],
         fields: [
           { field: 'name', label: '名称' },
-          { field: 'logo',label: 'logo',valueType:'showImage'},
-          { field: 'description',label: '描述'},
-          { field:'operation'}
+          { field: 'logo', label: 'logo', valueType: 'showImage' },
+          { field: 'description', label: '描述' },
+          { field: 'operation' }
         ],
         operation: [
           {
-            title: '编辑', action: 'modal',
-            options:{
-              modalTitle:'编辑品牌',
-              modalWidth:800,
+            title: '编辑',
+            action: 'modal',
+            options: {
+              modalTitle: '编辑品牌',
+              modalWidth: 800,
 
               layout: 'Empty',
-              items:[
+              items: [
                 {
                   layout: 'Empty',
                   component: 'BaseForm',
                   config: {
                     API: {
-                      getAPI:'/api/crud/product/productBrands/(id)',
-                      updateAPI: '/api/crud/product/productBrands/(id)',
+                      getAPI: '/api/crud/product/productBrands/(id)',
+                      updateAPI: '/api/crud/product/productBrands/(id)'
                     },
                     fields: [
-                      { field: 'name', label: '名称',type:'input',rules: ['required'] },
-                      { field: 'logo', label: 'logo',type:'upload-image',
+                      { field: 'name', label: '名称', type: 'input', rules: ['required'] },
+                      {
+                        field: 'logo',
+                        label: 'logo',
+                        type: 'upload-image',
                         options: {
                           API: `${window.MC.UPLOADHOST}/api/uploadfile`,
                           max: 1
                         }
                       },
-                      { field: 'description',label: '描述',type:'input'},
+                      { field: 'description', label: '描述', type: 'input' }
                     ]
                   }
                 }
@@ -91,10 +99,10 @@ module.exports = {
             }
           },
           {
-            title:'删除',action:'delete'
+            title: '删除', action: 'delete'
           }
         ]
-      },
-    },
-  ],
-};
+      }
+    }
+  ]
+}

@@ -6,14 +6,17 @@ module.exports = {
       layout: 'BaseFormLayout',
       component: 'BaseForm',
       config: {
-        path:'/subsysManage',
-        API:{
-          getAPI:'/api/crud/configmanagement/configs/wechatConfig',
-          createAPI: '/api/crud/configmanagement/configs/wechatConfig',
+        path: '/subsysManage',
+        API: {
+          getAPI: '/api/crud/configmanagement/configs/wechatConfig',
+          createAPI: '/api/crud/configmanagement/configs/wechatConfig'
         },
         fields: [
           { field: 'token', label: 'token令牌', type: 'input' },
-          { field: 'encryptMessage', label: '启用消息加密', type: 'switch',
+          {
+            field: 'encryptMessage',
+            label: '启用消息加密',
+            type: 'switch',
             props: {
               checkedChildren: 'ON',
               unCheckedChildren: 'OFF'
@@ -27,7 +30,10 @@ module.exports = {
           { field: 'appPartnerKey', label: '商户Key', type: 'input' },
           { field: 'certPath', label: '证书路径', type: 'input' },
           { field: 'wxaAppid', label: '小程序AppId', type: 'input' },
-          { field: 'autoReg', label: '登录自动注册', type: 'switch',
+          {
+            field: 'autoReg',
+            label: '登录自动注册',
+            type: 'switch',
             props: {
               checkedChildren: 'ON',
               unCheckedChildren: 'OFF'
@@ -37,9 +43,9 @@ module.exports = {
           { field: 'appAppSecret', label: '移动应用密钥', type: 'input' },
           { field: 'appName', label: '移动应用名称', type: 'input' },
           { field: 'appPartnerId', label: '移动应用商家ID', type: 'input' },
-          { field: 'partnerKey', label: '移动应用商家密钥', type: 'input' },
-        ],
-      },
+          { field: 'partnerKey', label: '移动应用商家密钥', type: 'input' }
+        ]
+      }
     }
   ]
 

@@ -1,59 +1,62 @@
-import React, { PureComponent } from 'react';
-import { Upload, Icon, Button } from 'antd';
+import React, { PureComponent } from 'react'
+import { Upload, Icon, Button } from 'antd'
 
 export default class UploadFile extends PureComponent {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       value: props.value,
       fileList: format(props.value),
       loading: false,
       url: props.url || '/api/uploadfile'
     }
+    this.handleChange = this.handleChange.bind(this)
   }
-  static getDerivedStateFromProps(nextProps, prevState) {
+
+  static getDerivedStateFromProps (nextProps, prevState) {
     if (nextProps.value !== prevState.value) {
       return {
         value: nextProps.value,
-        reFormat: true,
+        reFormat: true
       }
     }
-    return null;
+    return null
   }
-  componentDidUpdate() {
-    const { reFormat, value } = this.state;
+
+  componentDidUpdate () {
+    const { reFormat, value } = this.state
     if (reFormat) {
       this.setState({
         fileList: format(value),
-        reFormat: false,
-      });
+        reFormat: false
+      })
     }
   }
 
-  handleChange = (info) => {
-    const { fileList } = info;
-    this.setState({ fileList });
+  handleChange (info) {
+    const { fileList } = info
+    this.setState({ fileList })
     if (info.file.status === 'uploading' && fileList.length > 0) {
       this.setState({
-        loading: true,
-      });
+        loading: true
+      })
     }
     if (info.file.status === 'done' || info.file.status === 'error' || info.file.status === 'removed') {
       this.setState({
-        loading: false,
-      });
-      const doneFileList = fileList.filter(file => file.status === 'done');
+        loading: false
+      })
+      const doneFileList = fileList.filter(file => file.status === 'done')
       const saveFileList = doneFileList.map(file => ({
         url: file.response ? file.response.data.url : file.url,
-        name: file.response ? (file.response.data.originalFileName || file.response.data.name) : file.name,
-      }));
-      this.props.onChange(saveFileList);
+        name: file.response ? (file.response.data.originalFileName || file.response.data.name) : file.name
+      }))
+      this.props.onChange(saveFileList)
     }
   }
 
-  render() {
-    const { fileList } = this.state;
-    const { max = 1 } = this.props;
+  render () {
+    const { fileList } = this.state
+    const { max = 1 } = this.props
 
     const uploadProps = {
       name: 'file',
@@ -61,19 +64,19 @@ export default class UploadFile extends PureComponent {
       fileList: fileList,
       showUploadList: true,
       headers: {
-        authorization: `Bearer ${window.localStorage.token}`,
+        authorization: `Bearer ${window.localStorage.token}`
       },
       onChange: this.handleChange
     }
 
     const uploadButton = (
       <Button>
-        <Icon type="upload" /> 点击上传
+        <Icon type='upload' /> 点击上传
       </Button>
-    );
+    )
 
     return (
-      <div className="clearfix">
+      <div className='clearfix'>
         <Upload
           {...uploadProps}
         >
@@ -84,13 +87,13 @@ export default class UploadFile extends PureComponent {
   }
 }
 
-function format(value) {
-  let rst = [];
+function format (value) {
+  let rst = []
   try {
     if (typeof (value) === 'string') {
-      rst = JSON.parse(value);
+      rst = JSON.parse(value)
     } else if (Array.isArray(value)) {
-      rst = value;
+      rst = value
     }
   } catch (e) {
     // rst.push(value);
@@ -99,8 +102,8 @@ function format(value) {
     rst[index] = {
       ...item,
       uid: index,
-      status: 'done',
+      status: 'done'
     }
-  });
-  return rst;
+  })
+  return rst
 }

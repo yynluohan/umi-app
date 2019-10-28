@@ -1,12 +1,10 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import freightConfig from './config/freightConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import freightConfig from './config/freightConfig.js'
 
 class Freight extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
         <ZEle namespace='product1' config={freightConfig} />
@@ -15,10 +13,10 @@ class Freight extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     product: state.product
   }
 }
 
-export default connect(mapStateToProps)(Freight);
+export default connect(mapStateToProps)(Freight)

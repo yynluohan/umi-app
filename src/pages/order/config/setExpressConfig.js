@@ -4,53 +4,57 @@ export default {
   items: [
     {
       span: 24,
-      layout:'Empty',
-      layoutConfig:{
+      layout: 'Empty',
+      layoutConfig: {
         title: 'search',
-        rightIcon:false,
-        typeList:['General']
+        rightIcon: false,
+        typeList: ['General']
       },
       component: 'BaseSearch',
       config: {
-        share:'product',
+        share: 'product',
         fields: [
-          { field: 'name',label: '名称',type:'input'},
+          { field: 'name', label: '名称', type: 'input' }
         ]
       }
     },
     {
       span: 24,
-      layout:'Empty',
+      layout: 'Empty',
       component: 'BaseList',
       config: {
-        share:'product',
+        share: 'product',
         API: {
           listAPI: '/api/crud/order/expresses',
-          deleteAPI:'/api/crud/order/expresses/(id)'
+          deleteAPI: '/api/crud/order/expresses/(id)'
         },
-        actions:[
+        actions: [
           {
-            title: '添加新快递公司信息',type:'modal',
-            options:{
-              modalTitle:'添加快递公司',
-              modalWidth:900,
-              items:[
+            title: '添加新快递公司信息',
+            type: 'modal',
+            options: {
+              modalTitle: '添加快递公司',
+              modalWidth: 900,
+              items: [
                 {
                   layout: 'BaseFormLayout',
                   component: 'BaseForm',
                   config: {
-                    API:{
-                      createAPI:'/api/crud/order/expresses'
+                    API: {
+                      createAPI: '/api/crud/order/expresses'
                     },
                     fields: [
-                      { field: 'name',label: '名称',type:'input'},
-                      { field: 'code',label: '代码',type:'input'},
-                      { field: 'isDefault',label: '是否默认',type:'radio',
-                        options:[
-                          { label: '是',value: '1'},
-                          { label: '否',value: '0'},
+                      { field: 'name', label: '名称', type: 'input' },
+                      { field: 'code', label: '代码', type: 'input' },
+                      {
+                        field: 'isDefault',
+                        label: '是否默认',
+                        type: 'radio',
+                        options: [
+                          { label: '是', value: '1' },
+                          { label: '否', value: '0' }
                         ]
-                      },
+                      }
                     ]
                   }
                 }
@@ -59,14 +63,17 @@ export default {
           }
         ],
         fields: [
-          { field: 'id',label: '编号'},
-          { field: 'name',label: '名称'},
-          { field: 'code',label: '代码'},
-          { field: 'isDefault',label: '是否默认',valueType:'showStatus',
+          { field: 'id', label: '编号' },
+          { field: 'name', label: '名称' },
+          { field: 'code', label: '代码' },
+          {
+            field: 'isDefault',
+            label: '是否默认',
+            valueType: 'showStatus',
             options: {
               statusMap: {
-                1:'是',
-                0:'否'
+                1: '是',
+                0: '否'
               },
               colorMap: {
                 1: '#428bca',
@@ -74,7 +81,7 @@ export default {
               }
             }
           },
-          { field:'operation'}
+          { field: 'operation' }
         ],
         operation: [
           // {
@@ -92,30 +99,34 @@ export default {
           //   }
           // },
           {
-            title: '编辑', action: 'modal',
-            options:{
-              modalTitle:'编辑快递公司',
-              modalWidth:800,
+            title: '编辑',
+            action: 'modal',
+            options: {
+              modalTitle: '编辑快递公司',
+              modalWidth: 800,
 
               layout: 'Empty',
-              items:[
+              items: [
                 {
                   layout: 'BaseFormLayout',
                   component: 'BaseForm',
                   config: {
                     API: {
-                      getAPI:'/api/crud/order/expresses/(id)',
-                      updateAPI: '/api/crud/order/expresses/(id)',
+                      getAPI: '/api/crud/order/expresses/(id)',
+                      updateAPI: '/api/crud/order/expresses/(id)'
                     },
                     fields: [
-                      { field: 'name',label: '名称',type:'input'},
-                      { field: 'code',label: '代码',type:'input'},
-                      { field: 'moren',label: '是否默认',type:'radio',
-                        options:[
-                          { label: '是',value: '1'},
-                          { label: '否',value: '0'},
+                      { field: 'name', label: '名称', type: 'input' },
+                      { field: 'code', label: '代码', type: 'input' },
+                      {
+                        field: 'moren',
+                        label: '是否默认',
+                        type: 'radio',
+                        options: [
+                          { label: '是', value: '1' },
+                          { label: '否', value: '0' }
                         ]
-                      },
+                      }
                     ]
                   }
                 }
@@ -123,10 +134,10 @@ export default {
             }
           },
           {
-            title: '删除',action: 'delete'
+            title: '删除', action: 'delete'
           }
-        ],
-      },
-    },
+        ]
+      }
+    }
   ]
 }

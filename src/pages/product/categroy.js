@@ -1,12 +1,10 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import categroyConfig from './config/categroyConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import categroyConfig from './config/categroyConfig.js'
 
 class Categroy extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
         <ZEle namespace='product' config={categroyConfig} />
@@ -15,10 +13,10 @@ class Categroy extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     product: state.product
   }
 }
 
-export default connect(mapStateToProps)(Categroy);
+export default connect(mapStateToProps)(Categroy)

@@ -1,21 +1,21 @@
-export function getArgment(x) {
+export function getArgment (x) {
   if (!x) {
-    return {};
+    return {}
   }
-  let str = x.split('&');
-  let obj = {};
+  const str = x.split('&')
+  const obj = {}
   str.length > 0 && str.map((item) => {
-    const data = item.replace(/\?/g,'').split('=');
+    const data = item.replace(/\?/g, '').split('=')
     obj[data[0]] = data[1]
   })
   return obj
 }
 
-export function getPath(x) {
+export function getPath (x) {
   let path = ''
   if (!x) {
-    return '';
+    return ''
   }
-  path = x.replace('#','').split('?')[0]
+  path = x.replace('#', '').split('?')[0]
   return path
 }

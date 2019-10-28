@@ -1,67 +1,67 @@
-import React from 'react';
-import { Dropdown,Menu,Icon,Button,notification } from 'antd';
-import styles from './Common.css';
+import React from 'react'
+import { Dropdown, Menu, Icon, Button, notification } from 'antd'
+import styles from './Common.css'
 
- class ListLayout extends React.Component {
-
-  constructor(props){
-    super(props);
+class ListLayout extends React.Component {
+  constructor (props) {
+    super(props)
     this.state = {
-      oparateList:props.oparateList || [],
+      oparateList: props.oparateList || [],
       showBulkOprate: props.showBulkOprate || false,
-      title: props.title || 'List',  //标题
-      selectDiraction:'up',
+      title: props.title || 'List', // 标题
+      selectDiraction: 'up'
     }
+    this.onIconChange = this.onIconChange.bind(this)
+    this.handleMenuClick = this.handleMenuClick.bind(this)
   }
 
-  onIconChange = () => {
-    const { selectDiraction } = this.state;
+  onIconChange () {
+    const { selectDiraction } = this.state
     this.setState({
-      selectDiraction: selectDiraction == 'up' ? 'down' : 'up',
+      selectDiraction: selectDiraction == 'up' ? 'down' : 'up'
     })
   }
 
-  handleMenuClick = (data) => {
-    if(this.props.selectedRows.length < 1){
-      notification.error({ message: '请选择需要操作的选项!' });
-      return;
+  handleMenuClick (data) {
+    if (this.props.selectedRows.length < 1) {
+      notification.error({ message: '请选择需要操作的选项!' })
+      return
     }
-    if(this.props.context){
+    if (this.props.context) {
       this.props.context.dispatch({
-        type:`${this.props.context.namespace}/save`,
-        payload:{
-          bulkOperateName:data,
-          selectedRowKeys:this.props.context.selectedRowKeys,
-          selectedRows:this.props.context.selectedRows
+        type: `${this.props.context.namespace}/save`,
+        payload: {
+          bulkOperateName: data,
+          selectedRowKeys: this.props.context.selectedRowKeys,
+          selectedRows: this.props.context.selectedRows
         }
       })
     }
-    if(data == '审核通过' && this.props.onApproved){
+    if (data === '审核通过' && this.props.onApproved) {
       this.props.onApproved()
     }
-    if(data == '提交银行流水' && this.props.onBankWater){
+    if (data === '提交银行流水' && this.props.onBankWater) {
       this.props.onBankWater()
     }
-    if(data == '自动生成收款单' && this.props.onAutoGenerateReceipt){
+    if (data === '自动生成收款单' && this.props.onAutoGenerateReceipt) {
       this.props.onAutoGenerateReceipt()
     }
-    if(data == '删除' && this.props.onBulkDelete){
+    if (data === '删除' && this.props.onBulkDelete) {
       this.props.onBulkDelete()
     }
   }
 
-  render(){
+  render () {
+    const { children } = this.props
+    const [List, Pagination] = children
+    const { oparateList, showBulkOprate, title, selectDiraction } = this.state
 
-    const { children } = this.props;
-    const [Batch, List, Pagination] = children;
-    const { oparateList,showBulkOprate,title,selectDiraction } = this.state;
-
-    console.log('BBBBB this.props = ',oparateList);
+    console.log('BBBBB this.props = ', oparateList)
 
     const menu = (
       <Menu>
         {
-          oparateList.length > 0 && oparateList.map((item,index) => {
+          oparateList.length > 0 && oparateList.map((item, index) => {
 
           })
         }
@@ -72,36 +72,34 @@ import styles from './Common.css';
       <div className={styles.outStyle}>
         <div className={styles.continer}>
           <span>{title || 'List'}</span>
-          <Icon type={selectDiraction} onClick={() => this.onIconChange()}/>
+          <Icon type={selectDiraction} onClick={() => this.onIconChange()} />
         </div>
         {
-          selectDiraction == 'up' ?
-          <div style={{padding:'0.5em'}}>
-            {
-              showBulkOprate ?
-              <Dropdown overlay={menu}>
-                <Button style={{ marginLeft: 8 }}>
-                  批量操作 <Icon type="down" />
-                </Button>
-              </Dropdown>
-              : null
-            }
-            {List}
-            <div style={{margin:'0.8em 0'}}>
-              {Pagination}
+          selectDiraction == 'up'
+            ? <div style={{ padding: '0.5em' }}>
+              {
+                showBulkOprate
+                  ? <Dropdown overlay={menu}>
+                    <Button style={{ marginLeft: 8 }}>
+                  批量操作 <Icon type='down' />
+                    </Button>
+                    </Dropdown>
+                  : null
+              }
+              {List}
+              <div style={{ margin: '0.8em 0' }}>
+                {Pagination}
+              </div>
             </div>
-          </div>
-          :
-          <div className={styles.noContent}>
-            <Icon type="frown-o" />
-            <span>收起中</span>
-          </div>
+            : <div className={styles.noContent}>
+              <Icon type='frown-o' />
+              <span>收起中</span>
+            </div>
         }
 
       </div>
     )
   }
-
 }
 
 export default ListLayout

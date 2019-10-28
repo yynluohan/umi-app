@@ -1,12 +1,10 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import setExpressConfig from './config/setExpressConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import setExpressConfig from './config/setExpressConfig.js'
 
 class SetExpress extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
         <ZEle namespace='order' config={setExpressConfig} />
@@ -15,10 +13,10 @@ class SetExpress extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     order: state.order
   }
 }
 
-export default connect(mapStateToProps)(SetExpress);
+export default connect(mapStateToProps)(SetExpress)

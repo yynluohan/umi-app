@@ -1,10 +1,9 @@
 
 export default (props) => {
-
   const titleStyle = {
     backgroundColor: 'rgb(96, 111, 132)',
     padding: '1em',
-    color: '#fff',
+    color: '#fff'
   }
 
   const childStyle = {
@@ -14,11 +13,10 @@ export default (props) => {
 
   return (
     <div>
-      <div style={titleStyle}>{ props.title || ''}</div>
+      <div style={titleStyle}>{props.title || ''}</div>
       <div style={childStyle}>
         {props.children}
       </div>
     </div>
   )
-
 }

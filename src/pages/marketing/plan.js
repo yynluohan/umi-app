@@ -1,21 +1,20 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import planConfig from './config/planConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import planConfig from './config/planConfig.js'
 
 const Plan = () => {
-
   return (
     <div>
-      <ZEle namespace='marketing'  config={planConfig} />
+      <ZEle namespace='marketing' config={planConfig} />
     </div>
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     marketing: state.marketing
   }
 }
 
-export default connect(mapStateToProps)(Plan);
+export default connect(mapStateToProps)(Plan)

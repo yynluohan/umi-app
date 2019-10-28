@@ -1,20 +1,18 @@
-import React from 'react';
-import { connect } from 'dva';
-import AddProductForm from './component/AddProductForm';
-import { routerRedux } from 'dva/router';
+import React from 'react'
+import { connect } from 'dva'
+import AddProductForm from './component/AddProductForm'
+import { routerRedux } from 'dva/router'
 
-const ProductEdit = ({ dispatch,product }) => {
-
-
-  const { item } = product;
+const ProductEdit = ({ dispatch, product }) => {
+  const { item } = product
 
   const formProps = {
     item,
     title: '修改产品类别',
-    onBack() {
+    onBack () {
       dispatch(routerRedux.goBack())
     },
-    onSave(data) {
+    onSave (data) {
       dispatch({
         type: 'product/updateProduct',
         payload: data
@@ -24,17 +22,15 @@ const ProductEdit = ({ dispatch,product }) => {
 
   return (
     <div>
-      <AddProductForm {...formProps}/>
+      <AddProductForm {...formProps} />
     </div>
   )
-
 }
 
-
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     product: state.product
   }
 }
 
-export default connect(mapStateToProps)(ProductEdit);
+export default connect(mapStateToProps)(ProductEdit)

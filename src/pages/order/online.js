@@ -1,12 +1,10 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import onlineConfig from './config/onlineConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import onlineConfig from './config/onlineConfig.js'
 
 class Online extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
         <ZEle namespace='order' config={onlineConfig} />
@@ -15,10 +13,10 @@ class Online extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     order: state.order
   }
 }
 
-export default connect(mapStateToProps)(Online);
+export default connect(mapStateToProps)(Online)
