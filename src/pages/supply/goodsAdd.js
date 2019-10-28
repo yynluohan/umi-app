@@ -1,35 +1,33 @@
-import React from 'react';
-import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
-import GoodsForm from './component/GoodsForm';
+import React from 'react'
+import { connect } from 'dva'
+import { routerRedux } from 'dva/router'
+import GoodsForm from './component/GoodsForm'
 
 const InventoryAdd = ({ dispatch }) => {
-
-    const goodsFormProps = {
-        title: '添加商品',
-        onBack() {
-            dispatch(routerRedux.goBack())
-        },
-        onSave(data) {
-            dispatch({
-                type: 'supply/addGoods',
-                payload: data
-            })
-        }
+  const goodsFormProps = {
+    title: '添加商品',
+    onBack () {
+      dispatch(routerRedux.goBack())
+    },
+    onSave (data) {
+      dispatch({
+        type: 'supply/addGoods',
+        payload: data
+      })
     }
+  }
 
-    return(
-        <div>
-          <GoodsForm {...goodsFormProps}/>
-        </div>
-    )
-
+  return (
+    <div>
+      <GoodsForm {...goodsFormProps} />
+    </div>
+  )
 }
 
-function mapPropsToState(state) {
-    return {
-        supply: state.supply
-    }
+function mapPropsToState (state) {
+  return {
+    supply: state.supply
+  }
 }
 
 export default connect(mapPropsToState)(InventoryAdd)

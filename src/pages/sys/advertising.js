@@ -1,22 +1,20 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import advertisingConfig from './config/advertisingConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import advertisingConfig from './config/advertisingConfig.js'
 
 const Advertising = () => {
-
   return (
     <div>
-      <ZEle namespace='sys'  config={advertisingConfig} />
+      <ZEle namespace='sys' config={advertisingConfig} />
     </div>
   )
-
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     sys: state.sys
   }
 }
 
-export default connect(mapStateToProps)(Advertising);
+export default connect(mapStateToProps)(Advertising)

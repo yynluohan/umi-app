@@ -1,46 +1,43 @@
-import React from 'react';
-import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
-import TransferForm from './component/TransferForm';
+import React from 'react'
+import { connect } from 'dva'
+import { routerRedux } from 'dva/router'
+import TransferForm from './component/TransferForm'
 
-const TransferEdit = ({ dispatch,supply }) => {
+const TransferEdit = ({ dispatch, supply }) => {
+  const { item } = supply
 
-    const { item } = supply;
-
-    const transferFormProps = {
-        item,
-        title: '编辑库存调拨',
-        onBack() {
-            dispatch(routerRedux.goBack())
-        },
-        onSave(data,statusData) {
-            if (statusData) {
-                dispatch({
-                    type: 'supply/submitApproveTransfer',
-                    payload: data
-                })
-            } else {
-                dispatch({
-                    type: 'supply/updateTransfer',
-                    payload: data
-                })
-            }
-            
-        }
+  const transferFormProps = {
+    item,
+    title: '编辑库存调拨',
+    onBack () {
+      dispatch(routerRedux.goBack())
+    },
+    onSave (data, statusData) {
+      if (statusData) {
+        dispatch({
+          type: 'supply/submitApproveTransfer',
+          payload: data
+        })
+      } else {
+        dispatch({
+          type: 'supply/updateTransfer',
+          payload: data
+        })
+      }
     }
+  }
 
-    return(
-        <div>
-          <TransferForm {...transferFormProps}/>
-        </div>
-    )
-
+  return (
+    <div>
+      <TransferForm {...transferFormProps} />
+    </div>
+  )
 }
 
-function mapPropsToState(state) {
-    return {
-        supply: state.supply
-    }
+function mapPropsToState (state) {
+  return {
+    supply: state.supply
+  }
 }
 
 export default connect(mapPropsToState)(TransferEdit)

@@ -1,27 +1,28 @@
-import React from 'react';
-import { connect } from 'dva';
+import React from 'react'
+import { connect } from 'dva'
 import FormIemView from '../../common/FormIemView'
 
 const PutStorageView = ({ supply }) => {
-
-  const { item } = supply;
+  const { item } = supply
 
   const formItemProps = {
     title: '入库详情',
     list: [
-      {label:'入库编号',data: item.transactionCode},
-      {label:'仓库',data: item.warehouseName},
-      {label:'经办人',data:item.transactionBy},
-      {label:'制单人',data:item.originatorName},
-      {label:'入库日期',data:item.transactionTime},
-      {label:'备注',data:item.note},
-      {label: '入库产品',data: item.storageInItems,
-        columns:[
-          {title: '商品条码',value: 'barCode'},
-          {title: '商品编号',value: 'skuCode'},
-          {title: '商品名称',value: 'skuName'},
-          {title: '入库数量',value: 'transactionQuantities'},
-          {title: '单位',value: 'field1'},
+      { label: '入库编号', data: item.transactionCode },
+      { label: '仓库', data: item.warehouseName },
+      { label: '经办人', data: item.transactionBy },
+      { label: '制单人', data: item.originatorName },
+      { label: '入库日期', data: item.transactionTime },
+      { label: '备注', data: item.note },
+      {
+        label: '入库产品',
+        data: item.storageInItems,
+        columns: [
+          { title: '商品条码', value: 'barCode' },
+          { title: '商品编号', value: 'skuCode' },
+          { title: '商品名称', value: 'skuName' },
+          { title: '入库数量', value: 'transactionQuantities' },
+          { title: '单位', value: 'field1' }
         ]
       }
     ]
@@ -29,16 +30,15 @@ const PutStorageView = ({ supply }) => {
 
   return (
     <div>
-      <FormIemView {...formItemProps}/>
+      <FormIemView {...formItemProps} />
     </div>
   )
-
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     supply: state.supply
   }
 }
 
-export default connect(mapStateToProps)(PutStorageView);
+export default connect(mapStateToProps)(PutStorageView)

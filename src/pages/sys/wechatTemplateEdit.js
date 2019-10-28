@@ -1,35 +1,32 @@
-import { connect } from 'dva';
-import WechatTemplateForm from './component/WechatTemplateForm';
-import { routerRedux } from 'dva/router';
+import { connect } from 'dva'
+import WechatTemplateForm from './component/WechatTemplateForm'
+import { routerRedux } from 'dva/router'
 
 const WechatTemplateEdit = ({ dispatch, sys }) => {
-
-  const { item } = sys;
+  const { item } = sys
 
   const wechatTemplateProps = {
     item,
     title: '编辑微信模板消息',
-    onSave(data) {
+    onSave (data) {
       dispatch({
         type: 'sys/updateWechatTemplate',
-        payload:data
+        payload: data
       })
     },
-    onBack() {
+    onBack () {
       dispatch(routerRedux.goBack())
     }
   }
 
   return (
     <div>
-      <WechatTemplateForm {...wechatTemplateProps}/>
+      <WechatTemplateForm {...wechatTemplateProps} />
     </div>
   )
-
 }
 
-
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     sys: state.sys
   }

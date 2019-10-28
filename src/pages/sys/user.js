@@ -1,20 +1,20 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import userConfig from './config/userConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import userConfig from './config/userConfig.js'
 
 const User = () => {
   return (
     <div>
-      <ZEle namespace='sys'  config={userConfig} />
+      <ZEle namespace='sys' config={userConfig} />
     </div>
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     sys: state.sys
   }
 }
 
-export default connect(mapStateToProps)(User);
+export default connect(mapStateToProps)(User)

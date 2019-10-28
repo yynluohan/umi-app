@@ -1,24 +1,22 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import warehouseConfig from './config/warehouseConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import warehouseConfig from './config/warehouseConfig.js'
 
 class Warehouse extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
-        <ZEle namespace='supply'  config={warehouseConfig} />
+        <ZEle namespace='supply' config={warehouseConfig} />
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     supply: state.supply
   }
 }
 
-export default connect(mapStateToProps)(Warehouse);
+export default connect(mapStateToProps)(Warehouse)

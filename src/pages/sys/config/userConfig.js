@@ -7,22 +7,22 @@ module.exports = {
       layout: 'Empty',
       component: 'BaseSearch',
       config: {
-        share:'user',
+        share: 'user',
         fields: [
           { field: 'wechatName', label: '昵称', type: 'input' }
-        ],
-      },
+        ]
+      }
     },
     {
       layout: 'Empty',
       component: 'BaseList',
       config: {
-        share:'user',
+        share: 'user',
         API: {
           listAPI: '/api/crud/user/users',
-          deleteAPI:'/api/crud/user/users/(id)'
+          deleteAPI: '/api/crud/user/users/(id)'
         },
-        actions:[
+        actions: [
           // {
           //   title: '添加',type:'modal',
           //   options:{
@@ -67,30 +67,35 @@ module.exports = {
           // }
         ],
         fields: [
-          { field: 'avatar',label: '头像',valueType:'showImage'},
-          { field: 'wechatName',label:'昵称'},
+          { field: 'avatar', label: '头像', valueType: 'showImage' },
+          { field: 'wechatName', label: '昵称' },
           { field: 'realName', label: '名字' },
-          { field: 'email', label: '邮箱'},
+          { field: 'email', label: '邮箱' },
           { field: 'birthday', label: '出生年月' },
-          { field: 'sex', label: '性别',valueType:'status',
-          options:{
-            statusMap:{
-              '1':'男',
-              '2':'女',
-            }
-          }
-          },
           {
-            field: 'status',label:'状态',valueType:'status',
+            field: 'sex',
+            label: '性别',
+            valueType: 'status',
             options: {
               statusMap: {
-                'NORMAL':'正常',
-                'LOCKED': '锁定'
+                1: '男',
+                2: '女'
+              }
+            }
+          },
+          {
+            field: 'status',
+            label: '状态',
+            valueType: 'status',
+            options: {
+              statusMap: {
+                NORMAL: '正常',
+                LOCKED: '锁定'
               }
             }
           },
           { field: 'registerDate', label: '注册时间' },
-          { field:'operation'}
+          { field: 'operation' }
         ],
         operation: [
           // {
@@ -139,22 +144,23 @@ module.exports = {
           //   }
           // },
           {
-            title:'查看',action:'path',
+            title: '查看',
+            action: 'path',
             options: {
               path: '/sys/userView',
-              queryData:(records) => {
+              queryData: (records) => {
                 const data = {
-                  id:records.id,
+                  id: records.id
                 }
                 return data
               }
             }
           },
           {
-            title:'删除',action:'delete'
+            title: '删除', action: 'delete'
           }
         ]
-      },
-    },
-  ],
-};
+      }
+    }
+  ]
+}

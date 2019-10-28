@@ -1,46 +1,43 @@
-import React from 'react';
-import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
-import PurchaseOrderForm from './component/PurchaseOrderForm';
+import React from 'react'
+import { connect } from 'dva'
+import { routerRedux } from 'dva/router'
+import PurchaseOrderForm from './component/PurchaseOrderForm'
 
-const PurchaseOrderAdd = ({ dispatch,supply }) => {
+const PurchaseOrderAdd = ({ dispatch, supply }) => {
+  const { item } = supply
 
-    const { item } = supply;
-
-    const purchaseOrderFormProps = {
-        item,
-        title: '编辑采购订单',
-        onBack() {
-            dispatch(routerRedux.goBack())
-        },
-        onSave(data,statusData) {
-            if (statusData) {
-                dispatch({
-                    type: 'supply/submitApprovePurchaseOrder',
-                    payload: data
-                })
-            } else {
-                dispatch({
-                    type: 'supply/updatePurchaseOrder',
-                    payload: data
-                })
-            }
-            
-        }
+  const purchaseOrderFormProps = {
+    item,
+    title: '编辑采购订单',
+    onBack () {
+      dispatch(routerRedux.goBack())
+    },
+    onSave (data, statusData) {
+      if (statusData) {
+        dispatch({
+          type: 'supply/submitApprovePurchaseOrder',
+          payload: data
+        })
+      } else {
+        dispatch({
+          type: 'supply/updatePurchaseOrder',
+          payload: data
+        })
+      }
     }
+  }
 
-    return(
-        <div>
-          <PurchaseOrderForm {...purchaseOrderFormProps}/>
-        </div>
-    )
-
+  return (
+    <div>
+      <PurchaseOrderForm {...purchaseOrderFormProps} />
+    </div>
+  )
 }
 
-function mapPropsToState(state) {
-    return {
-        supply: state.supply
-    }
+function mapPropsToState (state) {
+  return {
+    supply: state.supply
+  }
 }
 
 export default connect(mapPropsToState)(PurchaseOrderAdd)

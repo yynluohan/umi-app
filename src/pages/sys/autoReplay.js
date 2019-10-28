@@ -1,26 +1,25 @@
-import React from 'react';
-import { Tabs } from 'antd';
-import { connect } from 'dva';
+import React from 'react'
+import { Tabs } from 'antd'
+import { connect } from 'dva'
 
-const { TabPane } = Tabs;
+const { TabPane } = Tabs
 
 class AutoReplay extends React.Component {
-
-  constructor(props){
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       activeKey: '1'
     }
   }
 
-  render() {
-
-    const { activeKey } = this.state;
+  render () {
+    const { activeKey } = this.state
 
     return (
-      <div style={{padding: '20px'}}>
+      <div style={{ padding: '20px' }}>
         <h2>自动回复</h2>
-        <Tabs defaultActiveKey="1" onChange={(e) => {this.setState({activeKey:e })}}
+        <Tabs
+          defaultActiveKey='1' onChange={(e) => { this.setState({ activeKey: e }) }}
           activeKey={activeKey}
         >
           <TabPane tab='添加自动回复' key='1'>
@@ -38,10 +37,10 @@ class AutoReplay extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     sys: state.sys
   }
 }
 
-export default connect(mapStateToProps)(AutoReplay);
+export default connect(mapStateToProps)(AutoReplay)

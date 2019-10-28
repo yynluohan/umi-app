@@ -1,20 +1,20 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import adGroupConfig from './config/adGroupConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import adGroupConfig from './config/adGroupConfig.js'
 
 const AdGroup = () => {
   return (
     <div>
-      <ZEle namespace='sys'  config={adGroupConfig} />
+      <ZEle namespace='sys' config={adGroupConfig} />
     </div>
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     sys: state.sys
   }
 }
 
-export default connect(mapStateToProps)(AdGroup);
+export default connect(mapStateToProps)(AdGroup)

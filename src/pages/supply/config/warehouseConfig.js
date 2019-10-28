@@ -4,78 +4,81 @@ export default {
   items: [
     {
       span: 24,
-      layout:'Empty',
-      layoutConfig:{
+      layout: 'Empty',
+      layoutConfig: {
         title: 'search',
-        rightIcon:false,
-        typeList:['General']
+        rightIcon: false,
+        typeList: ['General']
       },
       component: 'BaseSearch',
       config: {
-        share:'categroy',
+        share: 'categroy',
         fields: [
-          { field: 'warehouseName',label: '仓库名称',type:'input'}
+          { field: 'warehouseName', label: '仓库名称', type: 'input' }
         ]
       }
     },
     {
       span: 24,
-      layout:'Empty',
+      layout: 'Empty',
       component: 'BaseList',
       config: {
-        share:'categroy',
-        scroll:{ x:1400 },
+        share: 'categroy',
+        scroll: { x: 1400 },
         API: {
           listAPI: '/api/wms/warehouses',
-          deleteAPI:'/api/wms/warehouses/(id)'
+          deleteAPI: '/api/wms/warehouses/(id)'
         },
-        actions:[
+        actions: [
           {
-            title: '添加',type:'path',
-            options:{
+            title: '添加',
+            type: 'path',
+            options: {
               path: '/supply/warehouseAdd'
             }
           }
         ],
         fields: [
-          { field: 'warehouseCode',label: '仓库编号'},
-          { field: 'warehouseName',label: '仓库名称'},
-          { field: 'warehousePCD',label: '所在省市'},
-          { field: 'warehouseAddress',label: '详细地址'},
-          { field: 'operation'}
+          { field: 'warehouseCode', label: '仓库编号' },
+          { field: 'warehouseName', label: '仓库名称' },
+          { field: 'warehousePCD', label: '所在省市' },
+          { field: 'warehouseAddress', label: '详细地址' },
+          { field: 'operation' }
         ],
         operation: [
           {
-            title:'查看',action:'path',
-            options:{
-              path:'/supply/warehouseView',
+            title: '查看',
+            action: 'path',
+            options: {
+              path: '/supply/warehouseView',
               // permission:'apply.view',
               // location:true
-              queryData:(records) => {
+              queryData: (records) => {
                 const data = {
-                  id:records.id,
+                  id: records.id
                 }
                 return data
               }
             }
           },
           {
-            title: '编辑',action:'path',
-            options:{
-              path:'/supply/warehouseEdit',
-              queryData:(records) => {
+            title: '编辑',
+            action: 'path',
+            options: {
+              path: '/supply/warehouseEdit',
+              queryData: (records) => {
                 const data = {
-                  id:records.id,
+                  id: records.id
                 }
                 return data
               }
             }
           },
           {
-            title: '删除',action: 'delete'
+            title: '删除', action: 'delete'
           }
-        ],
-      },
-    },
+        ]
+      }
+    }
   ]
 }

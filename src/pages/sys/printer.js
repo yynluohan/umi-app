@@ -1,20 +1,20 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import printerConfig from './config/printerConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import printerConfig from './config/printerConfig.js'
 
 const Printer = () => {
   return (
     <div>
-      <ZEle namespace='sys'  config={printerConfig} />
+      <ZEle namespace='sys' config={printerConfig} />
     </div>
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     sys: state.sys
   }
 }
 
-export default connect(mapStateToProps)(Printer);
+export default connect(mapStateToProps)(Printer)

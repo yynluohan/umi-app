@@ -1,24 +1,22 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import supplierConfig from './config/supplierConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import supplierConfig from './config/supplierConfig.js'
 
 class Supplier extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
-        <ZEle namespace='supply'  config={supplierConfig} />
+        <ZEle namespace='supply' config={supplierConfig} />
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     supply: state.supply
   }
 }
 
-export default connect(mapStateToProps)(Supplier);
+export default connect(mapStateToProps)(Supplier)

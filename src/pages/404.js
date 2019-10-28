@@ -1,36 +1,34 @@
 import React from 'react'
 
 class Index extends React.Component {
-
-  componentDidMount() {
+  componentDidMount () {
     this.getInter()
   }
 
-  getInter = () => {
-    const myVar = setInterval(function(){
-      const time = document.getElementById("time") || '';
+  getInter () {
+    const myVar = setInterval(function () {
+      const time = document.getElementById('time') || ''
       if (time) {
-        if (time.innerHTML === 0){
+        if (time.innerHTML === 0) {
           clearInterval(myVar)
-          window.location.href = '#/';
+          window.location.href = '#/'
         } else {
-          time.innerHTML --;
+          time.innerHTML--
         }
       }
-     }, 1000);
+    }, 1000)
   }
 
-  render() {
-
+  render () {
     const style = {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      minHeight:`calc(100vh - 84px)`
+      minHeight: 'calc(100vh - 84px)'
     }
 
     const contentStyle = {
-      display: 'flex',
+      display: 'flex'
     }
 
     const textStyle = {
@@ -44,9 +42,9 @@ class Index extends React.Component {
     }
 
     const hrefStyle = {
-      marginTop:'1em',
+      marginTop: '1em',
       textAlign: 'right',
-      width:'100%',
+      width: '100%',
       display: 'flex',
       justifyContent: 'flex-end'
     }
@@ -54,13 +52,13 @@ class Index extends React.Component {
     return (
       <div style={style}>
         <div style={contentStyle}>
-          <img src='https://gw.alipayobjects.com/zos/rmsportal/KpnpchXsobRgLElEozzI.svg' alt=''/>
+          <img src='https://gw.alipayobjects.com/zos/rmsportal/KpnpchXsobRgLElEozzI.svg' alt='' />
           <div style={textStyle}>
             <div style={numberStyle}>404</div>
-            <div style={{fontSize: '20px',color: '#000'}}>抱歉，你访问的页面不存在</div>
+            <div style={{ fontSize: '20px', color: '#000' }}>抱歉，你访问的页面不存在</div>
             <div style={hrefStyle}>
-              <div style={{display: 'flex',alignItems: 'center'}}>
-                <span id='time' style={{fontSize: '20px',color: '#2196F3',marginRight:'0.5em'}}>5</span>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <span id='time' style={{ fontSize: '20px', color: '#2196F3', marginRight: '0.5em' }}>5</span>
                 秒自动返回首页
               </div>
             </div>
@@ -68,9 +66,7 @@ class Index extends React.Component {
         </div>
       </div>
     )
-
   }
 }
-
 
 export default Index

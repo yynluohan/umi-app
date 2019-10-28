@@ -1,24 +1,22 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import transferConfig from './config/transferConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import transferConfig from './config/transferConfig.js'
 
 class Transfer extends React.Component {
-
-  render() {
-
+  render () {
     return (
       <div>
-        <ZEle namespace='supply'  config={transferConfig} />
+        <ZEle namespace='supply' config={transferConfig} />
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     supply: state.supply
   }
 }
 
-export default connect(mapStateToProps)(Transfer);
+export default connect(mapStateToProps)(Transfer)

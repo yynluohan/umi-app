@@ -1,29 +1,27 @@
-import { connect } from 'dva';
-import WarehoseForm from './component/WarehoseForm';
-import { routerRedux } from 'dva/router';
+import { connect } from 'dva'
+import WarehoseForm from './component/WarehoseForm'
+import { routerRedux } from 'dva/router'
 
 const WarehouseAdd = ({ dispatch }) => {
-
   const formProps = {
     title: '添加仓库',
-    onBack() {
+    onBack () {
       dispatch(routerRedux.goBack())
     },
-    onSave(data) {
+    onSave (data) {
       dispatch({
         type: 'supply/addWarehouse',
-        payload:data
+        payload: data
       })
     }
   }
 
   return (
-    <WarehoseForm {...formProps}/>
+    <WarehoseForm {...formProps} />
   )
-
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     supply: state.supply
   }

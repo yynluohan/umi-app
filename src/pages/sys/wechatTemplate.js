@@ -1,20 +1,20 @@
-import React from 'react';
-import { connect } from 'dva';
-import ZEle from 'zero-element';
-import wechatTemplateConfig from './config/wechatTemplateConfig.js';
+import React from 'react'
+import { connect } from 'dva'
+import ZEle from 'zero-element'
+import wechatTemplateConfig from './config/wechatTemplateConfig.js'
 
 const WechatTemplate = () => {
   return (
     <div>
-      <ZEle namespace='sys'  config={wechatTemplateConfig} />
+      <ZEle namespace='sys' config={wechatTemplateConfig} />
     </div>
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     sys: state.sys
   }
 }
 
-export default connect(mapStateToProps)(WechatTemplate);
+export default connect(mapStateToProps)(WechatTemplate)
